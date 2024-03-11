@@ -1,0 +1,74 @@
+.contenedor{
+  background-color: #f4ae2b;
+  height: 590px;
+  width: 750px;
+  overflow: hidden;
+}
+
+.texto{
+  position: relative;
+  top: -122px;
+}
+
+.textoInfo{
+  position: relative;
+  top: -135px;
+  left: 165px;
+}
+
+.botonDesplegarInfo{
+  position: relative;
+  left: 220px;
+  top: -160px;
+}
+
+.formulario{
+  position: relative;
+  top: -145px;
+  left: 85px;
+  width: 520px;
+  font-size: 11px;
+}
+
+input,
+select{
+  position: relative;
+  top: -8px;
+  height: 38px;
+}
+
+.errores{
+  display: flex;
+  position: relative;
+  top: -10px;
+  font-size: 12px;
+  max-width: 260px;
+}
+
+.botonRegistro{
+  position: relative;
+  right: 200px;
+  top: 6px;
+}
+
+.spinnerRegistro{
+  position: relative;
+  right: 245px;
+  top: 36px;
+}
+
+.spinner-border{
+  font-size: 20px;
+}
+
+.link{
+  position: relative;
+  left: 140px;
+}
+
+.fuenteAlert{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  width: 820px;
+}
