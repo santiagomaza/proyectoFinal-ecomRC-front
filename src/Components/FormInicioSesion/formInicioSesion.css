@@ -1,0 +1,39 @@
+.contenedorFormInicio{
+  background-color: #f4ae2b;
+  height: 450px;
+  width: 650px;
+  overflow: hidden;
+}
+
+.textoIS{
+  position: relative;
+  top: -85px;
+  left: 5px;
+}
+
+.formularioIS{
+  position: relative;
+  top: -90px;
+  left: 160px;
+}
+
+.etiquetas{
+  position: relative;
+  top: 15px;
+  right: 28px;
+}
+
+.iconos{
+  float: left;
+  position: relative;
+  right: 45px;
+  top: 34px;
+}
+
+.erroresIS{
+  display: flex;
+  position: relative;
+  top: -10px;
+  font-size: 15px;
+  max-width: 260px;
+}

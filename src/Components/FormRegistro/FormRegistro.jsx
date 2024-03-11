@@ -281,7 +281,7 @@ export const FormRegistro = () => {
             errors.repContraseña && <span className='errores text-danger'>{errors.repContraseña.message}</span>
           }
         </article>
-        <span className='link fs-6'>¿Ya tienes una cuenta? <Link to="/inicioSesion">Inicia Sesión</Link></span>
+        <span className='link fs-6'>¿Ya tienes una cuenta? <Link to="/login">Inicia Sesión</Link></span>
         {
           registro ?
           <div className="spinnerRegistro spinner-border" role="status"></div>
