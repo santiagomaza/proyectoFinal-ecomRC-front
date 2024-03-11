@@ -1,12 +1,10 @@
 import './resultadosBusqueda.css'
+import { Link } from 'react-router-dom'
 
-export const ResultadosBusqueda = () => {
+export const ResultadosBusqueda = ({ nombre }) => {
   return (
-    <div className="card" style={{width: '18rem', height: '25rem'}}>
-      <img src="" alt="" style={{height: "86px", width:"85px"}}/>
-      <div className="card-body">
-        <h5 className="card-title"></h5>
-      </div>
-  </div>
+    <Link to={`/detalleProducto/${4}`} className='text-decoration-none text-dark'>
+      <p className='resultadoNombreProducto'>{nombre}</p>
+    </Link>
   )
 }

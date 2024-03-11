@@ -2,13 +2,23 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './navbar.css'
 import { BarraBuscadoraNavbar } from '../BarraBuscadora/BarraBuscadoraNavbar';
-import { NavLink, Link} from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import logoecomrc from '../../assets/ecom.jpg'
 
 export const NavbarPagina = () => {
   const token = localStorage.getItem('token')
-  
+  const navigate = useNavigate()
 
+  const cerrarSesion = () => {
+    navigate("/", {replace: true})
+    
+    setTimeout(() => {
+      navigate(0)
+      localStorage.removeItem("token")
+    }, 1000);
+
+  }
+  
   return (
     <Navbar expand="lg" className="navbar">
       <img src={logoecomrc} alt="" className='logoEmpresa mx-4 rounded-circle' style={{height: "90px", width: "90px"}}/>
@@ -29,18 +39,15 @@ export const NavbarPagina = () => {
               <NavLink to="/registrarse" className='btn btn-dark'>Registrarse</NavLink>
             </div>
             :
-            <div className=''>
-              <span className='mx-2'>Hola</span>
-              <span className='mx-2'>dsdf</span>
-            </div>
+            null
           }
           <div className='d-flex'>
-            <NavLink to="/*" className="pruebita text-decoration-none text-dark fs-2">Contacto</NavLink>
+            <NavLink to="/*" className="contacto text-decoration-none text-dark fs-2">Contacto</NavLink>
             {
               token ?
               <>
-                <NavLink className="pruebita2 text-decoration-none text-dark fs-2">Administración</NavLink>
-                <NavLink className="pruebita3 text-decoration-none text-dark fs-2">Holis</NavLink>
+                <NavLink className="cerrarSesion text-decoration-none text-dark fs-2" onClick={cerrarSesion}>Cerrar Sesión</NavLink>
+                <NavLink className="admin text-decoration-none text-dark fs-2">Administración</NavLink>
               </>
               :
               null

@@ -19,24 +19,25 @@
   right: 90px;
 }
 
-.pruebita{
+.contacto{
   position: absolute;
   right: 1091px;
   top: 103px;
 }
 
-.pruebita2{
+.cerrarSesion{
   position: relative;
-  right: 692px;
-  top: 33px;
+  right: 595px;
+  top: 48px;
 }
 
-.pruebita3{
+.admin{
   position: relative;
-  right: 575px;
-  top: 33px;
+  right: 483px;
+  top: 48px;
 }
 
-.pruebita:hover{
+
+.contacto:hover{
   background-color: red;
 }

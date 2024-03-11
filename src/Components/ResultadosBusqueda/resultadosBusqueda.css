@@ -1,13 +1,23 @@
 .resultados{
   display: flex;
   position: absolute;
-  left: 344px;
+  left: 342px;
   top: 75px;
   background-color: #fff;
   width: 575px;
   max-height: 180px;
-  border-radius: 8px;
   overflow-y: scroll;
   flex-direction: column;
+  z-index: 1;
+  box-shadow: 1px 2px 10px #000;
+}
+
+.resultadoNombreProducto{
+  padding: 5px;
+  margin: 5px;
+}
+
+.resultadoNombreProducto:hover{
+  background-color: rgba(128, 128, 128, 0.181);
 }
 

@@ -1,32 +1,30 @@
 import './barraBuscadoraNavbar.css'
 import { useState, useEffect } from "react"
 import axios from "axios"
-import  { ResultadosBusqueda }  from '../ResultadosBusqueda/ResultadosBusqueda'
+import { ResultadosBusqueda } from '../ResultadosBusqueda/ResultadosBusqueda'
 
 export const BarraBuscadoraNavbar = () => {
   const [busqueda, setBusqueda] = useState('')
   const [productos, setProductos] = useState([])
   
-  const handleInputChange = (e) => {
-    setBusqueda(e.target.value)
-  }
-  
   useEffect(() => {
-    axios.get("http://localhost:8000/products/obtener-productos")
+    axios.get("http://localhost:8000/productos/obtener-productos")
     .then((response) => {
       setProductos(response.data)
       console.log(response.data)
     })
   }, [])
+  
+  const handleInputChange = (e) => {
+    setBusqueda(e.target.value)
+  }
 
   let resultados = []
-
   if(!busqueda){
     resultados = productos
   }
   else{
-    resultados = productos.filter((producto) => producto.name.toLowerCase().includes(busqueda.toLowerCase()))
-    console.log(resultados)
+    resultados = productos.filter((producto) => producto.nombre.toLowerCase().includes(busqueda.toLowerCase()))
   }
 
   return (
@@ -35,14 +33,14 @@ export const BarraBuscadoraNavbar = () => {
         <input type="text" className='inputBarra' placeholder='Buscar producto...' onChange={handleInputChange} value={busqueda}/>
       </div>
 
-      <div className='resultados'>
+      <div className={busqueda.length > 0 ? "resultados" : "sinResultados"}>
         {
           resultados.length > 0 ?
-          resultados.map((producto) => {
-            <ResultadosBusqueda key={producto.id} imagen={producto.imagen} nombre={producto.name}/>
-          })
-          : 
-          <div>No se encontraron resultados</div>
+          resultados.map((producto) => (
+            <ResultadosBusqueda key={producto._id} nombre={producto.nombre}/>
+          ))
+          :
+          <p className='fw-bold text-center sinResultadosBusqueda'>No se encontraron resultados</p>
         }
       </div>
     </>
