@@ -1,0 +1,42 @@
+.navbar{
+  background-color: #f4ae2b;
+  height: 160px;
+}
+
+.logoEmpresa{
+  position: relative;
+  top: -25px;
+}
+
+.redesSoc{
+  position: relative;
+  top: -27px;
+}
+
+.botonesInicReg{
+  position: absolute;
+  top: 34px;
+  right: 90px;
+}
+
+.pruebita{
+  position: absolute;
+  right: 1091px;
+  top: 103px;
+}
+
+.pruebita2{
+  position: relative;
+  right: 692px;
+  top: 33px;
+}
+
+.pruebita3{
+  position: relative;
+  right: 575px;
+  top: 33px;
+}
+
+.pruebita:hover{
+  background-color: red;
+}

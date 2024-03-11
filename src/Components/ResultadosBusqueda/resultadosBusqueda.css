@@ -1,0 +1,13 @@
+.resultados{
+  display: flex;
+  position: absolute;
+  left: 344px;
+  top: 75px;
+  background-color: #fff;
+  width: 575px;
+  max-height: 180px;
+  border-radius: 8px;
+  overflow-y: scroll;
+  flex-direction: column;
+}
+

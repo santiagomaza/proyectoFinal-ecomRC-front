@@ -1,0 +1,16 @@
+.inputBarra{
+  width: 580px;
+  border-radius: 8px;
+  border: none;
+  position: relative;
+  top: -35px;
+  left: 10px;
+}
+
+.inputBarra[placeholder]{
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 500;
+  color: #1a1a1a;
+  padding-left: 13px;
+}
