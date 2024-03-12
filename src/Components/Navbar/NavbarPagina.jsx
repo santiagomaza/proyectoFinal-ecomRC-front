@@ -4,6 +4,10 @@ import './navbar.css'
 import { BarraBuscadoraNavbar } from '../BarraBuscadora/BarraBuscadoraNavbar';
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 import logoecomrc from '../../assets/ecom.jpg'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import Badge from 'react-bootstrap/Badge';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export const NavbarPagina = () => {
   const token = localStorage.getItem('token')
@@ -16,8 +20,11 @@ export const NavbarPagina = () => {
       navigate(0)
       localStorage.removeItem("token")
     }, 1000);
-
   }
+
+  const renderTooltip = (props) => (
+    <Tooltip id="tooltip" {...props}/>
+  )
   
   return (
     <Navbar expand="lg" className="navbar">
@@ -39,21 +46,42 @@ export const NavbarPagina = () => {
               <NavLink to="/registrarse" className='btn btn-dark'>Registrarse</NavLink>
             </div>
             :
-            null
+            <div className='iconosCyF'>
+              <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
+                <NavLink className="text-dark" to="/carrito" title='Carrito'>
+                  <i className="bi bi-cart fs-2 px-4"></i>
+                  <Badge bg="success" className='badgeCarrito'>{4}</Badge>
+                </NavLink>
+              </OverlayTrigger>
+              <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
+                <NavLink className="text-dark" to="/favoritos" title='Favoritos'>
+                  <i className="bi bi-heart-fill fs-2"></i>
+                  <Badge bg="success" className='badgeFavoritos'>{2}</Badge>
+                </NavLink>
+              </OverlayTrigger>
+            </div>
           }
-          <div className='d-flex'>
+        </Nav>
+          <div className='header'>
             <NavLink to="/*" className="contacto text-decoration-none text-dark fs-2">Contacto</NavLink>
+            <NavLink className="inicio text-decoration-none text-dark fs-2">Inicio</NavLink>
             {
               token ?
               <>
                 <NavLink className="cerrarSesion text-decoration-none text-dark fs-2" onClick={cerrarSesion}>Cerrar Sesión</NavLink>
-                <NavLink className="admin text-decoration-none text-dark fs-2">Administración</NavLink>
+                <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>
+                  <NavDropdown.Item>
+                    <NavLink to="/administracion/usuarios" className="text-decoration-none text-dark">Usuarios</NavLink>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <NavLink to="/administracion/productos" className="text-decoration-none text-dark">Productos</NavLink>
+                  </NavDropdown.Item>
+                </NavDropdown>
               </>
               :
               null
             }
           </div>
-        </Nav>
       </Navbar.Collapse>     
     </Navbar>
   )

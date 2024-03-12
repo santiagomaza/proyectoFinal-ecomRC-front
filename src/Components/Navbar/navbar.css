@@ -1,6 +1,7 @@
 .navbar{
   background-color: #f4ae2b;
   height: 160px;
+  width: 100vw;
 }
 
 .logoEmpresa{
@@ -19,25 +20,55 @@
   right: 90px;
 }
 
+.iconosCyF{
+  position: relative;
+  top: -28px;
+  right: 175px;
+}
+
+.bi-heart-fill{
+  position: relative;
+  top: 4px;
+}
+
+.badgeCarrito{
+  position: relative;
+  left: -25px;
+  top: -25px;
+}
+
+.badgeFavoritos{
+  position: relative;
+  top: -25px;
+  right: 3px;
+}
+
 .contacto{
   position: absolute;
-  right: 1091px;
-  top: 103px;
+  right: 1092px;
+  top: 112px;
+}
+
+.inicio{
+  position: absolute;
+  right: 965px;
+  top: 112px;
 }
 
 .cerrarSesion{
-  position: relative;
-  right: 595px;
-  top: 48px;
+  position: absolute;
+  right: 725px;
+  top: 112px;
+  width: 190px;
 }
 
 .admin{
-  position: relative;
-  right: 483px;
-  top: 48px;
+  position: absolute;
+  right: 463px;
+  top: 116px;
+  font-size: 29px;
 }
 
-
-.contacto:hover{
-  background-color: red;
+.dropdown-menu{
+  background-color: #f4ae2b;
 }
