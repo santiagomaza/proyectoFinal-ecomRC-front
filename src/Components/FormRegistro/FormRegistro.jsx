@@ -28,7 +28,7 @@ export const FormRegistro = () => {
       })
 
       setTimeout(() => {
-        navigate("/login", { replace: true})
+        navigate("/", { replace: true })
       }, 1500);
     }
     else if(respuesta.data.status === 400){

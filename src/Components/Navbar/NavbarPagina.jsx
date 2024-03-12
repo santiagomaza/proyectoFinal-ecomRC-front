@@ -8,9 +8,13 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Badge from 'react-bootstrap/Badge';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 export const NavbarPagina = () => {
   const token = localStorage.getItem('token')
+  const idUsuario = localStorage.getItem('idUsuario')
+  const [usuario, setUsuario] = useState({})
   const navigate = useNavigate()
 
   const cerrarSesion = () => {
@@ -18,9 +22,16 @@ export const NavbarPagina = () => {
     
     setTimeout(() => {
       navigate(0)
-      localStorage.removeItem("token")
+      localStorage.clear()
     }, 1000);
   }
+
+  useEffect(() => {
+    axios.get(`http://localhost:8000/usuarios/${idUsuario}`)
+    .then(response => {
+      setUsuario(response.data.usuario)
+    })
+  }, [])
 
   const renderTooltip = (props) => (
     <Tooltip id="tooltip" {...props}/>
@@ -28,7 +39,9 @@ export const NavbarPagina = () => {
   
   return (
     <Navbar expand="lg" className="navbar">
-      <img src={logoecomrc} alt="" className='logoEmpresa mx-4 rounded-circle' style={{height: "90px", width: "90px"}}/>
+      <NavLink to="/">
+        <img src={logoecomrc} alt="" className='logoEmpresa mx-4 rounded-circle' style={{height: "90px", width: "90px"}}/>
+      </NavLink>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <div className='d-flex redesSoc'>
@@ -64,19 +77,27 @@ export const NavbarPagina = () => {
         </Nav>
           <div className='header'>
             <NavLink to="/*" className="contacto text-decoration-none text-dark fs-2">Contacto</NavLink>
-            <NavLink className="inicio text-decoration-none text-dark fs-2">Inicio</NavLink>
+            <NavLink to="/" className="inicio text-decoration-none text-dark fs-2">Inicio</NavLink>
             {
               token ?
               <>
                 <NavLink className="cerrarSesion text-decoration-none text-dark fs-2" onClick={cerrarSesion}>Cerrar Sesión</NavLink>
-                <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>
-                  <NavDropdown.Item>
-                    <NavLink to="/administracion/usuarios" className="text-decoration-none text-dark">Usuarios</NavLink>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <NavLink to="/administracion/productos" className="text-decoration-none text-dark">Productos</NavLink>
-                  </NavDropdown.Item>
-                </NavDropdown>
+                {
+                  usuario.rol === "admin" ?
+                  <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>
+                    <NavDropdown.Item>
+                      <NavLink to="/administracion/usuarios" className="text-decoration-none text-dark">Usuarios</NavLink>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <NavLink to="/administracion/productos" className="text-decoration-none text-dark">Productos</NavLink>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <NavLink to="/administracion/categorias" className="text-decoration-none text-dark">Categorias</NavLink>
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  :
+                  null
+                }
               </>
               :
               null
