@@ -34,7 +34,7 @@ export const FormInicioSesion = () => {
       }, 1500);
     }
 
-    if(respuesta.data.status === 400){
+    if(respuesta.data.status === 401){
       setIniciandoSesion(false)
       Swal.fire({
         icon: "error",

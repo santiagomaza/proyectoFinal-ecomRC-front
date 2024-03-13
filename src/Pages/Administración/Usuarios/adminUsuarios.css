@@ -1,0 +1,9 @@
+.botonAgregarUsuario{
+  border: 1px solid #f4ae2b;
+  color: #f4ae2b;
+}
+
+.botonAgregarUsuario:hover{
+  border: 1px solid #f4ae2b;
+  color: #f4ae2b;
+}
