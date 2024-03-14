@@ -25,6 +25,8 @@ export const FormAgregarProducto = () => {
     obtenerCategorias()
   }, [])
 
+  const filtrarCategorias = categorias.filter((categoria) => categoria.publicada === true)
+
   const agregarProducto = async (data) => {
     setRegistroProducto(true)
     const respuesta = await axios.post('http://localhost:8000/productos/crear-producto', data)
@@ -123,7 +125,8 @@ export const FormAgregarProducto = () => {
             })}>
               <option value="" disabled>Seleccione una categoria</option>
               {
-                categorias.map((categoria) => (
+                filtrarCategorias.map((categoria) => (
+                  
                   <option key={categoria._id} value={categoria.categoria}>{categoria.categoria}</option>
                 ))
               }
