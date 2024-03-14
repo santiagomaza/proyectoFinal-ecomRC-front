@@ -2,9 +2,11 @@ import { useForm } from "react-hook-form";
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 export const FormCrearUsuario = () => {
   const navigate = useNavigate()
+  const [registro, setRegistro] = useState(false)
 
   const {
     register,
@@ -14,10 +16,14 @@ export const FormCrearUsuario = () => {
   } = useForm();
 
   const crearUsuario = async (data) => {
+    setRegistro(true)
+
     const respuesta = await axios.post("http://localhost:8000/usuarios/crear-usuario", data)
     console.log(respuesta.data)
 
     if(respuesta.data.status === 201){
+      setRegistro(false)
+
       Swal.fire({
         icon:'success',
         title: respuesta.data.message,
@@ -30,8 +36,10 @@ export const FormCrearUsuario = () => {
       }, 1500);
     }
     else if(respuesta.data.status === 400){
+      setRegistro(false)
+
       Swal.fire({
-        icon: 'info',
+        icon: 'error',
         title: respuesta.data.message,
         showConfirmButton: true,
       })
@@ -384,9 +392,16 @@ export const FormCrearUsuario = () => {
           }
         </article>
       </div>
-      <div className="d-flex justify-content-end">
-        <button type="submit" className="btn btn-transparent botonAgregarUsuario">Agregar Usuario</button>
-      </div>
+      {
+        registro ?
+        <div className="d-flex justify-content-center">
+          <div className="spinnerRegistro spinner-border" role="status"></div>
+        </div>
+        :
+        <div className="d-flex justify-content-end">
+          <button type="submit" className="btn btn-transparent botonAgregarUsuario">Agregar Usuario</button>
+        </div>
+      }
     </form>
   );
 };

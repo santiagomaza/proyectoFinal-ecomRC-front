@@ -1,0 +1,9 @@
+.botonAgregarProducto{
+  border: 1px solid #f4ae2b;
+  color: #f4ae2b;
+}
+
+.botonAgregarProducto:hover{
+  border: 1px solid #f4ae2b;
+  color: #f4ae2b;
+}

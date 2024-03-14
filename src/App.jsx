@@ -6,6 +6,7 @@ import { Login } from './Pages/Login/Login'
 import { Home } from './Pages/Home/Home'
 import { Error404 } from './Pages/Error/Error404'
 import { AdminUsuarios } from './Pages/Administración/Usuarios/AdminUsuarios'
+import { AdminProductos } from './Pages/Administración/Productos/AdminProductos'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path = "*" element = {<Error404 />}/>
       <Route path='administracion'>
         <Route path='usuarios' element = {<AdminUsuarios />}/>
+        <Route path='productos' element = {<AdminProductos />}/>
       </Route>
     </Routes>
   )

@@ -3,7 +3,6 @@ import { NavbarPagina } from "../../../Components/Navbar/NavbarPagina"
 import { TablaUsuarios } from "../../../Components/TablaUsuarios/TablaUsuarios"
 import Button from 'react-bootstrap/Button';
 import './adminUsuarios.css'
-
 import { useState } from 'react'
 
 export const AdminUsuarios = () => {
