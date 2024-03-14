@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { BotonEditarUsuario } from '../BotonEditarUsuario/BotonEditarUsuario'
+import { BotonEliminarUsuario } from '../BotonEliminarUsuario/BotonEliminarUsuario'
 
 export const TablaUsuarios = () => {
   const [usuarios, setUsuarios] = useState([])
@@ -59,8 +61,8 @@ export const TablaUsuarios = () => {
                 <td className='text-info fw-bold fst-italic'>{usuario.rol}</td>
               }
               <td className='d-flex justify-content-evenly'>
-                <button className="btn btn-primary btn-sm"><i className="bi bi-pen-fill"></i></button>
-                <button className="btn btn-danger btn-sm"><i className="bi bi-trash2-fill"></i></button>
+                <BotonEditarUsuario />
+                <BotonEliminarUsuario />
               </td>
             </tr>
           ))
