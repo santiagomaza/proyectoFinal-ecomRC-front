@@ -49,7 +49,7 @@ export const TablaCategorias = () => {
                 </td>
               }
               <td>
-                <BotonEditarCategoria />
+                <BotonEditarCategoria idCategoria = {categoria._id} nombre = {categoria.categoria} descripcion = {categoria.descripcion}/>
                 <BotonEliminarCategoria />
               </td>
             </tr>
