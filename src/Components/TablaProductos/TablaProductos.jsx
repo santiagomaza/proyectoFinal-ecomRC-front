@@ -3,6 +3,8 @@ import axios from 'axios'
 import './tablaProductos.css'
 import BotonEditarProducto from '../BotonEditarProducto/BotonEditarProducto'
 import { BotonEliminarProducto } from '../BotonEliminarProducto/BotonEliminarProducto'
+import { BotonDestacarProducto } from '../BotonDestacarProducto/BotonDestacarProducto'
+import { BotonQuitarDestacado } from '../BotonQuitarDestacado/BotonQuitarDestacado'
 
 export const TablaProductos = () => {
   const [productos, setProductos] = useState([])
@@ -34,7 +36,8 @@ export const TablaProductos = () => {
       <tbody>
         {
           productos &&
-          productos.map((producto) => (
+          productos.sort((a,b) => +b.destacado - a.destacado)
+          .map((producto) => (
             <tr key={producto._id}>
               <th style={{width: "75px"}} scope="row">{producto._id}</th>
               <td><img src={producto.imagen1} alt="" style={{height: "100px", width: "100px"}}/></td>
@@ -45,12 +48,12 @@ export const TablaProductos = () => {
               {
                 producto.destacado === true?
                 <td>
-                  <i className="bi bi-star-fill fs-2 text-warning"></i>
+                  <BotonQuitarDestacado idProducto = {producto._id} nombre = {producto.nombre}/>
                 </td>
                 :
                 producto.destacado === false?
                 <td>
-                  <i className="bi bi-star fs-2"></i>
+                  <BotonDestacarProducto idProducto = {producto._id} nombre = {producto.nombre}/>
                 </td>
                 :
                 <td></td>  
