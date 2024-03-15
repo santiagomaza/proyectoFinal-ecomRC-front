@@ -61,7 +61,18 @@ export const TablaUsuarios = () => {
                 <td className='text-info fw-bold fst-italic'>{usuario.rol}</td>
               }
               <td className='d-flex justify-content-evenly'>
-                <BotonEditarUsuario />
+                <BotonEditarUsuario 
+                id = {usuario._id} 
+                nombre = {usuario.nombre} 
+                username = {usuario.username} 
+                email = {usuario.email} 
+                pais = {usuario.pais}
+                estado = {usuario.estado}
+                rol = {usuario.rol}
+                provincia = {usuario.provincia}
+                codigoPostal = {usuario.codigoPostal}
+                domicilio = {usuario.domicilio}
+                telefono = {usuario.telefono}/>
                 <BotonEliminarUsuario />
               </td>
             </tr>
