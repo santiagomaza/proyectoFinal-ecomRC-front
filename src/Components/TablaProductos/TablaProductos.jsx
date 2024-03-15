@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './tablaProductos.css'
 import BotonEditarProducto from '../BotonEditarProducto/BotonEditarProducto'
+import { BotonEliminarProducto } from '../BotonEliminarProducto/BotonEliminarProducto'
 
 export const TablaProductos = () => {
   const [productos, setProductos] = useState([])
@@ -65,7 +66,8 @@ export const TablaProductos = () => {
                 imagen1 = {producto.imagen1}
                 imagen2 = {producto.imagen2}
                 imagen3 = {producto.imagen3}/>
-                <button className="btn btn-danger btn-sm"><i className="bi bi-trash2-fill"></i></button>
+                
+                <BotonEliminarProducto idProducto = {producto._id} nombre = {producto.nombre}/>
               </td>
             </tr>
           ))
