@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BotonPublicarCategoria } from '../BotonPublicarCategoría/BotonPublicarCategoria';
 import { BotonQuitarCatPublicada } from '../BotonQuitarCategoriaPublicada/BotonQuitarCatPublicada';
+import { BotonEditarCategoria } from '../BotonEditarCategoria/BotonEditarCategoria';
+import { BotonEliminarCategoria } from '../BotonEliminarCategoria/BotonEliminarCategoria';
 
 export const TablaCategorias = () => {
   const [categorias, setCategorias] = useState([])
@@ -46,8 +48,9 @@ export const TablaCategorias = () => {
                   <BotonPublicarCategoria idCategoria = {categoria._id} nombre = {categoria.categoria}/>
                 </td>
               }
-              <td style={{width: "100px"}}>
-                <button className="btn btn-outline-danger">Borrar</button>
+              <td>
+                <BotonEditarCategoria />
+                <BotonEliminarCategoria />
               </td>
             </tr>
           ))
