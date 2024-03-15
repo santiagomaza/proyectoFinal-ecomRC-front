@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { BotonPublicarCategoria } from '../BotonPublicarCategoría/BotonPublicarCategoria';
+import { BotonQuitarCatPublicada } from '../BotonQuitarCategoriaPublicada/BotonQuitarCatPublicada';
 
 export const TablaCategorias = () => {
   const [categorias, setCategorias] = useState([])
@@ -28,7 +30,8 @@ export const TablaCategorias = () => {
       <tbody>
         {
           categorias &&
-          categorias.map((categoria) => (
+          categorias.sort((a,b) => b.publicada - a.publicada)
+          .map((categoria) => (
             <tr key={categoria._id}>
               <th scope="row">{categoria._id}</th>
               <td>{categoria.categoria}</td>
@@ -36,11 +39,11 @@ export const TablaCategorias = () => {
               {
                 categoria.publicada === true?
                 <td>
-                  <i className="bi bi-check-circle-fill fs-2 text-success"></i>
+                  <BotonQuitarCatPublicada idCategoria = {categoria._id} nombre = {categoria.categoria}/>
                 </td>
                 :
                 <td>
-                  <i className="bi bi-x-circle-fill fs-2 text-danger"></i>
+                  <BotonPublicarCategoria idCategoria = {categoria._id} nombre = {categoria.categoria}/>
                 </td>
               }
               <td style={{width: "100px"}}>
