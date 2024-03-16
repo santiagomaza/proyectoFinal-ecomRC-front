@@ -84,7 +84,7 @@ export const FormInicioSesion = () => {
           errors.contraseña && <span className='erroresIS text-danger'>{errors.contraseña.message}</span>
         }
         <div className='d-flex justify-content-end'>
-          <small><Link to="/recuperarContraseña">¿Olvidaste tu contraseña?</Link></small>
+          <small><Link to="/restablecerContraseña">¿Olvidaste tu contraseña?</Link></small>
         </div>
         <div className='mt-3 d-flex justify-content-center'>
           <span>¿No tienes una cuenta? <Link to="/registrarse">Registrate</Link></span>

@@ -9,6 +9,7 @@ import { AdminUsuarios } from './Pages/Administración/Usuarios/AdminUsuarios'
 import { AdminProductos } from './Pages/Administración/Productos/AdminProductos'
 import { AdminCategorias } from './Pages/Administración/Categorias/AdminCategorias'
 import { RecuperarContraseñaPrev } from './Pages/RecuperarContraseña/RecuperarContraseñaPrev'
+import { RecuperarContraseña } from './Pages/RecuperarContraseña/RecuperarContraseña'
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
         <Route path='productos' element = {<AdminProductos />}/>
         <Route path='categorias' element = {<AdminCategorias />}/>
       </Route>
-      <Route exact path = 'recuperarContraseña' element = {<RecuperarContraseñaPrev />}/>
+      <Route path = 'restablecerContraseña' element = {<RecuperarContraseñaPrev />}/>
+      <Route exact path = 'restablecerContraseña/:token' element = {<RecuperarContraseña />}/>
     </Routes>
   )
 }
