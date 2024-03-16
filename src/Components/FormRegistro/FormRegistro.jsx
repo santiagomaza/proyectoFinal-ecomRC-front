@@ -262,18 +262,6 @@ export const FormRegistro = () => {
                 value: true,
                 message: "Repetir contraseña es requerida"
               },
-              minLength: {
-                value: 8,
-                message: "La contraseña debe tener al menos 8 caracteres"
-              },
-              maxLength: {
-                value: 15,
-                message: "La contraseña no debe tener más de 15 caracteres"
-              },
-              pattern: {
-                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*._-])(?=.{8,})/,
-                message: "La contraseña debe tener al menos una mayúscula, una minúscula, un número y un carácter especial"
-              },
               validate: (value) => value === watch('contraseña') || 'Las contraseñas no coinciden'
             })}/>
           </div>
