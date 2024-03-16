@@ -1,0 +1,16 @@
+.carousel-control-next-icon{
+  background-color: rgb(219, 212, 212);
+}
+
+.carousel-control-prev-icon{
+  background-color :rgb(219, 212, 212);
+}
+
+.carousel-indicators{
+  display: none;
+  visibility: hidden;
+}
+
+.carrusel{
+  box-shadow: 10px 5px 5px grey;
+}

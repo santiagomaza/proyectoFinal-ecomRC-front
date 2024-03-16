@@ -17,10 +17,10 @@ export const BotonDestacarProducto = ({idProducto, nombre}) => {
   const productosDestacados = productos.filter((producto) => producto.destacado === true)
 
   const destacarProducto = () => {
-    if(productosDestacados.length === 3){
+    if(productosDestacados.length === 1){
       Swal.fire({
         icon: 'error',
-        title: 'No se puede destacar más de tres productos',
+        title: 'No se puede destacar más de un producto',
         showConfirmButton: false,
         timer: 1500
       })
