@@ -1,0 +1,60 @@
+.contenedorFormRC{
+  background-color: #f4ae2b;
+  height: 560px;
+  width: 650px;
+  overflow: hidden;
+}
+
+.tituloRC{
+  position: relative;
+  top: -75px;
+}
+
+.formularioRC{
+  position: relative;
+  top: -75px;
+  left: 150px;
+}
+
+input:disabled{
+  background-color: rgba(176, 175, 175, 0.564) !important;
+  border: none;
+  position: relative;
+  top: 9px;
+  right: 30px;
+}
+
+.caracteristicasContraseña{
+  position: relative;
+  right: 140px;
+}
+
+.inputsContraseñas{
+  position: relative;
+  top: -22px;
+}
+
+.contraseñas{
+  position: relative;
+  top: 9px;
+  right: 30px;
+}
+
+.erroresFormRC{
+  display: flex;
+  position: relative;
+  top: 5px;
+  max-width: 490px;
+}
+
+.botonCambiarContraseña{
+  position: relative;
+  left: 80px;
+  margin-top: 14px;
+}
+
+.spinnerResContraseña{
+  position: relative;
+  left: 150px;
+  top: 20px;
+}
