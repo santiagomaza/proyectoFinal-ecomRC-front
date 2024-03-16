@@ -8,6 +8,7 @@ import { Error404 } from './Pages/Error/Error404'
 import { AdminUsuarios } from './Pages/Administración/Usuarios/AdminUsuarios'
 import { AdminProductos } from './Pages/Administración/Productos/AdminProductos'
 import { AdminCategorias } from './Pages/Administración/Categorias/AdminCategorias'
+import { RecuperarContraseñaPrev } from './Pages/RecuperarContraseña/RecuperarContraseñaPrev'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='productos' element = {<AdminProductos />}/>
         <Route path='categorias' element = {<AdminCategorias />}/>
       </Route>
+      <Route exact path = 'recuperarContraseña' element = {<RecuperarContraseñaPrev />}/>
     </Routes>
   )
 }

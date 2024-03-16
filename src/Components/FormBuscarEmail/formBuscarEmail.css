@@ -1,0 +1,50 @@
+.contenedorFormBuscarEmail{
+  background-color: #f4ae2b;
+  height: 420px;
+  width: 650px;
+  overflow: hidden;
+}
+
+.tituloBuscarEmail{
+  position: relative;
+  top: -85px;
+}
+
+.infoBE{
+  position: relative;
+  top: -60px;
+}
+
+.formularioBE{
+  position: relative;
+  top: -65px;
+  left: 150px;
+}
+
+.inputBE{
+  width: 25vw;
+  position: relative;
+  top: -8px;
+  right: 1px;
+}
+
+.botonContinuar{
+  position: relative;
+  top: -25px;
+}
+
+.ocultar{
+  display: none;
+  visibility: hidden;
+}
+
+.alertaPrueba{
+  position: relative;
+  top: -45px;
+}
+
+.emailNoEncontrado{
+  position: relative;
+  top: -45px;
+  font-size: 14px;
+}

@@ -54,7 +54,7 @@ export const FormInicioSesion = () => {
 
   return (
     <div className="contenedorFormInicio border border-dark">
-      <img src={logoeComRC} alt="" style={{height: "100px", width: "100px"}} className='m-3 rounded-circle'/>
+      <img src={logoeComRC} alt="logoeComRC" style={{height: "100px", width: "100px"}} className='m-3 rounded-circle'/>
       <h2 className='textoIS text-center'>Inicia Sesión en eComRC</h2>
       <form className='formularioIS w-50' onSubmit={handleSubmit(iniciarSesion)}>
         <div className=''>
@@ -84,7 +84,7 @@ export const FormInicioSesion = () => {
           errors.contraseña && <span className='erroresIS text-danger'>{errors.contraseña.message}</span>
         }
         <div className='d-flex justify-content-end'>
-          <small><Link to="/*">¿Olvidaste tu contraseña?</Link></small>
+          <small><Link to="/recuperarContraseña">¿Olvidaste tu contraseña?</Link></small>
         </div>
         <div className='mt-3 d-flex justify-content-center'>
           <span>¿No tienes una cuenta? <Link to="/registrarse">Registrate</Link></span>
