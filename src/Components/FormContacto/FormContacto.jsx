@@ -56,7 +56,7 @@ export const FormContacto = () => {
         </div>
         <div>
           <label htmlFor="mensaje" className='d-block'>Mensaje:</label>
-          <textarea type="text" className='mt-2 w-100' cols="10" rows="4" id="mensaje" name="mensaje" minLength="5" required/>
+          <textarea type="text" className='mt-2 w-100' cols="10" rows="10" id="mensaje" name="mensaje" minLength="5" required/>
         </div>
         <button type='submit' className='btn botonContacto'><strong>Enviar mensaje</strong></button>
       </form>
