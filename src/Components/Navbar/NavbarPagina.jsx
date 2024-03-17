@@ -45,7 +45,7 @@ export const NavbarPagina = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <div className='d-flex redesSoc'>
-          <Link to="/www.google.com" className="text-decoration-none text-dark"><i className="bi bi-instagram mx-2 fs-3"></i></Link>
+          <Link to="https://www.instagram.com/" className="text-decoration-none text-dark"><i className="bi bi-instagram mx-2 fs-3"></i></Link>
           <i className="bi bi-twitter mx-2 fs-3"></i>
           <i className="bi bi-linkedin mx-2 fs-3"></i>
           <i className="bi bi-github mx-2 fs-3"></i>
@@ -76,7 +76,7 @@ export const NavbarPagina = () => {
           }
         </Nav>
           <div className='header'>
-            <NavLink to="/*" className="contacto text-decoration-none text-dark fs-2">Contacto</NavLink>
+            <NavLink to="/contacto" className="contacto text-decoration-none text-dark fs-2">Contacto</NavLink>
             <NavLink to="/" className="inicio text-decoration-none text-dark fs-2">Inicio</NavLink>
             {
               token ?
