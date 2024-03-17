@@ -3,8 +3,7 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import logoeComRC from '../../assets/ecom.jpg'
 
 export const FormInicioSesion = () => {
@@ -54,7 +53,9 @@ export const FormInicioSesion = () => {
 
   return (
     <div className="contenedorFormInicio border border-dark">
-      <img src={logoeComRC} alt="logoeComRC" style={{height: "100px", width: "100px"}} className='m-3 rounded-circle'/>
+      <Link to="/">
+        <img src={logoeComRC} alt="logoeComRC" style={{height: "100px", width: "100px"}} className='m-3 rounded-circle'/>
+      </Link>
       <h2 className='textoIS text-center'>Inicia Sesión en eComRC</h2>
       <form className='formularioIS w-50' onSubmit={handleSubmit(iniciarSesion)}>
         <div className=''>

@@ -1,11 +1,10 @@
 import './formRegistro.css'
-import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import ModalInfoRegistro from '../ModalInfoRegistro/ModalInfoRegistro'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import logoeComRC from  '../../assets/ecom.jpg'
 
 export const FormRegistro = () => {
@@ -59,7 +58,9 @@ export const FormRegistro = () => {
 
   return (
     <div className="contenedor border border-dark">
-      <img src={logoeComRC} alt="logo eComRC" style={{height: "100px", width: "100px"}} className='m-3 rounded-circle'/>
+      <Link to = "/">
+        <img src={logoeComRC} alt="logo eComRC" style={{height: "100px", width: "100px"}} className='m-3 rounded-circle'/>
+      </Link>
       <h2 className='texto text-center'>Crea tu cuenta en eComRC</h2>
       <small className='textoInfo fw-bold'>Apriete en el boton para leer la información antes de registrarse</small>     
       <ModalInfoRegistro/>
