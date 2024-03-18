@@ -11,6 +11,7 @@ import { AdminCategorias } from './Pages/Administración/Categorias/AdminCategor
 import { RecuperarContraseñaPrev } from './Pages/RecuperarContraseña/RecuperarContraseñaPrev'
 import { RecuperarContraseña } from './Pages/RecuperarContraseña/RecuperarContraseña'
 import { Contacto } from './Pages/Contacto/Contacto'
+import { VerificarEmail } from './Pages/VerificarEmail/VerificarEmail'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path = 'restablecerContraseña' element = {<RecuperarContraseñaPrev />}/>
       <Route exact path = 'restablecerContraseña/:token' element = {<RecuperarContraseña />}/>
       <Route path='contacto' element = {<Contacto />}/>
+      <Route path = 'verificar-email/:id' element = {<VerificarEmail />}/>
     </Routes>
   )
 }

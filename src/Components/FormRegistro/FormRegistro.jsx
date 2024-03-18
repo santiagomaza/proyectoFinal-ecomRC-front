@@ -26,6 +26,8 @@ export const FormRegistro = () => {
         timer: 1500
       })
 
+      localStorage.setItem("idUsuarioNuevo", respuesta.data.idUsuario)
+
       setTimeout(() => {
         navigate("/", { replace: true })
       }, 1500);
