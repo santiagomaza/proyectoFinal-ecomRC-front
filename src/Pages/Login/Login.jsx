@@ -1,5 +1,4 @@
 import { FormInicioSesion } from '../../Components/FormInicioSesion/FormInicioSesion'
-import './login.css'
 
 export const Login = () => {
   return (
