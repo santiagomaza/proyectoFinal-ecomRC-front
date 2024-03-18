@@ -1,0 +1,13 @@
+.contenedorCategorias{
+  width: 97vw;
+}
+
+.titulosCategorias{
+  border: 1px solid black;
+  position: relative;
+  top: 16px;
+  background-color: #f4ae2b;
+  border-bottom: hidden;
+  width: 520px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
