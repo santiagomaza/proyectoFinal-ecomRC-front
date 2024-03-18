@@ -12,6 +12,10 @@ import { RecuperarContraseñaPrev } from './Pages/RecuperarContraseña/Recuperar
 import { RecuperarContraseña } from './Pages/RecuperarContraseña/RecuperarContraseña'
 import { Contacto } from './Pages/Contacto/Contacto'
 import { VerificarEmail } from './Pages/VerificarEmail/VerificarEmail'
+import { Bebidas } from './Pages/Bebidas/Bebidas'
+import { Indumentaria } from './Pages/Indumentaria/Indumentaria'
+import { Videojuegos } from './Pages/Videojuegos/Videojuegos'
+import { Vehiculos } from './Pages/Vehiculos/Vehiculos'
 
 function App() {
   return (
@@ -29,6 +33,10 @@ function App() {
       <Route exact path = 'restablecerContraseña/:token' element = {<RecuperarContraseña />}/>
       <Route path='contacto' element = {<Contacto />}/>
       <Route path = 'verificar-email/:id' element = {<VerificarEmail />}/>
+      <Route path = 'bebidas' element = {<Bebidas />}/>
+      <Route path = 'indumentaria' element = {<Indumentaria />}/>
+      <Route path='videojuegos' element = {<Videojuegos />}/>
+      <Route path='vehiculos' element = {<Vehiculos />}/>
     </Routes>
   )
 }
