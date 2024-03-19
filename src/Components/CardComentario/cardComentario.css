@@ -1,0 +1,9 @@
+.botonesCardComentario{
+  position: absolute;
+  top: 10px;
+  left: 1130px;
+}
+
+.card-body{
+  margin-bottom: -20px;
+}

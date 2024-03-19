@@ -3,10 +3,16 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import './detalleProducto.css'
+import { CajaComentario } from "../../Components/CajaComentario/CajaComentario"
+import { CardComentario } from "../../Components/CardComentario/CardComentario"
 
 export const DetalleProducto = () => {
   const { id } = useParams()
   const [productoEspecifico, setProductoEspecifico] = useState({})
+  const idUsuario = localStorage.getItem("idUsuario")
+  const [comentarios, setComentarios] = useState([])
+  const [usuario, setUsuario] = useState({})
+  const [hayComentarios, setHayComentarios] = useState(false)
 
   useEffect(() => {
     const obtenerProductoEspecifico = async () => {
@@ -16,11 +22,41 @@ export const DetalleProducto = () => {
 
     obtenerProductoEspecifico()
   }, [id])
+
+  useEffect(() => {
+    const obtenerUsuarioEspecifico = async () => {
+      const respuesta = await axios.get(`http://localhost:8000/usuarios/${idUsuario}`)
+      setUsuario(respuesta.data.usuario)
+    }
+
+    obtenerUsuarioEspecifico()
+  }, [])
+
+  useEffect(() => {
+    const obtenerComentarios = async () => {
+      const respuesta = await axios.get("http://localhost:8000/comentarios/obtener-comentarios")
+
+      setComentarios(respuesta.data)
+
+      console.log(respuesta.data)
+    }
+
+    obtenerComentarios()
+  }, [])
+
+  const comentarioProductoEspecifico = comentarios.filter((comentario) => comentario.producto === productoEspecifico.nombre)
+
+  useEffect(() => {
+    if(comentarioProductoEspecifico.length > 0){
+      setHayComentarios(true)
+    }
+  }, [comentarioProductoEspecifico])
+
   return (
     <>
       <NavbarPagina />
       <section className="contenedorDetProd mt-4 mx-2">
-        <article>
+        <article className="artDetProducto">
           <img src={productoEspecifico.imagen1} alt="" className="imgProducto"/>
           <div className="detallesProducto">
             <span className="fs-1 d-block">{productoEspecifico.nombre}</span>
@@ -50,6 +86,20 @@ export const DetalleProducto = () => {
             </div>
           </div>
         </article>
+      </section>
+      <section className="seccionComentarios">
+        <h3 className="mx-4 tituloComentario">Comentarios</h3>
+        <CajaComentario usuario = {usuario.username} producto = {productoEspecifico.nombre}/>
+        {
+          hayComentarios ? 
+          comentarioProductoEspecifico.map((comentario) => (
+            <CardComentario key={comentario._id} usuario = {comentario.usuario} msj = {comentario.mensaje} fecha = {comentario.fecha}/>
+          ))
+          :
+          <div className="d-flex justify-content-center mt-3">
+            <p className="fs-3">Todavia no hay comentarios. ¡Se el primero en comentar!</p>
+          </div>
+        }
       </section>
     </>
   )

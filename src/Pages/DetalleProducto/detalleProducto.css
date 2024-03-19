@@ -1,6 +1,9 @@
 .contenedorDetProd{
   width: 98vw;
-  height: 700px;
+}
+
+.artDetProducto{
+  height: 600px;
 }
 
 .imgProducto{
@@ -39,4 +42,20 @@
 .botonesAgregarProducto{
   position: relative;
   top: 40px;
+}
+
+.tituloComentario{
+  letter-spacing: 3px;
+}
+
+#comentario{
+  resize: none;
+}
+
+.btnComentar{
+  background-color: #f4ae2b;
+}
+
+.btnComentar:hover{
+  background-color: #d79821;
 }
