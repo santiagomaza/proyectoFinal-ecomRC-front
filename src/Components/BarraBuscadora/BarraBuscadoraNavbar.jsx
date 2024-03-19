@@ -37,7 +37,7 @@ export const BarraBuscadoraNavbar = () => {
         {
           resultados.length > 0 ?
           resultados.map((producto) => (
-            <ResultadosBusqueda key={producto._id} nombre={producto.nombre}/>
+            <ResultadosBusqueda key={producto._id} id = {producto._id} nombre={producto.nombre}/>
           ))
           :
           <p className='fw-bold text-center sinResultadosBusqueda'>No se encontraron resultados</p>

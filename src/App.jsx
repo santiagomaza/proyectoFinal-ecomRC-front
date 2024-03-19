@@ -16,6 +16,7 @@ import { Bebidas } from './Pages/Bebidas/Bebidas'
 import { Indumentaria } from './Pages/Indumentaria/Indumentaria'
 import { Videojuegos } from './Pages/Videojuegos/Videojuegos'
 import { Vehiculos } from './Pages/Vehiculos/Vehiculos'
+import { DetalleProducto } from './Pages/DetalleProducto/DetalleProducto'
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
       <Route path = 'indumentaria' element = {<Indumentaria />}/>
       <Route path='videojuegos' element = {<Videojuegos />}/>
       <Route path='vehiculos' element = {<Vehiculos />}/>
+      <Route path = "producto">
+        <Route exact path = ':id' element = {<DetalleProducto />}/>
+      </Route>
     </Routes>
   )
 }

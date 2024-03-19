@@ -36,7 +36,7 @@ export const Bebidas = () => {
           categoriaBebidas.publicada === true ?
             bebidas.length > 0 ?
               bebidas.map((bebidas) => (
-                <CardsProductos key={bebidas._id} nombre={bebidas.nombre} imagen = {bebidas.imagen1} precio = {bebidas.precio}/>
+                <CardsProductos key={bebidas._id} id = {bebidas._id} nombre={bebidas.nombre} imagen = {bebidas.imagen1} precio = {bebidas.precio}/>
               ))
             :
             <p className='fw-bold text-center'>No se encontraron resultados</p>

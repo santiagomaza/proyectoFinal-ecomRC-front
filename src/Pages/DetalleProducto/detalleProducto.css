@@ -1,0 +1,42 @@
+.contenedorDetProd{
+  width: 98vw;
+  height: 700px;
+}
+
+.imgProducto{
+  height: 350px;
+  width: 350px;
+}
+
+.detallesProducto{
+  height: 650px;
+  position: relative;
+  left: 355px;
+  width: 983px;
+  top: -350px;
+  overflow: hidden;
+}
+
+.precio{
+  position: relative;
+  top: 25px;
+}
+
+.sinStock{
+  background-color: #000;
+  color: #fff;
+  width: 123px;
+  border-radius: 10px;
+  padding-left: 18px;
+}
+
+.descripcion{
+  position: relative;
+  top: 20px;
+  letter-spacing: 2px;
+}
+
+.botonesAgregarProducto{
+  position: relative;
+  top: 40px;
+}

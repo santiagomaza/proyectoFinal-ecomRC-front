@@ -1,6 +1,7 @@
 import './cardsProductos.css'
+import { Link } from 'react-router-dom'
 
-export const CardsProductos = ({ nombre, imagen, precio }) => {
+export const CardsProductos = ({ id, nombre, imagen, precio }) => {
   return (
     <div className="d-flex justify-content-center col-md-3 mb-3">
       <div className="card" style={{width: "18rem"}}>
@@ -13,7 +14,9 @@ export const CardsProductos = ({ nombre, imagen, precio }) => {
             :
             <p className="card-text fw-bold">${precio}</p>
           }
-          <button href="#" className="btn btn-dark btn-sm fw-bold">VER DETALLES</button>
+          <Link to={`/producto/${id}`}>
+            <button href="#" className="btn btn-dark btn-sm fw-bold">VER DETALLES</button>
+          </Link>
         </div>
       </div>
     </div>
