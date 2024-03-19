@@ -1,4 +1,5 @@
 import { BotonEditarComentario } from '../BotonEditarComentario/BotonEditarComentario'
+import { BotonEliminarComentario } from '../BotonEliminarComentario/BotonEliminarComentario'
 import './cardComentario.css'
 
 export const CardComentario = ({ id, usuario, msj, fecha }) => {
@@ -10,7 +11,7 @@ export const CardComentario = ({ id, usuario, msj, fecha }) => {
         <p className="mt-2">{msj}</p>
         <div className="d-flex justify-content-end botonesCardComentario">
           <BotonEditarComentario id = {id} mensaje = {msj}/>
-          <button className="btn btn-danger">Eliminar</button>
+          <BotonEliminarComentario id = {id}/>
         </div>
       </div>
     </div>
