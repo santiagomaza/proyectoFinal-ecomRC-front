@@ -2,9 +2,9 @@ import './cardsProductos.css'
 
 export const CardsProductos = ({ nombre, imagen, precio }) => {
   return (
-    <div className="col-md-2">
-      <div className="card" style={{width: "14rem"}}>
-        <img src={imagen} className="card-img-top" alt="Imagen producto" style={{height: "200px"}}/>
+    <div className="d-flex justify-content-center col-md-3 mb-3">
+      <div className="card" style={{width: "18rem"}}>
+        <img src={imagen} className="card-img-top" alt="Imagen producto" style={{height: "280px"}}/>
         <div className="card-body" style={{backgroundColor: "#f4ae2b"}}>
           <h6 className="card-title">{nombre}</h6>
           {
