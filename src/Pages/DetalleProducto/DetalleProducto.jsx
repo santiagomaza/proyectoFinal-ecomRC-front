@@ -13,6 +13,7 @@ export const DetalleProducto = () => {
   const [comentarios, setComentarios] = useState([])
   const [usuario, setUsuario] = useState({})
   const [hayComentarios, setHayComentarios] = useState(false)
+  const [usuarioLogueado, setUsuarioLogueado] = useState(false)
 
   useEffect(() => {
     const obtenerProductoEspecifico = async () => {
@@ -51,6 +52,12 @@ export const DetalleProducto = () => {
       setHayComentarios(true)
     }
   }, [comentarioProductoEspecifico])
+
+  useEffect(() => {
+    if(idUsuario){
+      setUsuarioLogueado(true)
+    }
+  }, [idUsuario])
 
   return (
     <>
@@ -97,7 +104,7 @@ export const DetalleProducto = () => {
           ))
           :
           <div className="d-flex justify-content-center mt-3">
-            <p className="fs-3">Todavia no hay comentarios. ¡Se el primero en comentar!</p>
+            <p className={usuarioLogueado ? "fs-3" : "d-none invisible"}>Todavia no hay comentarios. ¡Se el primero en comentar!</p>
           </div>
         }
       </section>

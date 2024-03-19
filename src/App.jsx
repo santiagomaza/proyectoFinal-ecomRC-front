@@ -17,6 +17,7 @@ import { Indumentaria } from './Pages/Indumentaria/Indumentaria'
 import { Videojuegos } from './Pages/Videojuegos/Videojuegos'
 import { Vehiculos } from './Pages/Vehiculos/Vehiculos'
 import { DetalleProducto } from './Pages/DetalleProducto/DetalleProducto'
+import { Carrito } from './Pages/Carrito/Carrito'
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
       <Route path = "producto">
         <Route exact path = ':id' element = {<DetalleProducto />}/>
       </Route>
+      <Route path  = 'carrito' element = {<Carrito />}/>
     </Routes>
   )
 }
