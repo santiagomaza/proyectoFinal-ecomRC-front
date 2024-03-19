@@ -93,7 +93,7 @@ export const DetalleProducto = () => {
         {
           hayComentarios ? 
           comentarioProductoEspecifico.map((comentario) => (
-            <CardComentario key={comentario._id} usuario = {comentario.usuario} msj = {comentario.mensaje} fecha = {comentario.fecha}/>
+            <CardComentario key={comentario._id} id = {comentario._id} usuario = {comentario.usuario} msj = {comentario.mensaje} fecha = {comentario.fecha}/>
           ))
           :
           <div className="d-flex justify-content-center mt-3">
