@@ -42,7 +42,7 @@ function App() {
       <Route path = "producto">
         <Route exact path = ':id' element = {<DetalleProducto />}/>
       </Route>
-      <Route path  = 'carrito' element = {<Carrito />}/>
+      <Route path = 'carrito' element = {<Carrito />}/>
     </Routes>
   )
 }

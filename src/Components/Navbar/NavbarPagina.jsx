@@ -15,6 +15,7 @@ export const NavbarPagina = () => {
   const token = localStorage.getItem('token')
   const idUsuario = localStorage.getItem('idUsuario')
   const [usuario, setUsuario] = useState({})
+  const [carrito, setCarrito] = useState([])
   const navigate = useNavigate()
 
   const cerrarSesion = () => {
@@ -32,6 +33,17 @@ export const NavbarPagina = () => {
       setUsuario(response.data.usuario)
     })
   }, [])
+
+  useEffect(() => {
+    const obtenerCarrito = async () => {
+      const respuesta = await axios.get('http://localhost:8000/carritos/obtener-carrito')
+      setCarrito(respuesta.data)
+    }
+
+    obtenerCarrito()
+  }, [])
+
+  const carritoUsuario = carrito.filter((cart) => cart.usuario === usuario.username)
 
   const renderTooltip = (props) => (
     <Tooltip id="tooltip" {...props}/>
@@ -63,7 +75,7 @@ export const NavbarPagina = () => {
               <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
                 <NavLink className="text-dark" to="/carrito" title='Carrito'>
                   <i className="bi bi-cart fs-2 px-4"></i>
-                  <Badge bg="success" className='badgeCarrito'>{4}</Badge>
+                  <Badge bg="success" className='badgeCarrito'>{carritoUsuario.length}</Badge>
                 </NavLink>
               </OverlayTrigger>
               <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>

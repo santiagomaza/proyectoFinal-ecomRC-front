@@ -1,19 +1,23 @@
 import { NavbarPagina } from "../../Components/Navbar/NavbarPagina"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import './detalleProducto.css'
 import { CajaComentario } from "../../Components/CajaComentario/CajaComentario"
 import { CardComentario } from "../../Components/CardComentario/CardComentario"
 
 export const DetalleProducto = () => {
-  const { id } = useParams()
   const [productoEspecifico, setProductoEspecifico] = useState({})
-  const idUsuario = localStorage.getItem("idUsuario")
   const [comentarios, setComentarios] = useState([])
   const [usuario, setUsuario] = useState({})
   const [hayComentarios, setHayComentarios] = useState(false)
   const [usuarioLogueado, setUsuarioLogueado] = useState(false)
+  const [carrito, setCarrito] = useState([])
+  const [hayCarrito, setHayCarrito] = useState(false)
+  
+  const navigate = useNavigate()
+  const idUsuario = localStorage.getItem("idUsuario")
+  const { id } = useParams()
 
   useEffect(() => {
     const obtenerProductoEspecifico = async () => {
@@ -38,8 +42,6 @@ export const DetalleProducto = () => {
       const respuesta = await axios.get("http://localhost:8000/comentarios/obtener-comentarios")
 
       setComentarios(respuesta.data)
-
-      console.log(respuesta.data)
     }
 
     obtenerComentarios()
@@ -59,6 +61,39 @@ export const DetalleProducto = () => {
     }
   }, [idUsuario])
 
+  useEffect(() => {
+    const obtenerCarrito = async () => {
+      const respuesta = await axios.get("http://localhost:8000/carritos/obtener-carrito")
+
+      setCarrito(respuesta.data)
+    }
+
+    obtenerCarrito()
+  }, [])
+
+  
+  const agregarCarrito = async (productoEspecifico) => {
+    await axios.post("http://localhost:8000/carritos/crear-carrito", {
+      producto: productoEspecifico,
+      usuario: usuario.username,
+    })
+
+    setTimeout(() => {
+      navigate(0)
+    }, 1500);
+  }
+  
+  useEffect(() => {
+    for (let i = 0; i < carrito.length; i++) {
+      const carritoUsuario = carrito.filter((cart) => cart.producto._id)
+      console.log(carritoUsuario)
+
+      if(carritoUsuario[i].producto._id === productoEspecifico._id){
+        setHayCarrito(true)
+      }
+      
+    }
+  }, [carrito, productoEspecifico])
   return (
     <>
       <NavbarPagina />
@@ -87,7 +122,10 @@ export const DetalleProducto = () => {
                 productoEspecifico.stock === 0?
                 <button className="btn btn-success me-2" disabled>Agregar al carrito</button>
                 :
-                <button className="btn btn-success me-2">Agregar al carrito</button>
+                hayCarrito ?
+                <button className="btn btn-outline-success me-2" disabled>Producto agregado al carrito</button>
+                :
+                <button className="btn btn-success me-2" onClick={() => agregarCarrito(productoEspecifico)}>Agregar al carrito</button>
               }
               <button type="button" className="btn btn-warning">Agregar a Favoritos</button>
             </div>
