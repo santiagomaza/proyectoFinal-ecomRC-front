@@ -31,19 +31,21 @@ export const Bebidas = () => {
   return (
     <>
       <NavbarPagina />
-      <div className="row d-flex justify-content-evenly mt-4 mx-3">
-        {
-          categoriaBebidas.publicada === true ?
-            bebidas.length > 0 ?
-              bebidas.map((bebidas) => (
-                <CardsProductos key={bebidas._id} id = {bebidas._id} nombre={bebidas.nombre} imagen = {bebidas.imagen1} precio = {bebidas.precio}/>
-              ))
+      <div className="pagBebidas">
+        <div className="row d-flex justify-content-evenly mx-3">
+          {
+            categoriaBebidas.publicada === true ?
+              bebidas.length > 0 ?
+                bebidas.map((bebidas) => (
+                  <CardsProductos key={bebidas._id} id = {bebidas._id} nombre={bebidas.nombre} imagen = {bebidas.imagen1} precio = {bebidas.precio}/>
+                ))
+              :
+              <p className='fw-bold text-center'>No se encontraron resultados</p>
             :
-            <p className='fw-bold text-center'>No se encontraron resultados</p>
-          :
-          <p className="text-center fs-2">Lo sentimos. Esta categoría no esta publicada</p>
-        }
-        
+            <p className="text-center fs-2">Lo sentimos. Esta categoría no esta publicada</p>
+          }
+          
+        </div>
       </div>
     </>
   )

@@ -1,3 +1,13 @@
+.home,
+.adminCategorias,
+.adminProductos,
+.adminUsuarios,
+.pagContacto,
+.pagBebidas,
+.pagVideojuegos{
+  margin-top: 180px;
+}
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;

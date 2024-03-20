@@ -13,12 +13,14 @@ export const AdminCategorias = () => {
   return (
     <>
       <NavbarPagina />
-      <h2 className="text-center mt-3">Administración de Categorías</h2>
-      <article className="mx-5">
-        <Button type="button" variant="outline" onClick={handleShow} className="botonAgregarProducto">Agregar Categoria</Button>
-        <TablaCategorias />
-      </article>
-      <ModalAgregarCategoria show = {show} handleClose = {handleClose}/>
+      <div className="adminCategorias">
+        <h2 className="text-center mt-3">Administración de Categorías</h2>
+        <article className="mx-5">
+          <Button type="button" variant="outline" onClick={handleShow} className="botonAgregarProducto">Agregar Categoria</Button>
+          <TablaCategorias />
+        </article>
+        <ModalAgregarCategoria show = {show} handleClose = {handleClose}/>
+      </div>
     </>
   )
 }

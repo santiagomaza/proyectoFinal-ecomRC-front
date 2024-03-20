@@ -30,18 +30,20 @@ export const Videojuegos = () => {
   return (
     <>
       <NavbarPagina />
-      <div className="row mt-4 mx-5">
-        {
-          categoriaVideojuegos.publicada === true ?
-            videojuegos.length > 0 ?
-              videojuegos.map((videojuego) => (
-                <CardsProductos key = {videojuego._id} id={videojuego._id} imagen = {videojuego.imagen1} nombre = {videojuego.nombre} precio = {videojuego.precio}/>
-              ))
+      <div className="pagVideojuegos">
+        <div className="row mx-5">
+          {
+            categoriaVideojuegos.publicada === true ?
+              videojuegos.length > 0 ?
+                videojuegos.map((videojuego) => (
+                  <CardsProductos key = {videojuego._id} id={videojuego._id} imagen = {videojuego.imagen1} nombre = {videojuego.nombre} precio = {videojuego.precio}/>
+                ))
+              :
+              <p className='fw-bold text-center fs-2'>No se encontraron resultados</p>
             :
-            <p className='fw-bold text-center fs-2'>No se encontraron resultados</p>
-          :
-          <p className='text-center fs-2'>Lo sentimos. Esta categoria no esta publicada</p>
-        }
+            <p className='text-center fs-2'>Lo sentimos. Esta categoria no esta publicada</p>
+          }
+        </div>
       </div>
     </>
   )

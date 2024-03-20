@@ -14,12 +14,14 @@ export const AdminProductos = () => {
   return (
     <>
       <NavbarPagina />
-      <h2 className="text-center mt-3">Administración de Productos</h2>
-      <article className="mx-5">
-        <Button type="button" variant="outline" onClick={handleShow} className="botonAgregarProducto">Agregar Productos</Button>
-        <TablaProductos />
-      </article>
-      <ModalAgregarProducto show = {show} handleClose = {handleClose}/>
+      <div className="adminProductos">
+        <h2 className="text-center mt-3">Administración de Productos</h2>
+        <article className="mx-5">
+          <Button type="button" variant="outline" onClick={handleShow} className="botonAgregarProducto">Agregar Productos</Button>
+          <TablaProductos />
+        </article>
+        <ModalAgregarProducto show = {show} handleClose = {handleClose}/>
+      </div>
     </>
   )
 }

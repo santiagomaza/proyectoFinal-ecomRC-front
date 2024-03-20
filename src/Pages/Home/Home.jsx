@@ -6,7 +6,7 @@ export const Home = () => {
   return (
     <>
       <NavbarPagina />
-      <div className="mt-4">
+      <div className="home">
         <h3 className="text-center">Destacado de la semana</h3>
         <CarruselProductosDestacados />
       </div>

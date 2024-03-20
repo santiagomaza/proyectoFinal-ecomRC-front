@@ -2,6 +2,9 @@
   background-color: #f4ae2b;
   height: 160px;
   width: 98.7vw;
+  position: fixed;
+  z-index: 1;
+  top: -1px;
 }
 
 .logoEmpresa{
