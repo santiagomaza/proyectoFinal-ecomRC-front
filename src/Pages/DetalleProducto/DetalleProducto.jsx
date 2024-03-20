@@ -14,6 +14,8 @@ export const DetalleProducto = () => {
   const [usuarioLogueado, setUsuarioLogueado] = useState(false)
   const [carrito, setCarrito] = useState([])
   const [hayCarrito, setHayCarrito] = useState(false)
+  const [favoritos, setFavoritos] = useState([])
+  const [hayFavoritos, setHayFavoritos] = useState(false)
   
   const navigate = useNavigate()
   const idUsuario = localStorage.getItem("idUsuario")
@@ -35,7 +37,7 @@ export const DetalleProducto = () => {
     }
 
     obtenerUsuarioEspecifico()
-  }, [])
+  }, [idUsuario])
 
   useEffect(() => {
     const obtenerComentarios = async () => {
@@ -86,7 +88,6 @@ export const DetalleProducto = () => {
   useEffect(() => {
     for (let i = 0; i < carrito.length; i++) {
       const carritoUsuario = carrito.filter((cart) => cart.producto._id)
-      console.log(carritoUsuario)
 
       if(carritoUsuario[i].producto._id === productoEspecifico._id){
         setHayCarrito(true)
@@ -94,10 +95,42 @@ export const DetalleProducto = () => {
       
     }
   }, [carrito, productoEspecifico])
+
+  useEffect(() => {
+    const obtenerFavoritos = async () => {
+      const respuesta = await axios.get("http://localhost:8000/favoritos/obtener-favoritos")
+
+      setFavoritos(respuesta.data)
+    }
+
+    obtenerFavoritos()
+  }, [])
+
+  const favoritoUsuario = favoritos.filter((fav) => fav.producto._id)
+
+  useEffect(() => {
+    for (let i = 0; i < favoritos.length; i++) {
+      if(favoritoUsuario[i].producto._id === productoEspecifico._id){
+        setHayFavoritos(true)
+      }
+    }
+  }, [favoritos.length, favoritoUsuario, productoEspecifico])
+
+  const agregarFavoritos = async (productoEspecifico) => {
+    await axios.post("http://localhost:8000/favoritos/crear-favorito", {
+      producto: productoEspecifico,
+      usuario: usuario.username,
+    })
+
+    setTimeout(() => {
+      navigate(0)
+    }, 1500);
+  }
+
   return (
     <>
       <NavbarPagina />
-      <section className="contenedorDetProd mt-4 mx-2">
+      <section className="contenedorDetProd mx-2">
         <article className="artDetProducto">
           <img src={productoEspecifico.imagen1} alt="" className="imgProducto"/>
           <div className="detallesProducto">
@@ -123,11 +156,16 @@ export const DetalleProducto = () => {
                 <button className="btn btn-success me-2" disabled>Agregar al carrito</button>
                 :
                 hayCarrito ?
-                <button className="btn btn-outline-success me-2" disabled>Producto agregado al carrito</button>
+                <button className="btn btn-outline-success me-2" disabled>Producto agregado al Carrito</button>
                 :
-                <button className="btn btn-success me-2" onClick={() => agregarCarrito(productoEspecifico)}>Agregar al carrito</button>
+                <button className="btn btn-success me-2" onClick={() => agregarCarrito(productoEspecifico)}>Agregar al Carrito</button>
               }
-              <button type="button" className="btn btn-warning">Agregar a Favoritos</button>
+              {
+                hayFavoritos ? 
+                <button className="btn btn-outline-warning me-2" disabled>Producto agregado a Favoritos</button>
+                :
+                <button type="button" className="btn btn-warning" onClick={() => agregarFavoritos(productoEspecifico)}>Agregar a Favoritos</button>
+              }
             </div>
           </div>
         </article>

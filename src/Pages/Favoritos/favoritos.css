@@ -1,0 +1,12 @@
+.btnEliminarFavoritos{
+  position: relative;
+  right: 13px;
+}
+
+.sinFavoritos{
+  position: relative;
+  top: -45px;
+  font-size: 210px;
+  margin-bottom: -45px;
+}
+

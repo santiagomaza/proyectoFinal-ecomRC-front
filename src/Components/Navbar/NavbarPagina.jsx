@@ -16,6 +16,7 @@ export const NavbarPagina = () => {
   const idUsuario = localStorage.getItem('idUsuario')
   const [usuario, setUsuario] = useState({})
   const [carrito, setCarrito] = useState([])
+  const [favoritos, setFavoritos] = useState([])
   const navigate = useNavigate()
 
   const cerrarSesion = () => {
@@ -44,6 +45,17 @@ export const NavbarPagina = () => {
   }, [])
 
   const carritoUsuario = carrito.filter((cart) => cart.usuario === usuario.username)
+
+  useEffect(() => {
+    const obtenerFavoritos = async () => {
+      const respuesta = await axios.get('http://localhost:8000/favoritos/obtener-favoritos')
+      setFavoritos(respuesta.data)
+    }
+
+    obtenerFavoritos()
+  }, [])
+
+  const favoritosUsuario = favoritos.filter((favorito) => favorito.usuario === usuario.username)
 
   const renderTooltip = (props) => (
     <Tooltip id="tooltip" {...props}/>
@@ -81,7 +93,7 @@ export const NavbarPagina = () => {
               <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
                 <NavLink className="text-dark" to="/favoritos" title='Favoritos'>
                   <i className="bi bi-heart-fill fs-2"></i>
-                  <Badge bg="success" className='badgeFavoritos'>{2}</Badge>
+                  <Badge bg="success" className='badgeFavoritos'>{favoritosUsuario.length}</Badge>
                 </NavLink>
               </OverlayTrigger>
             </div>
