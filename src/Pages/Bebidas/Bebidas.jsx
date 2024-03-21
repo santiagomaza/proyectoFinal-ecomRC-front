@@ -33,6 +33,7 @@ export const Bebidas = () => {
     <>
       <NavbarPagina />
       <div className="pagBebidas">
+        <h2 className="text-center">Bebidas</h2>
         <div className="row d-flex justify-content-evenly mx-3">
           {
             categoriaBebidas.publicada === true ?

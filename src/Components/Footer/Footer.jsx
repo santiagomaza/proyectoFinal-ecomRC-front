@@ -12,10 +12,10 @@ export const Footer = () => {
             <h4>SOBRE NOSOTROS</h4>
             <NavLink to={"/*"}><p>Quienes somos</p></NavLink>
             <NavLink to={"/*"}><p>Envios</p></NavLink>
-            <NavLink to={"/*"}><p>Politicas y Privacidad</p></NavLink>
-            <NavLink to={"/contacto"}><p>Contacto</p></NavLink>
-            <NavLink to={"/*"}><p>Ayuda</p></NavLink>
             <NavLink to={"/*"}><p>Reembolso</p></NavLink>
+            <NavLink to={"/contacto"}><p>Contacto</p></NavLink>
+            <NavLink to={"/*"}><p>Politicas y Privacidad</p></NavLink>
+            <NavLink to={"/*"}><p>Ayuda</p></NavLink>
             <NavLink to={"/*"}><p>Defensa del Consumidor</p></NavLink>
           </div>
           <div className='footer_enlaces_div'>

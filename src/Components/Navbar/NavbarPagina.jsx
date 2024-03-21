@@ -111,7 +111,7 @@ export const NavbarPagina = () => {
         null
       }
       </Container>
-      <Navbar.Collapse className='navegacion'>
+      <Navbar.Collapse className={token ? "navegacion" : "navegacionSinIS"}>
         <NavLink to={"/contacto"} className={"text-decoration-none text-dark"}>Contacto</NavLink>
         <NavLink to={"/"} className={"text-decoration-none text-dark"}>Inicio</NavLink>
         {

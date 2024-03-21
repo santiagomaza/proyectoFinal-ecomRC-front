@@ -24,7 +24,7 @@ export const FormContacto = () => {
           Swal.fire({
             icon:'success',
             title: 'Mensaje Enviado correctamente',
-            confirmButtonText: false,
+            showConfirmButton: false,
             timer: 1500
           })
 
@@ -47,8 +47,12 @@ export const FormContacto = () => {
     <div className="contenedorFormContacto">
       <form className='p-3 formContacto' ref={form} onSubmit={contacto}>
         <div>
-          <label htmlFor="username" className='d-block'>Nombre de Usuario:</label>
-          <input type="text" autoComplete='off' className='mt-2 w-100' id="username" name="username" minLength="5" maxLength="15" required/>
+          <label htmlFor="username" className='d-block'>Nombre Completo:</label>
+          <input type="text" autoComplete='off' className='mt-2 w-100' id="username" name="username" minLength="5" maxLength="35" required/>
+        </div>
+        <div>
+          <label htmlFor="email" className='d-block'>Email:</label>
+          <input type="email" autoComplete='off' className='mt-2 w-100' id="email" name="email" minLength="5" maxLength="35" required/>
         </div>
         <div>
           <label htmlFor="asunto" className='d-block'>Asunto:</label>

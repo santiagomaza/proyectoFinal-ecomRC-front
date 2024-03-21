@@ -130,60 +130,62 @@ export const DetalleProducto = () => {
   return (
     <>
       <NavbarPagina />
-      <section className="contenedorDetProd mx-2">
-        <article className="artDetProducto">
-          <img src={productoEspecifico.imagen1} alt="" className="imgProducto"/>
-          <div className="detallesProducto">
-            <span className="fs-1 d-block">{productoEspecifico.nombre}</span>
-            <span className="d-block fs-3 fst-italic mt-4 categoriaProducto">{productoEspecifico.categoria}</span>
-            {
-              productoEspecifico.precio === 0 ?
-              <span className="fs-2 fw-bold text-danger precio">Gratis</span>
-              :
-              <span className="fs-2 text-danger fw-bold precio">${productoEspecifico.precio}</span>
-            }
-            {
-              productoEspecifico.stock === 0 ?
-              <span className="fs-6 fw-bold mt-5 sinStock d-block">SIN STOCK</span>
-              :
-              <span className="d-block mt-5 fs-3">Stock: {productoEspecifico.stock}</span>
-            }
-            <span className="fs-3 fw-bold descripcion">Descripción:</span>
-            <p className="descripcion fs-5">{productoEspecifico.descripcion}</p>
-            <div className="d-flex botonesAgregarProducto">
+      <div className="pagDetProducto">
+        <section className="contenedorDetProd mx-2">
+          <article className="artDetProducto">
+            <img src={productoEspecifico.imagen1} alt="" className="imgProducto"/>
+            <div className="detallesProducto">
+              <span className="fs-1 d-block">{productoEspecifico.nombre}</span>
+              <span className="d-block fs-3 fst-italic mt-4 categoriaProducto">{productoEspecifico.categoria}</span>
               {
-                productoEspecifico.stock === 0?
-                <button className="btn btn-success me-2" disabled>Agregar al carrito</button>
+                productoEspecifico.precio === 0 ?
+                <span className="fs-2 fw-bold text-danger precio">Gratis</span>
                 :
-                hayCarrito ?
-                <button className="btn btn-outline-success me-2" disabled>Producto agregado al Carrito</button>
-                :
-                <button className="btn btn-success me-2" onClick={() => agregarCarrito(productoEspecifico)}>Agregar al Carrito</button>
+                <span className="fs-2 text-danger fw-bold precio">${productoEspecifico.precio}</span>
               }
               {
-                hayFavoritos ? 
-                <button className="btn btn-outline-warning me-2" disabled>Producto agregado a Favoritos</button>
+                productoEspecifico.stock === 0 ?
+                <span className="fs-6 fw-bold mt-5 sinStock d-block">SIN STOCK</span>
                 :
-                <button type="button" className="btn btn-warning" onClick={() => agregarFavoritos(productoEspecifico)}>Agregar a Favoritos</button>
+                <span className="d-block mt-5 fs-3">Stock: {productoEspecifico.stock}</span>
               }
+              <span className="fs-3 fw-bold descripcion">Descripción:</span>
+              <p className="descripcion fs-5">{productoEspecifico.descripcion}</p>
+              <div className="d-flex botonesAgregarProducto">
+                {
+                  productoEspecifico.stock === 0?
+                  <button className="btn btn-success me-2" disabled>Agregar al carrito</button>
+                  :
+                  hayCarrito ?
+                  <button className="btn btn-outline-success me-2" disabled>Producto agregado al Carrito</button>
+                  :
+                  <button className="btn btn-success me-2" onClick={() => agregarCarrito(productoEspecifico)}>Agregar al Carrito</button>
+                }
+                {
+                  hayFavoritos ? 
+                  <button className="btn btn-outline-warning me-2" disabled>Producto agregado a Favoritos</button>
+                  :
+                  <button type="button" className="btn btn-warning" onClick={() => agregarFavoritos(productoEspecifico)}>Agregar a Favoritos</button>
+                }
+              </div>
             </div>
-          </div>
-        </article>
-      </section>
-      <section className="seccionComentarios">
-        <h3 className="mx-4 tituloComentario">Comentarios</h3>
-        <CajaComentario usuario = {usuario.username} producto = {productoEspecifico.nombre}/>
-        {
-          hayComentarios ? 
-          comentarioProductoEspecifico.map((comentario) => (
-            <CardComentario key={comentario._id} id = {comentario._id} usuario = {comentario.usuario} msj = {comentario.mensaje} fecha = {comentario.fecha}/>
-          ))
-          :
-          <div className="d-flex justify-content-center mt-3">
-            <p className={usuarioLogueado ? "fs-3" : "d-none invisible"}>Todavia no hay comentarios. ¡Se el primero en comentar!</p>
-          </div>
-        }
-      </section>
+          </article>
+        </section>
+        <section className="seccionComentarios">
+          <h3 className="mx-4 tituloComentario">Comentarios</h3>
+          <CajaComentario usuario = {usuario.username} producto = {productoEspecifico.nombre}/>
+          {
+            hayComentarios ? 
+            comentarioProductoEspecifico.map((comentario) => (
+              <CardComentario key={comentario._id} id = {comentario._id} usuario = {comentario.usuario} msj = {comentario.mensaje} fecha = {comentario.fecha}/>
+            ))
+            :
+            <div className="d-flex justify-content-center mt-3">
+              <p className={usuarioLogueado ? "fs-3" : "d-none invisible"}>Todavia no hay comentarios. ¡Se el primero en comentar!</p>
+            </div>
+          }
+        </section>
+      </div>
     </>
   )
 }

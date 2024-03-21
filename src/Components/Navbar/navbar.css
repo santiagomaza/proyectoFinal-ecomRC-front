@@ -61,6 +61,15 @@
   font-size: 24px;
 }
 
+.navegacionSinIS{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-width: 300px;
+  margin-left: 58px;
+  font-size: 24px;
+}
+
 .dropdown-menu{
   background-color: #f4ae2b;
 }
