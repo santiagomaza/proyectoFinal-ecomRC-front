@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import './detalleProducto.css'
 import { CajaComentario } from "../../Components/CajaComentario/CajaComentario"
 import { CardComentario } from "../../Components/CardComentario/CardComentario"
+import { Footer } from "../../Components/Footer/Footer"
 
 export const DetalleProducto = () => {
   const [productoEspecifico, setProductoEspecifico] = useState({})
@@ -185,6 +186,7 @@ export const DetalleProducto = () => {
             </div>
           }
         </section>
+        <Footer />
       </div>
     </>
   )

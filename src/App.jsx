@@ -21,6 +21,7 @@ import { DetalleProducto } from './Pages/DetalleProducto/DetalleProducto'
 import { Carrito } from './Pages/Carrito/Carrito'
 import { Favoritos } from './Pages/Favoritos/Favoritos'
 import { SpinnerCarga } from './Components/SpinnerCarga/SpinnerCarga'
+import { QuienesSomos } from './Pages/QuienesSomos/QuienesSomos'
 
 function App() {
   const [cargando, setCargando] = useState(false)
@@ -62,6 +63,7 @@ function App() {
           </Route>
           <Route path = 'carrito' element = {<Carrito />}/>
           <Route path='favoritos' element = {<Favoritos />} />
+          <Route path='quienesSomos' element = {<QuienesSomos />}/>
         </Routes>
       }
     </>

@@ -10,7 +10,7 @@ export const Footer = () => {
           <img src={logoecomrc} alt="" style={{height: "150px", width:"150px"}} className='logoEmpresaFooter rounded rounded-circle'/>
           <div className="footer_enlaces_div">
             <h4>SOBRE NOSOTROS</h4>
-            <NavLink to={"/*"}><p>Quienes somos</p></NavLink>
+            <NavLink to={"/quienesSomos"}><p>Quienes somos</p></NavLink>
             <NavLink to={"/*"}><p>Envios</p></NavLink>
             <NavLink to={"/*"}><p>Reembolso</p></NavLink>
             <NavLink to={"/contacto"}><p>Contacto</p></NavLink>

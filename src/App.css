@@ -6,7 +6,8 @@
 .pagBebidas,
 .pagVideojuegos,
 .pagCarrito,
-.pagFavoritos{
+.pagFavoritos,
+.pagQuienesSomos{
   margin-top: 125px;
 }
 
@@ -16,4 +17,12 @@
 
 .cuerpo{
   height: 100vh;
+}
+
+.tituloQuienesSomos{
+  max-width: 300px;
+}
+
+.qs{
+  max-width: 100px;
 }
