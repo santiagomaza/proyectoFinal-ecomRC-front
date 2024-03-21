@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react"
 import './carrito.css'
+import { Footer } from '../../Components/Footer/Footer'
 
 export const Carrito = () => {
   const [carrito, setCarrito] = useState([])
@@ -100,8 +101,8 @@ export const Carrito = () => {
         <div className={hayCarrito ? "d-flex justify-content-center mt-4" : "d-none"}>
           <button className="btn btnComprar fw-bold mb-3" onClick={() => navigate("/*")}>Finalizar Compra</button>
         </div>
-
       </div>
+      <Footer />
     </>
   )
 }

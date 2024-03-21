@@ -4,6 +4,7 @@ import { useState } from 'react'
 import './adminProductos.css'
 import { ModalAgregarProducto } from "../../../Components/ModalAgregarProducto/ModalAgregarProducto";
 import { TablaProductos } from "../../../Components/TablaProductos/TablaProductos";
+import { Footer } from "../../../Components/Footer/Footer";
 
 export const AdminProductos = () => {
   const [show, setShow] = useState(false);
@@ -22,6 +23,7 @@ export const AdminProductos = () => {
         </article>
         <ModalAgregarProducto show = {show} handleClose = {handleClose}/>
       </div>
+      <Footer />
     </>
   )
 }

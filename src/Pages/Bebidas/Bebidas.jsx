@@ -2,6 +2,7 @@ import { CardsProductos } from "../../Components/CardsProductos/CardsProductos"
 import { NavbarPagina } from "../../Components/Navbar/NavbarPagina"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { Footer } from '../../Components/Footer/Footer'
 
 export const Bebidas = () => {
   const [bebidas, setBebidas] = useState([])
@@ -47,6 +48,7 @@ export const Bebidas = () => {
           
         </div>
       </div>
+      <Footer />
     </>
   )
 }

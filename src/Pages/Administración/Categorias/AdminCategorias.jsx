@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react'
 import { ModalAgregarCategoria } from "../../../Components/ModalAgregarCategoria/ModalAgregarCategoria";
 import { TablaCategorias } from "../../../Components/TablaCategorias/TablaCategorias";
+import { Footer } from "../../../Components/Footer/Footer";
 
 export const AdminCategorias = () => {
   const [show, setShow] = useState(false);
@@ -21,6 +22,7 @@ export const AdminCategorias = () => {
         </article>
         <ModalAgregarCategoria show = {show} handleClose = {handleClose}/>
       </div>
+      <Footer />
     </>
   )
 }

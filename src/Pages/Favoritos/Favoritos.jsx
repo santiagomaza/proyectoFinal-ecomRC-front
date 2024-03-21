@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import './favoritos.css'
+import { Footer } from "../../Components/Footer/Footer"
 
 export const Favoritos = () => {
   const [favoritos, setFavoritos] = useState([])
@@ -92,6 +93,7 @@ export const Favoritos = () => {
           </>
         }
       </div>
+      <Footer />
     </>
   )
 }

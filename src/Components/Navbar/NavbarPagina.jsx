@@ -70,9 +70,9 @@ export const NavbarPagina = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <div className='d-flex redesSoc'>
           <Link to="https://www.instagram.com/" className="text-decoration-none text-dark"><i className="bi bi-instagram mx-2 fs-3"></i></Link>
-          <i className="bi bi-twitter mx-2 fs-3"></i>
-          <i className="bi bi-linkedin mx-2 fs-3"></i>
-          <i className="bi bi-github mx-2 fs-3"></i>
+          <Link to={"https://twitter.com/santimmaza"} className='text-decoration-none text-dark'><i className="bi bi-twitter mx-2 fs-3"></i></Link>
+          <Link to={"https://www.linkedin.com/in/santiago-maza-5b4561258"} className='text-decoration-none text-dark'><i className="bi bi-linkedin mx-2 fs-3"></i></Link>
+          <Link to={"https://github.com/santiagomaza"} className='text-decoration-none text-dark'><i className="bi bi-github mx-2 fs-3"></i></Link>
         </div>
         <BarraBuscadoraNavbar/>
         <Nav className="d-flex flex-wrap ms-auto">

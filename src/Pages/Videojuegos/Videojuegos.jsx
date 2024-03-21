@@ -2,6 +2,7 @@ import { NavbarPagina } from "../../Components/Navbar/NavbarPagina"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { CardsProductos } from "../../Components/CardsProductos/CardsProductos"
+import { Footer } from "../../Components/Footer/Footer"
 
 export const Videojuegos = () => {
   const [videojuegos, setVideojuegos] = useState([])
@@ -45,6 +46,7 @@ export const Videojuegos = () => {
           }
         </div>
       </div>
+      <Footer />
     </>
   )
 }
