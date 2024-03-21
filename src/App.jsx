@@ -1,5 +1,6 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.css'
+import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Registro } from './Pages/Registro/Registro'
 import { Login } from './Pages/Login/Login'
@@ -19,33 +20,51 @@ import { Vehiculos } from './Pages/Vehiculos/Vehiculos'
 import { DetalleProducto } from './Pages/DetalleProducto/DetalleProducto'
 import { Carrito } from './Pages/Carrito/Carrito'
 import { Favoritos } from './Pages/Favoritos/Favoritos'
+import { SpinnerCarga } from './Components/SpinnerCarga/SpinnerCarga'
 
 function App() {
+  const [cargando, setCargando] = useState(false)
+
+  useEffect(() => {
+    setCargando(true)
+
+    setTimeout(() => {
+      setCargando(false)
+    }, 2000);
+  }, [])
+
   return (
-    <Routes>
-      <Route path = '/' element={<Home />}/>
-      <Route path = 'registrarse' element = {<Registro />}/>
-      <Route path = "login" element = {<Login />}/>
-      <Route path = "*" element = {<Error404 />}/>
-      <Route path='administracion'>
-        <Route path='usuarios' element = {<AdminUsuarios />}/>
-        <Route path='productos' element = {<AdminProductos />}/>
-        <Route path='categorias' element = {<AdminCategorias />}/>
-      </Route>
-      <Route path = 'restablecerContraseña' element = {<RecuperarContraseñaPrev />}/>
-      <Route exact path = 'restablecerContraseña/:token' element = {<RecuperarContraseña />}/>
-      <Route path='contacto' element = {<Contacto />}/>
-      <Route path = 'verificar-email/:id' element = {<VerificarEmail />}/>
-      <Route path = 'bebidas' element = {<Bebidas />}/>
-      <Route path = 'indumentaria' element = {<Indumentaria />}/>
-      <Route path='videojuegos' element = {<Videojuegos />}/>
-      <Route path='vehiculos' element = {<Vehiculos />}/>
-      <Route path = "producto">
-        <Route exact path = ':id' element = {<DetalleProducto />}/>
-      </Route>
-      <Route path = 'carrito' element = {<Carrito />}/>
-      <Route path='favoritos' element = {<Favoritos />} />
-    </Routes>
+    <>
+      {
+        cargando ? 
+        <SpinnerCarga loading = {cargando}/>
+        :
+        <Routes>
+          <Route path = '/' element={<Home />}/>
+          <Route path = 'registrarse' element = {<Registro />}/>
+          <Route path = "login" element = {<Login />}/>
+          <Route path = "*" element = {<Error404 />}/>
+          <Route path='administracion'>
+            <Route path='usuarios' element = {<AdminUsuarios />}/>
+            <Route path='productos' element = {<AdminProductos />}/>
+            <Route path='categorias' element = {<AdminCategorias />}/>
+          </Route>
+          <Route path = 'restablecerContraseña' element = {<RecuperarContraseñaPrev />}/>
+          <Route exact path = 'restablecerContraseña/:token' element = {<RecuperarContraseña />}/>
+          <Route path='contacto' element = {<Contacto />}/>
+          <Route path = 'verificar-email/:id' element = {<VerificarEmail />}/>
+          <Route path = 'bebidas' element = {<Bebidas />}/>
+          <Route path = 'indumentaria' element = {<Indumentaria />}/>
+          <Route path='videojuegos' element = {<Videojuegos />}/>
+          <Route path='vehiculos' element = {<Vehiculos />}/>
+          <Route path = "producto">
+            <Route exact path = ':id' element = {<DetalleProducto />}/>
+          </Route>
+          <Route path = 'carrito' element = {<Carrito />}/>
+          <Route path='favoritos' element = {<Favoritos />} />
+        </Routes>
+      }
+    </>
   )
 }
 
