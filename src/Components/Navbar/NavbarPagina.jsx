@@ -1,4 +1,5 @@
 import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import './navbar.css'
 import { BarraBuscadoraNavbar } from '../BarraBuscadora/BarraBuscadoraNavbar';
@@ -62,72 +63,77 @@ export const NavbarPagina = () => {
   )
   
   return (
-    <Navbar expand="lg" className="navbar">
-      <NavLink to="/">
-        <img src={logoecomrc} alt="" className='logoEmpresa mx-4 rounded-circle' style={{height: "90px", width: "90px"}}/>
-      </NavLink>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <div className='d-flex redesSoc'>
-          <Link to="https://www.instagram.com/" className="text-decoration-none text-dark"><i className="bi bi-instagram mx-2 fs-3"></i></Link>
-          <Link to={"https://twitter.com/santimmaza"} className='text-decoration-none text-dark'><i className="bi bi-twitter mx-2 fs-3"></i></Link>
-          <Link to={"https://www.linkedin.com/in/santiago-maza-5b4561258"} className='text-decoration-none text-dark'><i className="bi bi-linkedin mx-2 fs-3"></i></Link>
-          <Link to={"https://github.com/santiagomaza"} className='text-decoration-none text-dark'><i className="bi bi-github mx-2 fs-3"></i></Link>
-        </div>
-        <BarraBuscadoraNavbar/>
-        <Nav className="d-flex flex-wrap ms-auto">
+    <Navbar expand="lg" className="bg-warning flex-wrap">
+      <Container>
+        <Link to={"/"}>
+          <img src={logoecomrc} alt="logoeComRC" className='logoEmpresa'/>
+        </Link>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-4 me-5">
+            <NavLink to={"https://www.instagram.com/"} className={"text-decoration-none text-dark"}><i className="bi bi-instagram mx-2 fs-3"></i></NavLink>
+            <NavLink to={"https://twitter.com/santimmaza"} className={"text-decoration-none text-dark"}><i className="bi bi-twitter mx-2 fs-3"></i></NavLink>
+            <NavLink to={"https://www.linkedin.com/in/santiago-maza-5b4561258"} className={"text-decoration-none text-dark"}><i className="bi bi-linkedin mx-2 fs-3"></i></NavLink>
+            <NavLink to={"https://github.com/santiagomaza"} className={"text-decoration-none text-dark"}><i className="bi bi-github mx-2 fs-3"></i></NavLink>
+          </Nav>
+          <BarraBuscadoraNavbar/>
           {
             !token ?
-            <div className='mx-1 botonesInicReg'>
-              <NavLink to="/login" className='btn btn-dark mx-4'>Iniciar Sesión</NavLink>
-              <NavLink to="/registrarse" className='btn btn-dark'>Registrarse</NavLink>
+            <div className='navbar-nav-botones'>
+              <NavLink to={"/login"}>
+                <button className='btn btn-dark botonesNavbar'>Ingresar</button>
+              </NavLink>
+              <NavLink to={"/registrarse"}>
+                <button className='btn btn-dark botonesNavbar'>Registrarse</button>
+              </NavLink>
             </div>
             :
-            <div className='iconosCyF'>
-              <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
-                <NavLink className="text-dark" to="/carrito" title='Carrito'>
-                  <i className="bi bi-cart fs-2 px-4"></i>
-                  <Badge bg="success" className='badgeCarrito'>{carritoUsuario.length}</Badge>
-                </NavLink>
-              </OverlayTrigger>
-              <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
-                <NavLink className="text-dark" to="/favoritos" title='Favoritos'>
-                  <i className="bi bi-heart-fill fs-2"></i>
-                  <Badge bg="success" className='badgeFavoritos'>{favoritosUsuario.length}</Badge>
-                </NavLink>
-              </OverlayTrigger>
-            </div>
+            null
           }
-        </Nav>
-          <div className='header'>
-            <NavLink to="/contacto" className="contacto text-decoration-none text-dark fs-2">Contacto</NavLink>
-            <NavLink to="/" className="inicio text-decoration-none text-dark fs-2">Inicio</NavLink>
-            {
-              token ?
-              <>
-                <NavLink className="cerrarSesion text-decoration-none text-dark fs-2" onClick={cerrarSesion}>Cerrar Sesión</NavLink>
-                {
-                  usuario.rol === "admin" ?
-                  <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>
-                    <NavDropdown.Item>
-                      <NavLink to="/administracion/usuarios" className="text-decoration-none text-dark">Usuarios</NavLink>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <NavLink to="/administracion/productos" className="text-decoration-none text-dark">Productos</NavLink>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <NavLink to="/administracion/categorias" className="text-decoration-none text-dark">Categorias</NavLink>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  :
-                  null
-                }
-              </>
-              :
-              null
-            }
-          </div>
-      </Navbar.Collapse>     
+        </Navbar.Collapse>
+      {
+        token ?
+        <div className='navbar-nav-iconosCyF me-auto'>
+          <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
+            <NavLink to={"/carrito"} title='Carrito' className={"text-decoration-none text-dark"}>
+              <i className="bi bi-cart iconosCyF"></i> 
+              <Badge bg="success" className='badges'>{carritoUsuario.length}</Badge>
+            </NavLink>
+          </OverlayTrigger>
+          <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
+            <NavLink to={"/favoritos"} title='Favoritos' className={"text-decoration-none text-dark"}>
+              <i className="bi bi-heart-fill iconosCyF" id='favoritoNav'></i>
+              <Badge bg="success" className='badges'>{favoritosUsuario.length}</Badge>
+            </NavLink>
+          </OverlayTrigger>
+        </div>
+        :
+        null
+      }
+      </Container>
+      <Navbar.Collapse className='navegacion'>
+        <NavLink to={"/contacto"} className={"text-decoration-none text-dark"}>Contacto</NavLink>
+        <NavLink to={"/"} className={"text-decoration-none text-dark"}>Inicio</NavLink>
+        {
+          token ? 
+          <>
+            <NavLink onClick={cerrarSesion} className={"text-decoration-none text-dark"}>Cerrar Sesión</NavLink>
+            <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>
+              <NavDropdown.Item>
+                <NavLink to="/administracion/usuarios" className="text-decoration-none text-dark">Usuarios</NavLink>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <NavLink to="/administracion/productos" className="text-decoration-none text-dark">Productos</NavLink>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <NavLink to="/administracion/categorias" className="text-decoration-none text-dark">Categorias</NavLink>
+              </NavDropdown.Item>
+            </NavDropdown>
+          </>
+          :
+          null
+        }
+      </Navbar.Collapse>
     </Navbar>
   )
 }

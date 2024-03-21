@@ -1,5 +1,5 @@
 .contenedorCategorias{
-  width: 97vw;
+  width: 100%;
 }
 
 .titulosCategorias{
@@ -10,4 +10,19 @@
   border-bottom: hidden;
   width: 520px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.imagenesCat{
+  height: 420px; 
+  width: 520px;
+}
+
+@media screen and (max-width: 320px){
+  .titulosCategorias{
+    width: 90vw;
+  }
+
+  .imagenesCat{
+    width: 90vw;
+  }
 }

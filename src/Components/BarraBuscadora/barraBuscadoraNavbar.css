@@ -2,9 +2,6 @@
   width: 580px;
   border-radius: 8px;
   border: none;
-  position: relative;
-  top: -35px;
-  left: 10px;
 }
 
 .sinResultados{
@@ -23,4 +20,10 @@
   font-weight: 500;
   color: #1a1a1a;
   padding-left: 13px;
+}
+
+@media screen and (max-width: 320px){
+  .inputBarra{
+    width: 85vw;
+  }
 }

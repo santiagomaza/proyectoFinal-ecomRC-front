@@ -7,7 +7,7 @@ export const CategoriaVideojuegos = () => {
       <p className='text-center titulosCategorias fs-3 fst-italic fw-bold'>VIDEOJUEGOS</p>
       <Link to="/videojuegos">
         <div className="cardCategorias">
-          <img src={imgvideojuego} alt="bebidas" style={{height: "420px", width: "520px"}}/>
+          <img src={imgvideojuego} alt="bebidas" className='imagenesCat'/>
         </div>
       </Link>
     </div>

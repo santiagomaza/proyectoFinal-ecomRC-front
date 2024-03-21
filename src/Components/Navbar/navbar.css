@@ -1,77 +1,113 @@
 .navbar{
   background-color: #f4ae2b;
-  height: 160px;
-  width: 98.7vw;
   position: fixed;
+  width: 100%;
   z-index: 1;
-  top: -1px;
+  top: 0;
+}
+
+.container{
+  max-width: 100%;
+  margin-inline: 1px;
 }
 
 .logoEmpresa{
-  position: relative;
-  top: -25px;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
 }
 
-.redesSoc{
-  position: relative;
-  top: -27px;
+.navbar-nav{
+  justify-content: center;
+  flex-direction: row;
 }
 
-.botonesInicReg{
-  position: absolute;
-  top: 34px;
-  right: 90px;
+.botonesNavbar{
+  margin-inline-start: 35px;
+}
+
+.navbar-nav-iconosCyF{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  right: 210px;
 }
 
 .iconosCyF{
-  position: relative;
-  top: -28px;
-  right: 175px;
+  margin-inline-start: 30px;
+  font-size: 30px;
 }
 
-.bi-heart-fill{
+#favoritoNav{
   position: relative;
-  top: 4px;
+  top: 3px;
 }
 
-.badgeCarrito{
+.badges{
   position: relative;
-  left: -25px;
-  top: -25px;
-}
-
-.badgeFavoritos{
-  position: relative;
-  top: -25px;
+  bottom: 23px;
   right: 3px;
+  border-radius: 100%;
+  background-color: #ba8117 !important;
+  color: #000;
 }
 
-.contacto{
-  position: absolute;
-  right: 1092px;
-  top: 112px;
-}
-
-.inicio{
-  position: absolute;
-  right: 965px;
-  top: 112px;
-}
-
-.cerrarSesion{
-  position: absolute;
-  right: 725px;
-  top: 112px;
-  width: 190px;
-}
-
-.admin{
-  position: absolute;
-  right: 463px;
-  top: 116px;
-  font-size: 29px;
+.navegacion{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-width: 700px;
+  margin-left: 60px;
+  font-size: 24px;
 }
 
 .dropdown-menu{
   background-color: #f4ae2b;
+}
+
+@media screen and (max-width: 320px){
+  .navbar-nav-botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .botonesNavbar{
+    width: 7rem;
+    margin: 4px;
+  }
+
+  .navbar-nav-iconosCyF{
+    position: absolute;
+    left: 80px;
+    top: 15px;
+  }
+
+  .navbar-collapse{
+    margin-top: 5px;
+  }
+
+  .iconosCyF{
+    margin-inline-start: 34px;
+    font-size: 25px;
+  }
+
+  .badges{
+    position: relative;
+    bottom: 43px;
+    left: 56px;
+    border-radius: 100%;
+    background-color: #ba8117 !important;
+    color: #000;
+    font-size: 10px;
+  }
+
+  .navegacion{
+    display: flex;
+    flex-direction: column;
+    right: 20px;
+    position: relative;
+    bottom: 5px;
+    font-size: 18px;
+  }
 }
