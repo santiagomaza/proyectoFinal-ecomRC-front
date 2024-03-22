@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom'
+import error404 from '../../assets/404.png'
 
 export const Error404 = () => {
   return (
-    <div className='text-center'>
-      <h2>Error 404</h2>
-      <span className='d-block'>Upss. Parece que ha habido un error</span>
-      <Link to="/" className='fs-4' replace>Volver al inicio</Link>
+    <div className='bg-error404 text-center'>
+      <img src={error404} alt="error404" className='imagenError404'/>
+      <div className='divError404'>
+        <h5 className='d-block mb-4'>Upss. La página que estabas buscando no existe</h5>
+        <Link to="/" className='btn btn-dark' replace reloadDocument>Volver a Página Principal</Link>
+      </div>
     </div>
   )
 }

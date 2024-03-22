@@ -15,14 +15,30 @@
   margin-top: -74px;
 }
 
-.cuerpo{
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.row{
+  max-width: 100%;
+}
+
+.Spinner{
   height: 100vh;
 }
 
-.tituloQuienesSomos{
-  max-width: 300px;
+.bg-error404{
+  background-color: #f4ae2b;
+  max-height: 100vh;
 }
 
-.qs{
-  max-width: 100px;
+.imagenError404{
+  width: 550px;
+  height: 550px;
+}
+
+.divError404{
+  position: relative;
+  top: -64px;
 }

@@ -1,5 +1,6 @@
 import { Footer } from '../../Components/Footer/Footer'
 import { NavbarPagina } from '../../Components/Navbar/NavbarPagina'
+import yo from '../../assets/yo.jpeg'
 
 export const QuienesSomos = () => {
   return (
@@ -7,7 +8,17 @@ export const QuienesSomos = () => {
       <NavbarPagina />
       <div className='pagQuienesSomos'>
         <h2 className='text-center'>Quienes Somos</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, incidunt dolore quia at recusandae, nesciunt voluptatum quos ipsa mollitia excepturi deserunt reiciendis atque quas suscipit in soluta molestiae unde ad vel ab non minima. Asperiores dolores iusto debitis dignissimos aut atque, iure voluptatem quibusdam? Similique eaque hic eos fuga quod.</p>
+        <div className="row">
+          <div className='d-flex justify-content-center col-md-12 col-sm-12 mb-4'>
+            <div className="card" style={{width: "18rem", backgroundColor: "#f4ae2b"}}>
+              <img src={yo} className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">Santiago Maza</h5>
+                <p className="card-text">Estudiante de la carrera Tecnicatura Universitaria en Programación en la Universidad Tecnológica Nacional, Facultad Regional Tucumán. Tengo 24 años y soy programador Full Stack MERN.</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <Footer />
       </div>
     </>
