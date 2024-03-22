@@ -1,7 +1,7 @@
 import { NavbarPagina } from "../../Components/Navbar/NavbarPagina"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, NavLink } from 'react-router-dom'
 import './detalleProducto.css'
 import { CajaComentario } from "../../Components/CajaComentario/CajaComentario"
 import { CardComentario } from "../../Components/CardComentario/CardComentario"
@@ -137,7 +137,9 @@ export const DetalleProducto = () => {
             <img src={productoEspecifico.imagen1} alt="" className="imgProducto"/>
             <div className="detallesProducto">
               <span className="fs-1 d-block">{productoEspecifico.nombre}</span>
-              <span className="d-block fs-3 fst-italic mt-4 categoriaProducto">{productoEspecifico.categoria}</span>
+              <NavLink className={"text-decoration-none"} to={`/${productoEspecifico.categoria}`}>
+                <span className="d-block fs-3 fst-italic mt-4 categoriaProducto">{productoEspecifico.categoria}</span>
+              </NavLink>
               {
                 productoEspecifico.precio === 0 ?
                 <span className="fs-2 fw-bold text-danger precio">Gratis</span>

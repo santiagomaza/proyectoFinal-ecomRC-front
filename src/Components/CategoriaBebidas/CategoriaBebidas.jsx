@@ -5,7 +5,7 @@ export const CategoriaBebidas = () => {
   return (
     <div className="col-md-5 col-sm-12">
       <p className="text-center titulosCategorias fs-3 fst-italic fw-bold">BEBIDAS</p>
-      <Link to="/bebidas">
+      <Link to="/Bebidas">
         <div className="cardCategorias">
           <img src={imgbebidas} alt="bebidas" className='imagenesCat'/>
         </div>

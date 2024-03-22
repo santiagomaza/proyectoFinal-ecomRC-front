@@ -2,7 +2,7 @@ import './categorias.css'
 import { CategoriaBebidas } from '../CategoriaBebidas/CategoriaBebidas'
 import { CategoriaIndumentaria } from '../CategoriaIndumentaria/CategoriaIndumentaria'
 import { CategoriaVideojuegos } from '../CategoriaVideojuegos/CategoriaVideojuegos'
-import { CategoriaVehiculos } from '../CategoriaVehiculos/CategoriaVehiculos'
+import { CategoriaTecnologia } from '../CategoriaTecnologia/CategoriaTecnologia'
 
 export const Categorias = () => {
   return (
@@ -16,7 +16,7 @@ export const Categorias = () => {
         </div>
         <div className='row d-flex justify-content-evenly'>
           <CategoriaVideojuegos />
-          <CategoriaVehiculos />
+          <CategoriaTecnologia />
         </div>
       </article>
     </div>

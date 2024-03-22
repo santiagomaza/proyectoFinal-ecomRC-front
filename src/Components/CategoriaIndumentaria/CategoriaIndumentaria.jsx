@@ -5,7 +5,7 @@ export const CategoriaIndumentaria = () => {
   return (
     <div className="col-md-5">
       <p className='text-center titulosCategorias fs-3 fst-italic fw-bold'>INDUMENTARIA</p>
-      <Link to="/indumentaria">
+      <Link to="/Indumentaria">
         <div className="cardCategorias">
           <img src={imgindumentario} alt="bebidas" className='imagenesCat'/>
         </div>
