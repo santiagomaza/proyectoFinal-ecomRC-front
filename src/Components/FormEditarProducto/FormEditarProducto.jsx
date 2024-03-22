@@ -154,11 +154,16 @@ export const FormEditarProducto = (props) => {
               className="form-control"
               autoComplete="off"
               placeholder="Descripción"
+              maxLength={560}
               defaultValue={props.descripcion}
               {...register("descripcion", {
                 required: {
                   value: true,
                   message: "La descripción es requerida"
+                },
+                maxLength: {
+                  value: 560,
+                  message: "La descripción no puede tener más de 560 caracteres"
                 }
               })}
             ></textarea>
