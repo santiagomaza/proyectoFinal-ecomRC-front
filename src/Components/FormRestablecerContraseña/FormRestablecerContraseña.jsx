@@ -1,5 +1,5 @@
 import logoeComRC from '../../assets/ecom.jpg'
-import './formRestablecerContraseña.css'
+import '../../styles/formRestablecerContraseña.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'

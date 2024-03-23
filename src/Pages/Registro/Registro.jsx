@@ -1,5 +1,5 @@
 import { FormRegistro } from '../../Components/FormRegistro/FormRegistro'
-import './registro.css'
+import '../../styles/registro.css'
 
 export const Registro = () => {
   return (

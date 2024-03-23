@@ -1,4 +1,4 @@
-import './formRegistro.css'
+import '../../styles/formRegistro.css'
 import { useForm } from 'react-hook-form'
 import ModalInfoRegistro from '../ModalInfoRegistro/ModalInfoRegistro'
 import axios from 'axios'

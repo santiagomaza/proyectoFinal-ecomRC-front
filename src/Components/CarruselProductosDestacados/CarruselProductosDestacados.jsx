@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import axios from 'axios'
-import './carruselProductosDestacados.css'
+import '../../styles/carruselProductosDestacados.css'
 
 export const CarruselProductosDestacados = () => {
   const [index, setIndex] = useState(0);

@@ -1,6 +1,6 @@
 import { BotonEditarComentario } from '../BotonEditarComentario/BotonEditarComentario'
 import { BotonEliminarComentario } from '../BotonEliminarComentario/BotonEliminarComentario'
-import './cardComentario.css'
+import '../../styles/cardComentario.css'
 
 export const CardComentario = ({ id, usuario, msj, fecha }) => {
   return (

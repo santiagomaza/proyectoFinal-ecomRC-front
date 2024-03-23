@@ -2,7 +2,7 @@ import { NavbarPagina } from "../../Components/Navbar/NavbarPagina"
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate, NavLink } from 'react-router-dom'
-import './detalleProducto.css'
+import '../../styles/detalleProducto.css'
 import { CajaComentario } from "../../Components/CajaComentario/CajaComentario"
 import { CardComentario } from "../../Components/CardComentario/CardComentario"
 import { Footer } from "../../Components/Footer/Footer"

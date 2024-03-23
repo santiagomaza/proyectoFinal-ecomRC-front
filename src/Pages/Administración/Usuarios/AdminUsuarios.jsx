@@ -2,7 +2,7 @@ import { ModalAgregarUsuario } from "../../../Components/ModalAgregarUsuario/Mod
 import { NavbarPagina } from "../../../Components/Navbar/NavbarPagina"
 import { TablaUsuarios } from "../../../Components/TablaUsuarios/TablaUsuarios"
 import Button from 'react-bootstrap/Button';
-import './adminUsuarios.css'
+import '../../../styles/adminUsuarios.css'
 import { useState } from 'react'
 import { Footer } from "../../../Components/Footer/Footer";
 

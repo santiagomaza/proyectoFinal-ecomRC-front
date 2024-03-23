@@ -1,4 +1,4 @@
-import './footer.css'
+import '../../styles/footer.css'
 import logoecomrc from  '../../assets/ecom.jpg'
 import { NavLink, Link } from 'react-router-dom'
 

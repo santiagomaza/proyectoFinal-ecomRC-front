@@ -1,4 +1,4 @@
-import './cardsProductos.css'
+import '../../styles/cardsProductos.css'
 import { Link } from 'react-router-dom'
 
 export const CardsProductos = ({ id, nombre, imagen, precio }) => {

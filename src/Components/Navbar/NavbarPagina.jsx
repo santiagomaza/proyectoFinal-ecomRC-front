@@ -1,7 +1,7 @@
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import './navbar.css'
+import '../../styles/navbar.css'
 import { BarraBuscadoraNavbar } from '../BarraBuscadora/BarraBuscadoraNavbar';
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 import logoecomrc from '../../assets/ecom.jpg'
@@ -30,10 +30,15 @@ export const NavbarPagina = () => {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/usuarios/${idUsuario}`)
-    .then(response => {
-      setUsuario(response.data.usuario)
-    })
+    if(idUsuario){
+      const obtenerUsuarioEspecifico = async () => {
+        const respuesta = await axios.get(`http://localhost:8000/usuarios/${idUsuario}`)
+  
+        setUsuario(respuesta.data.usuario)
+      }
+  
+      obtenerUsuarioEspecifico()
+    }
   }, [])
 
   useEffect(() => {

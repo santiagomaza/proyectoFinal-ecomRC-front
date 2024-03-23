@@ -1,7 +1,7 @@
 import { NavbarPagina } from "../../../Components/Navbar/NavbarPagina"
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react'
-import './adminProductos.css'
+import '../../../styles/adminProductos.css'
 import { ModalAgregarProducto } from "../../../Components/ModalAgregarProducto/ModalAgregarProducto";
 import { TablaProductos } from "../../../Components/TablaProductos/TablaProductos";
 import { Footer } from "../../../Components/Footer/Footer";

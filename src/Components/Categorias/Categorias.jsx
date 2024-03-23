@@ -1,4 +1,4 @@
-import './categorias.css'
+import '../../styles/categorias.css'
 import { CategoriaBebidas } from '../CategoriaBebidas/CategoriaBebidas'
 import { CategoriaIndumentaria } from '../CategoriaIndumentaria/CategoriaIndumentaria'
 import { CategoriaVideojuegos } from '../CategoriaVideojuegos/CategoriaVideojuegos'

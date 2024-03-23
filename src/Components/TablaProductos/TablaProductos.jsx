@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import './tablaProductos.css'
+import '../../styles/tablaProductos.css'
 import BotonEditarProducto from '../BotonEditarProducto/BotonEditarProducto'
 import { BotonEliminarProducto } from '../BotonEliminarProducto/BotonEliminarProducto'
 import { BotonDestacarProducto } from '../BotonDestacarProducto/BotonDestacarProducto'

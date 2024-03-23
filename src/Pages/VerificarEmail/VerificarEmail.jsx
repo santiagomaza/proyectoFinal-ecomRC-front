@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Alert from 'react-bootstrap/Alert';
 import logoecomrc from '../../assets/ecom.jpg'
-import './verificarEmail.css'
+import '../../styles/verificarEmail.css'
 
 export const VerificarEmail = () => {
   const { id } = useParams()

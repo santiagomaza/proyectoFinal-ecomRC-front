@@ -2,7 +2,7 @@ import { NavbarPagina } from "../../Components/Navbar/NavbarPagina"
 import axios from 'axios'
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
-import './favoritos.css'
+import '../../styles/favoritos.css'
 import { Footer } from "../../Components/Footer/Footer"
 
 export const Favoritos = () => {

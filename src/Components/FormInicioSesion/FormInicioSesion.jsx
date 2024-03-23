@@ -1,4 +1,4 @@
-import './formInicioSesion.css'
+import '../../styles/formInicioSesion.css'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Swal from 'sweetalert2'

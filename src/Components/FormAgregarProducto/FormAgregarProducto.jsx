@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
-import './formAgregarProducto.css'
+import '../../styles/formAgregarProducto.css'
 
 export const FormAgregarProducto = () => {
   const [categorias, setCategorias] = useState([])

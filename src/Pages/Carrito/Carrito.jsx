@@ -2,7 +2,7 @@ import { NavbarPagina } from "../../Components/Navbar/NavbarPagina"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react"
-import './carrito.css'
+import '../../styles/carrito.css'
 import { Footer } from '../../Components/Footer/Footer'
 
 export const Carrito = () => {

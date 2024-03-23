@@ -1,4 +1,4 @@
-import './barraBuscadoraNavbar.css'
+import '../../styles/barraBuscadoraNavbar.css'
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { ResultadosBusqueda } from '../ResultadosBusqueda/ResultadosBusqueda'
