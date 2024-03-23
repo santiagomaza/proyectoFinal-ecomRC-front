@@ -14,12 +14,6 @@ export const Favoritos = () => {
   const idUsuario = localStorage.getItem('idUsuario')
 
   useEffect(() => {
-    if(!idUsuario){
-      navigate("/", { replace: true })
-    }
-  }, [])
-
-  useEffect(() => {
     const obtenerFavoritos = async () => {
       const respuesta = await axios.get('http://localhost:8000/favoritos/obtener-favoritos')
       setFavoritos(respuesta.data)

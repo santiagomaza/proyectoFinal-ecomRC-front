@@ -13,12 +13,6 @@ export const Carrito = () => {
   const [total, setTotal] = useState(0)
 
   const idUsuario = localStorage.getItem('idUsuario')
-  
-  useEffect(() => {
-    if(!idUsuario){
-      navigate("/", { replace: true})
-    }
-  }, [])
 
   useEffect(() => {
     const obtenercarrito = async () => {

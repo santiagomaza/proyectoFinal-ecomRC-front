@@ -152,10 +152,6 @@ export const FormCrearUsuario = () => {
                   value: 30,
                   message: "El email no debe tener más de 30 caracteres",
                 },
-                pattern: {
-                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/,
-                  message: "El email no es válido",
-                },
               })}
             />
           </div>
