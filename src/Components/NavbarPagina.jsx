@@ -20,9 +20,9 @@ export const NavbarPagina = () => {
   const [favoritos, setFavoritos] = useState([])
   const navigate = useNavigate()
 
-  const cerrarSesion = () => {
-    navigate("/", {replace: true})
-    
+  const cerrarSesion = () => {    
+    navigate("/", { replace: true})
+
     setTimeout(() => {
       navigate(0)
       localStorage.clear()

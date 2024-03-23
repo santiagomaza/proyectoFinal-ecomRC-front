@@ -7,12 +7,18 @@ import { Footer } from '../Components/Footer'
 
 export const Carrito = () => {
   const [carrito, setCarrito] = useState([])
-  const [usuario, setUsuario] = useState({})
+  const [usuarioEspecifico, setUsuarioEspecifico] = useState({})
   const [hayCarrito, setHayCarrito] = useState(null)
   const navigate = useNavigate()
   const [total, setTotal] = useState(0)
 
   const idUsuario = localStorage.getItem('idUsuario')
+  
+  useEffect(() => {
+    if(!idUsuario){
+      navigate("/", { replace: true})
+    }
+  }, [])
 
   useEffect(() => {
     const obtenercarrito = async () => {
@@ -24,15 +30,17 @@ export const Carrito = () => {
   }, [])
 
   useEffect(() => {
-    const obtenerUsuarioEspecifico = async () => {
-      const respuesta = await axios.get(`http://localhost:8000/usuarios/${idUsuario}`)
-      setUsuario(respuesta.data.usuario)
+    if(idUsuario){
+      const obtenerUsuarioEspecifico = async () => {
+        const respuesta = await axios.get(`http://localhost:8000/usuarios/${idUsuario}`)
+        setUsuarioEspecifico(respuesta.data.usuario)
+      }
+  
+      obtenerUsuarioEspecifico()
     }
-
-    obtenerUsuarioEspecifico()
   }, [idUsuario])
 
-  const carritoUsuario = carrito.filter((cart) => cart.usuario === usuario.username)
+  const carritoUsuario = carrito.filter((cart) => cart.usuario === usuarioEspecifico.username)
 
   useEffect(() => {
     if(carritoUsuario.length > 0){

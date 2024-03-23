@@ -18,6 +18,7 @@ export const FormInicioSesion = () => {
 
     if(respuesta.data.status === 200){
       setIniciandoSesion(false)
+
       Swal.fire({
         icon: "success",
         title: respuesta.data.message,
@@ -29,7 +30,7 @@ export const FormInicioSesion = () => {
       localStorage.setItem("idUsuario", respuesta.data.usuario._id)
 
       setTimeout(() => {
-        navigate("/", { replace: true})
+        navigate("/", { replace: true })
       }, 1500);
     }
 

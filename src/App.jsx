@@ -43,7 +43,7 @@ function App() {
         <Routes>
           <Route path = '/' element={<Home />}/>
           <Route path = 'registrarse' element = {<Registro />}/>
-          <Route path = "login" element = {<Login />}/>
+          <Route path = "login" element = {<Login/>}/>
           <Route path = "*" element = {<Error404 />}/>
           <Route path='administracion'>
             <Route path='usuarios' element = {<AdminUsuarios />}/>
@@ -61,7 +61,7 @@ function App() {
           <Route path = "producto">
             <Route exact path = ':id' element = {<DetalleProducto />}/>
           </Route>
-          <Route path = 'carrito' element = {<Carrito />}/>
+          <Route path = 'carrito' element = {<Carrito/>}/>
           <Route path='favoritos' element = {<Favoritos />} />
           <Route path='quienesSomos' element = {<QuienesSomos />}/>
         </Routes>

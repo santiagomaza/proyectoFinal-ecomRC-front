@@ -32,12 +32,14 @@ export const DetalleProducto = () => {
   }, [id])
 
   useEffect(() => {
-    const obtenerUsuarioEspecifico = async () => {
-      const respuesta = await axios.get(`http://localhost:8000/usuarios/${idUsuario}`)
-      setUsuario(respuesta.data.usuario)
+    if(idUsuario){
+      const obtenerUsuarioEspecifico = async () => {
+        const respuesta = await axios.get(`http://localhost:8000/usuarios/${idUsuario}`)
+        setUsuario(respuesta.data.usuario)
+      }
+  
+      obtenerUsuarioEspecifico()
     }
-
-    obtenerUsuarioEspecifico()
   }, [idUsuario])
 
   useEffect(() => {
@@ -159,7 +161,7 @@ export const DetalleProducto = () => {
                   productoEspecifico.stock === 0?
                   <button className="btn btn-success me-2" disabled>Agregar al carrito</button>
                   :
-                  hayCarrito ?
+                  hayCarrito && idUsuario ?
                   <button className="btn btn-outline-success me-2" disabled>Producto agregado al Carrito</button>
                   :
                   <button className="btn btn-success me-2" onClick={() => agregarCarrito(productoEspecifico)}>Agregar al Carrito</button>
@@ -174,7 +176,7 @@ export const DetalleProducto = () => {
             </div>
           </article>
         </section>
-        <section className="seccionComentarios">
+        <section className="seccionComentarios mb-4">
           <h3 className="mx-4 tituloComentario">Comentarios</h3>
           <CajaComentario usuario = {usuario.username} producto = {productoEspecifico.nombre}/>
           {
