@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const BotonEliminarComentario = ({ id }) => {
   const navigate = useNavigate()
+  const token = localStorage.getItem("token")
 
   const eliminarComentario = () => {
     Swal.fire({
@@ -18,7 +19,8 @@ export const BotonEliminarComentario = ({ id }) => {
       if(result.isConfirmed) {
         await axios.delete(`http://localhost:8000/comentarios/borrar-comentario`, {
           data: {
-            id: id
+            id: id,
+            accessToken: token
           }
         })
 

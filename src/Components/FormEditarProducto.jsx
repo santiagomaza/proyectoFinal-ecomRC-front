@@ -8,6 +8,7 @@ export const FormEditarProducto = (props) => {
   const [categorias, setCategorias] = useState([])
   const [edicionProducto, setEdicionProducto] = useState(false)
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -42,7 +43,8 @@ export const FormEditarProducto = (props) => {
           descripcion: data.descripcion,
           imagen1: data.imagen1,
           imagen2: data.imagen2,
-          imagen3: data.imagen3
+          imagen3: data.imagen3,
+          accessToken: token
         })
 
         if(respuesta.data.status === 200){
@@ -57,6 +59,7 @@ export const FormEditarProducto = (props) => {
 
           setTimeout(() => {
             navigate(0)
+            navigate("/administracion/productos")
           }, 1500);
         }
       }
@@ -81,7 +84,15 @@ export const FormEditarProducto = (props) => {
                 required: {
                   value: true,
                   message: "El nombre es requerido"
-                }
+                },
+                minLength: {
+                  value: 5,
+                  message: "El nombre debe tener al menos 5 caracteres",
+                },
+                maxLength: {
+                  value: 60,
+                  message: "El nombre no debe tener más de 60 caracteres",
+                },
               })}
             />
           </div>

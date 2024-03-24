@@ -12,7 +12,7 @@ export const CajaComentario = ({ usuario, producto }) => {
 
   const fecha = Date.now()
   const fechaActual = new Date(fecha)
-  const date = fechaActual.toLocaleDateString()
+  const date = fechaActual.toLocaleDateString("es-ES")
 
   const { handleSubmit, register, formState: { errors } } = useForm()
   
@@ -31,7 +31,8 @@ export const CajaComentario = ({ usuario, producto }) => {
       usuario: usuario,
       producto: producto,
       fecha: date,
-      mensaje: data.mensaje
+      mensaje: data.mensaje,
+      accessToken: token
     })
 
     if(respuesta.data.status === 201){
@@ -45,6 +46,13 @@ export const CajaComentario = ({ usuario, producto }) => {
       setTimeout(() => {
         navigate(0)
       }, 1500);
+    }
+    else if(respuesta.data.status === 500){
+      Swal.fire({
+        icon: 'error',
+        title: "El comentario no se puede publicar porque el token expiró o es inexistente",
+        showConfirmButton: true
+      })
     }
   }
 

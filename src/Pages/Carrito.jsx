@@ -53,13 +53,13 @@ export const Carrito = () => {
 
     let total = 0
 
-    for (let i = 0; i < carrito.length; i++) {
-      total += carrito[i].producto.precio
+    for (let i = 0; i < carritoUsuario.length; i++) {
+      total += carritoUsuario[i].producto.precio
     }
 
     setTotal(total)
 
-  }, [carritoUsuario])
+  }, [carritoUsuario, carrito])
 
   const eliminarProdCarrito = async (id) => {
     await axios.delete("http://localhost:8000/carritos/borrar-carrito", {

@@ -72,7 +72,15 @@ export const FormAgregarProducto = () => {
                 required: {
                   value: true,
                   message: "El nombre es requerido"
-                }
+                },
+                minLength: {
+                  value: 5,
+                  message: "El nombre debe tener al menos 5 caracteres",
+                },
+                maxLength: {
+                  value: 60,
+                  message: "El nombre no debe tener más de 60 caracteres",
+                },
               })}
             />
           </div>
@@ -148,6 +156,10 @@ export const FormAgregarProducto = () => {
                 required: {
                   value: true,
                   message: "La descripción es requerida"
+                },
+                minLength:{
+                  value: 2,
+                  message: "La descripción debe tener al menos 2 caracteres",
                 },
                 maxLength: {
                   value: 560,

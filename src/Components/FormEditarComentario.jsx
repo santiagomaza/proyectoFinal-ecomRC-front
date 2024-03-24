@@ -6,10 +6,11 @@ import Swal from 'sweetalert2'
 export const FormEditarComentario = ({id, mensaje}) => {
   const { register, handleSubmit, formState: {errors} } = useForm()
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
 
   const fecha = Date.now()
   const fechaActual = new Date(fecha)
-  const date = fechaActual.toLocaleDateString()
+  const date = fechaActual.toLocaleDateString("es-ES")
 
   const editarComentario = (data) => {
     Swal.fire({
@@ -25,7 +26,8 @@ export const FormEditarComentario = ({id, mensaje}) => {
         const respuesta = await axios.patch(`http://localhost:8000/comentarios/modificar-comentario`, {
           id: id,
           mensaje: data.mensaje,
-          fecha: date
+          fecha: date,
+          accessToken: token
         })
     
         if(respuesta.data.status === 200){

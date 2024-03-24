@@ -88,16 +88,16 @@ export const DetalleProducto = () => {
     }, 1500);
   }
   
+  const carritoUsuario = carrito.filter((cart) => cart.producto._id)
+
   useEffect(() => {
     for (let i = 0; i < carrito.length; i++) {
-      const carritoUsuario = carrito.filter((cart) => cart.producto._id)
-
-      if(carritoUsuario[i].producto._id === productoEspecifico._id){
+      if(carritoUsuario[i].producto._id === productoEspecifico._id && carritoUsuario[i].usuario === usuario.username){
         setHayCarrito(true)
       }
       
     }
-  }, [carrito, productoEspecifico])
+  }, [carrito, productoEspecifico, carritoUsuario])
 
   useEffect(() => {
     const obtenerFavoritos = async () => {
@@ -161,7 +161,7 @@ export const DetalleProducto = () => {
                   productoEspecifico.stock === 0?
                   <button className="btn btn-success me-2" disabled>Agregar al carrito</button>
                   :
-                  hayCarrito && idUsuario ?
+                  hayCarrito ?
                   <button className="btn btn-outline-success me-2" disabled>Producto agregado al Carrito</button>
                   :
                   <button className="btn btn-success me-2" onClick={() => agregarCarrito(productoEspecifico)}>Agregar al Carrito</button>
