@@ -34,7 +34,7 @@ function App() {
 
     setTimeout(() => {
       setCargando(false)
-    }, 2000);
+    }, 1500);
   }, [])
 
   const idUsuario = localStorage.getItem('idUsuario')
@@ -63,7 +63,7 @@ function App() {
           <Route path = "*" element = {<Error404 />}/>
           <Route element = {<ValidarUsuario isAllowed={!!usuario && usuario.rol.includes("admin")}/>}>
             <Route path='administracion'>
-              <Route path='usuarios' element = {<AdminUsuarios />}/>
+              <Route path='usuarios' element = {<AdminUsuarios/>}/>
               <Route path='productos' element = {<AdminProductos />}/>
               <Route path='categorias' element = {<AdminCategorias />}/>
             </Route>
@@ -79,10 +79,8 @@ function App() {
           <Route path = "producto">
             <Route exact path = ':id' element = {<DetalleProducto />}/>
           </Route>
-          <Route element = {<ValidarUsuario isAllowed = {!!usuario && usuario.estado.includes("Activo")}/>}>
-            <Route path = 'carrito' element = {<Carrito/>}/>
-            <Route path ='favoritos' element = {<Favoritos />} />
-          </Route>
+          <Route path = 'carrito' element = {<Carrito/>}/>
+          <Route path ='favoritos' element = {<Favoritos />} />
           <Route path ='quienesSomos' element = {<QuienesSomos />}/>
         </Routes>
       }

@@ -10,7 +10,7 @@ export const FormRestablecerContraseña = ({token}) => {
   const navigate = useNavigate()
   let emailUsuario = localStorage.getItem('email')
   let tokenUsuario = localStorage.getItem('tokenRecContraseña')
-  let idUsuario = localStorage.getItem('idUsuario')
+  let idUsuario = localStorage.getItem('idUsuarioRC')
   const { register, watch, handleSubmit, formState: { errors } } = useForm()
   const [cambiandoContraseña, setCambiandoContraseña] = useState(false)
 
@@ -31,7 +31,8 @@ export const FormRestablecerContraseña = ({token}) => {
 
     const respuesta = await axios.patch("http://localhost:8000/usuarios/restablecer-contrasenia", {
       id: idUsuario,
-      contraseña: data.contraseña
+      contraseña: data.contraseña,
+      forgotPasswordToken: tokenUsuario
     })
 
     if(respuesta.data.status === 200){
@@ -50,6 +51,15 @@ export const FormRestablecerContraseña = ({token}) => {
         localStorage.removeItem('tokenRecContraseña')
         localStorage.removeItem('idUsuario')
       }, 1500);
+    }
+    else if(respuesta.data.status === 500){
+      setCambiandoContraseña(false)
+      Swal.fire({
+        icon: "error",
+        title: respuesta.data.message,
+        showConfirmButton: true,
+        timer: 1500
+      })
     }
   }
 

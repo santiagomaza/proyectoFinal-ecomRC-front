@@ -57,6 +57,7 @@ export const FormCrearUsuario = () => {
             <label className="form-label">Nombre Completo</label>
             <input
               type="text"
+              name="nombre"
               className="form-control"
               autoComplete="off"
               placeholder="ej. Santiago Maza"
@@ -83,6 +84,7 @@ export const FormCrearUsuario = () => {
             <label className="form-label">Nombre de Usuario</label>
             <input
               type="text"
+              name="username"
               className="form-control"
               placeholder="ej. santimaza99"
               {...register("username", {
@@ -110,6 +112,7 @@ export const FormCrearUsuario = () => {
             <label className="form-label">Domicilio</label>
             <input
               type="text"
+              name="domicilio"
               className="form-control"
               placeholder="ej. Av Belgrano 1550"
               {...register("domicilio", {
@@ -137,6 +140,7 @@ export const FormCrearUsuario = () => {
             <label className="form-label">Email</label>
             <input
               type="email"
+              name="email"
               className="form-control"
               placeholder="ej. pepito45@gmail.com"
               {...register("email", {
@@ -162,6 +166,7 @@ export const FormCrearUsuario = () => {
             <label className="form-label">País de Nacimiento</label>
             <select
               className="form-select"
+              name="pais"
               defaultValue=""
               {...register("pais", {
                 required: {
@@ -190,6 +195,7 @@ export const FormCrearUsuario = () => {
             <label className="form-label">Provincia / Estado</label>
             <input
               type="text"
+              name="provincia"
               className="form-control"
               placeholder="ej. Tucumán"
               {...register("provincia", {
@@ -219,6 +225,7 @@ export const FormCrearUsuario = () => {
             <input
               type="number"
               className="form-control"
+              name="codigoPostal"
               placeholder="ej. 4000"
               {...register("codigoPostal", {
                 required: {
@@ -247,6 +254,7 @@ export const FormCrearUsuario = () => {
             <input
               type="number"
               className="form-control"
+              name="telefono"
               placeholder="ej. 3814345653"
               {...register("telefono", {
                 required: {
@@ -275,6 +283,7 @@ export const FormCrearUsuario = () => {
             <input
               type="password"
               className="form-control"
+              name="contraseña"
               placeholder="ej. Pepito123*"
               {...register("contraseña", {
                 required: {
@@ -331,6 +340,7 @@ export const FormCrearUsuario = () => {
             <label className="form-label">Rol</label>
             <select
               className="form-select"
+              name="rol"
               defaultValue=""
               {...register("rol", {
                 required: {
@@ -353,6 +363,7 @@ export const FormCrearUsuario = () => {
             <label className="form-label">Estado</label>
             <select
               className="form-select"
+              name="estado"
               defaultValue=""
               {...register("estado", {
                 required: {

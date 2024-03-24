@@ -4,10 +4,10 @@ import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-
 export const FormEditarUsuario = (props) => {
   const navigate = useNavigate()
   const [edicion, setEdicion] = useState(false)
+  const token = localStorage.getItem("token")
 
   const {
     register,
@@ -39,14 +39,15 @@ export const FormEditarUsuario = (props) => {
           codigoPostal: data.codigoPostal,
           telefono: data.telefono,
           estado: data.estado,
-          rol: data.rol
+          rol: data.rol,
+          accessToken: token
         })
     
         if(respuesta.data.status === 200){
           setEdicion(false)
     
           Swal.fire({
-            icon: 'info',
+            icon: 'success',
             title: respuesta.data.message,
             showConfirmButton: false,
             timer: 1500
@@ -55,6 +56,14 @@ export const FormEditarUsuario = (props) => {
           setTimeout(() => {
             navigate(0)
           }, 1500);
+        }
+        if(respuesta.data.status === 500){
+          setEdicion(false)
+          Swal.fire({
+            icon: 'error',
+            title: "No se pudo realizar la acción porque el token expiró o no existe",
+            showConfirmButton: true,
+          })
         }
       }
     })

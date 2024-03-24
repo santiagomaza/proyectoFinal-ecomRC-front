@@ -21,7 +21,7 @@ export const NavbarPagina = () => {
   const navigate = useNavigate()
 
   const cerrarSesion = () => {    
-    navigate("/", { replace: true})
+    navigate("/", { replace: true })
 
     setTimeout(() => {
       navigate(0)
@@ -99,46 +99,82 @@ export const NavbarPagina = () => {
       {
         token ?
         <div className='navbar-nav-iconosCyF me-auto'>
-          <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
-            <NavLink to={"/carrito"} reloadDocument title='Carrito' className={"text-decoration-none text-dark"}>
-              <i className="bi bi-cart iconosCyF"></i> 
-              <Badge bg="success" className='badges'>{carritoUsuario.length}</Badge>
-            </NavLink>
-          </OverlayTrigger>
-          <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
-            <NavLink to={"/favoritos"} reloadDocument title='Favoritos' className={"text-decoration-none text-dark"}>
-              <i className="bi bi-heart-fill iconosCyF" id='favoritoNav'></i>
-              <Badge bg="success" className='badges'>{favoritosUsuario.length}</Badge>
-            </NavLink>
-          </OverlayTrigger>
+          {
+            usuario.estado === "Pendiente" ?
+            <>
+              <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
+                <NavLink title='Carrito' aria-disabled className={"text-decoration-none text-dark"}>
+                  <i className="bi bi-cart iconosCyF"></i> 
+                  <Badge bg="success" className='badges'>{carritoUsuario.length}</Badge>
+                </NavLink>
+              </OverlayTrigger>
+              <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
+                <NavLink title='Favoritos' className={"text-decoration-none text-dark"}>
+                  <i className="bi bi-heart-fill iconosCyF" id='favoritoNav'></i>
+                  <Badge bg="success" className='badges'>{favoritosUsuario.length}</Badge>
+                </NavLink>
+              </OverlayTrigger>
+            </>
+            :
+            usuario.estado == "Activo" ?
+            <>
+              <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
+                <NavLink to={"/carrito"} reloadDocument title='Carrito' aria-disabled className={"text-decoration-none text-dark"}>
+                  <i className="bi bi-cart iconosCyF"></i> 
+                  <Badge bg="success" className='badges'>{carritoUsuario.length}</Badge>
+                </NavLink>
+              </OverlayTrigger>
+              <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
+                <NavLink to={"/favoritos"} reloadDocument title='Favoritos' className={"text-decoration-none text-dark"}>
+                  <i className="bi bi-heart-fill iconosCyF" id='favoritoNav'></i>
+                  <Badge bg="success" className='badges'>{favoritosUsuario.length}</Badge>
+                </NavLink>
+              </OverlayTrigger>
+            </>
+              :
+              null
+          }
         </div>
         :
         null
       }
       </Container>
-      <Navbar.Collapse className={token ? "navegacion" : "navegacionSinIS"}>
+      <Navbar.Collapse className={token && usuario.rol === "admin" ? "navegacionAdminLogueado" : token && usuario.rol === "usuario" ? "navegacionUsuarioComun" : "navegacionSinIS"}>
         <NavLink to={"/contacto"} reloadDocument className={"text-decoration-none text-dark"}>Contacto</NavLink>
         <NavLink to={"/"} reloadDocument className={"text-decoration-none text-dark"}>Inicio</NavLink>
         {
           token ? 
           <>
             <NavLink onClick={cerrarSesion} className={"text-decoration-none text-dark"}>Cerrar Sesión</NavLink>
-            <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>
-              <NavDropdown.Item>
-                <NavLink to={"/administracion/usuarios"} className="text-decoration-none text-dark">Usuarios</NavLink>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <NavLink to={"/administracion/productos"} className="text-decoration-none text-dark">Productos</NavLink>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <NavLink to={"/administracion/categorias"} className="text-decoration-none text-dark">Categorias</NavLink>
-              </NavDropdown.Item>
-            </NavDropdown>
+            {
+              usuario.rol === "admin" ?
+              <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>
+                <NavDropdown.Item>
+                  <NavLink to={"/administracion/usuarios"} className="text-decoration-none text-dark">Usuarios</NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <NavLink to={"/administracion/productos"} className="text-decoration-none text-dark">Productos</NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <NavLink to={"/administracion/categorias"} className="text-decoration-none text-dark">Categorias</NavLink>
+                </NavDropdown.Item>
+              </NavDropdown>
+              :
+              null
+            }
           </>
           :
           null
         }
       </Navbar.Collapse>
+      {
+        idUsuario ? 
+        <div className='ms-auto mx-3'>
+          <span className='fs-5'>Usuario: {usuario.username}</span>
+        </div>
+        :
+        null
+      }
     </Navbar>
   )
 }

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const BotonEliminarProducto = ({idProducto, nombre}) => {
   const navigate = useNavigate()
+  const token = localStorage.getItem("token")
 
   const borrarProducto = () => {
     Swal.fire({
@@ -18,7 +19,8 @@ export const BotonEliminarProducto = ({idProducto, nombre}) => {
       if(result.isConfirmed){
         const respuesta = await axios.delete("http://localhost:8000/productos/eliminar-producto", {
           data: {
-            id: idProducto
+            id: idProducto,
+            accessToken: token
           }
         })
         console.log(respuesta)

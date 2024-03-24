@@ -34,6 +34,16 @@ export const Carrito = () => {
     }
   }, [idUsuario])
 
+  useEffect(() => {
+    if(!idUsuario){
+      navigate("/")
+    }
+    
+    if(idUsuario && usuarioEspecifico.estado === "Pendiente"){
+      navigate("/")
+    }
+  }, [idUsuario, usuarioEspecifico.estado, navigate])
+
   const carritoUsuario = carrito.filter((cart) => cart.usuario === usuarioEspecifico.username)
 
   useEffect(() => {

@@ -17,8 +17,8 @@ export const FormBuscarEmail = () => {
       setEmailEncontrado(true)
 
       localStorage.setItem('email', respuesta.data.usuario.email)
-      localStorage.setItem('tokenRecContraseña', respuesta.data.token)
-      localStorage.setItem('idUsuario', respuesta.data.usuario._id)
+      localStorage.setItem('tokenRecContraseña', respuesta.data.token_RC)
+      localStorage.setItem('idUsuarioRC', respuesta.data.usuario._id)
     }
     else if(respuesta.data.status === 400){
       setEmailEncontrado(false)

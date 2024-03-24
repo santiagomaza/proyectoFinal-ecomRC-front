@@ -34,6 +34,16 @@ export const Favoritos = () => {
     }
   }, [idUsuario])
 
+  useEffect(() => {
+    if(!idUsuario){
+      navigate("/")
+    }
+    
+    if(idUsuario && usuario.estado === "Pendiente"){
+      navigate("/")
+    }
+  }, [idUsuario, usuario.estado, navigate])
+
   const favoritosUsuario = favoritos.filter((favorito) => favorito.usuario === usuario.username)
 
   useEffect(() => {

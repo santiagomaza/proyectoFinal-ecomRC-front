@@ -31,6 +31,7 @@ export const FormInicioSesion = () => {
 
       setTimeout(() => {
         navigate("/", { replace: true })
+        navigate(0)
       }, 1500);
     }
 

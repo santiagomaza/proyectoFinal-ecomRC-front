@@ -74,7 +74,7 @@ export const TablaUsuarios = () => {
                 domicilio = {usuario.domicilio}
                 telefono = {usuario.telefono}/>
 
-                <BotonEliminarUsuario idUsuario = {usuario._id} nombre = {usuario.nombre}/>
+                <BotonEliminarUsuario idUsuario = {usuario._id} nombre = {usuario.nombre} usuario = {usuario.username}/>
               </td>
             </tr>
           ))

@@ -6,12 +6,11 @@ import { ResultadosBusqueda } from './ResultadosBusqueda'
 export const BarraBuscadoraNavbar = () => {
   const [busqueda, setBusqueda] = useState('')
   const [productos, setProductos] = useState([])
-  
+
   useEffect(() => {
     axios.get("http://localhost:8000/productos/obtener-productos")
     .then((response) => {
       setProductos(response.data)
-      console.log(response.data)
     })
   }, [])
   
