@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react"
 import '../styles/carrito.css'
 import { Footer } from '../Components/Footer'
+import Swal from 'sweetalert2'
 
 export const Carrito = () => {
   const [carrito, setCarrito] = useState([])
@@ -13,6 +14,7 @@ export const Carrito = () => {
   const [total, setTotal] = useState(0)
 
   const idUsuario = localStorage.getItem('idUsuario')
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     const obtenercarrito = async () => {
@@ -62,15 +64,32 @@ export const Carrito = () => {
   }, [carritoUsuario, carrito])
 
   const eliminarProdCarrito = async (id) => {
-    await axios.delete("http://localhost:8000/carritos/borrar-carrito", {
+    const respuesta = await axios.delete("http://localhost:8000/carritos/borrar-carrito", {
       data: {
-        id: id
+        id: id,
+        accessToken: token
       }
     })
 
-    setTimeout(() => {
-      navigate(0)
-    }, 1500);
+    if(respuesta.data.status === 200){
+      Swal.fire({
+        icon: "success",
+        title: "Producto eliminado del carrito",
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      setTimeout(() => {
+        navigate(0)
+      }, 1500);
+    }
+    else if(respuesta.data.status === 500){
+      Swal.fire({
+        icon: "error",
+        title: "No se puede eliminar este articulo del carrito porque el token expiró o es inexistente",
+        showConfirmButton: true,
+      })
+    }
   }
 
   return (

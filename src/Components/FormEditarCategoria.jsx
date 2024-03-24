@@ -7,6 +7,7 @@ import Swal from 'sweetalert2'
 export const FormEditarCategoria = ({ idCategoria, nombre, descripcion }) => {
   const [editandoCategoria, setEditandoCategoria] = useState(false)
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -26,7 +27,8 @@ export const FormEditarCategoria = ({ idCategoria, nombre, descripcion }) => {
         const respuesta = await axios.patch("http://localhost:8000/categorias/modificar-categoria", {
           id: idCategoria,
           categoria: data.categoria,
-          descripcion: data.descripcion
+          descripcion: data.descripcion,
+          accessToken: token
         })
 
         if(respuesta.data.status === 200){
@@ -42,6 +44,16 @@ export const FormEditarCategoria = ({ idCategoria, nombre, descripcion }) => {
           setTimeout(() => {
             navigate(0)
           }, 1500);
+        }
+        else if(respuesta.data.status === 500){
+          setEditandoCategoria(false)
+
+          Swal.fire({
+            icon: "error",
+            title: "No se puede modificar la categoria porque el token expiró o es inexistente",
+            showConfirmButton: true,
+            timer: 1500
+          })
         }
       }
     })

@@ -109,7 +109,7 @@ export const NavbarPagina = () => {
                 </NavLink>
               </OverlayTrigger>
               <OverlayTrigger overlay={renderTooltip} placement='bottom' delay={{show: 250, hide: 400}}>
-                <NavLink title='Favoritos' className={"text-decoration-none text-dark"}>
+                <NavLink to={"/favoritos"} reloadDocument title='Favoritos' className={"text-decoration-none text-dark"}>
                   <i className="bi bi-heart-fill iconosCyF" id='favoritoNav'></i>
                   <Badge bg="success" className='badges'>{favoritosUsuario.length}</Badge>
                 </NavLink>

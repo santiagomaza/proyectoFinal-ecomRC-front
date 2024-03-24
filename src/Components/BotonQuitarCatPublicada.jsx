@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const BotonQuitarCatPublicada = ({idCategoria, nombre}) => {
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
 
   const quitarPublicada = () => {
     Swal.fire({
@@ -18,7 +19,8 @@ export const BotonQuitarCatPublicada = ({idCategoria, nombre}) => {
       if(result.isConfirmed){
         const respuesta = await axios.patch("http://localhost:8000/categorias/publicar-categoria", {
           id: idCategoria,
-          publicada: false
+          publicada: false,
+          accessToken: token
         })
 
         if(respuesta.data.status === 200){
@@ -32,6 +34,14 @@ export const BotonQuitarCatPublicada = ({idCategoria, nombre}) => {
           setTimeout(() => {
             navigate(0)
           }, 1500);
+        }
+        else if(respuesta.data.status === 500){
+          Swal.fire({
+            icon: 'error',
+            title: "Esta acción no se puede realizar porque el token expiró o es inexistente",
+            showConfirmButton: true,
+            timer: 1500
+          })
         }
       }
     })

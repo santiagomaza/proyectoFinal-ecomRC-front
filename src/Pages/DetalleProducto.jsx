@@ -6,6 +6,7 @@ import '../styles/detalleProducto.css'
 import { CajaComentario } from "../Components/CajaComentario"
 import { CardComentario } from "../Components/CardComentario"
 import { Footer } from "../Components/Footer"
+import Swal from 'sweetalert2'
 
 export const DetalleProducto = () => {
   const [productoEspecifico, setProductoEspecifico] = useState({})
@@ -21,6 +22,7 @@ export const DetalleProducto = () => {
   const navigate = useNavigate()
   const idUsuario = localStorage.getItem("idUsuario")
   const { id } = useParams()
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
     const obtenerProductoEspecifico = async () => {
@@ -78,26 +80,43 @@ export const DetalleProducto = () => {
 
   
   const agregarCarrito = async (productoEspecifico) => {
-    await axios.post("http://localhost:8000/carritos/crear-carrito", {
+    const respuesta = await axios.post("http://localhost:8000/carritos/crear-carrito", {
       producto: productoEspecifico,
       usuario: usuario.username,
+      accessToken: token
     })
 
-    setTimeout(() => {
-      navigate(0)
-    }, 1500);
+    if(respuesta.data.status === 201){
+      Swal.fire({
+        icon:'success',
+        title: "Producto agregado al carrito",
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      setTimeout(() => {
+        navigate(0)
+      }, 1500);
+    }
+    else if(respuesta.data.status === 500){
+      Swal.fire({
+        icon: 'error',
+        title: "No se pudo agregar el producto al carrito porque el token expiró o es inexistente",
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
   }
   
-  const carritoUsuario = carrito.filter((cart) => cart.producto._id)
-
   useEffect(() => {
+    const carritoUsuario = carrito.filter((cart) => cart.producto._id)
     for (let i = 0; i < carrito.length; i++) {
       if(carritoUsuario[i].producto._id === productoEspecifico._id && carritoUsuario[i].usuario === usuario.username){
         setHayCarrito(true)
       }
       
     }
-  }, [carrito, productoEspecifico, carritoUsuario])
+  }, [carrito, productoEspecifico])
 
   useEffect(() => {
     const obtenerFavoritos = async () => {
@@ -113,21 +132,39 @@ export const DetalleProducto = () => {
 
   useEffect(() => {
     for (let i = 0; i < favoritos.length; i++) {
-      if(favoritoUsuario[i].producto._id === productoEspecifico._id){
+      if(favoritoUsuario[i].producto._id === productoEspecifico._id && favoritoUsuario[i].usuario === usuario.username){
         setHayFavoritos(true)
       }
     }
   }, [favoritos.length, favoritoUsuario, productoEspecifico])
 
   const agregarFavoritos = async (productoEspecifico) => {
-    await axios.post("http://localhost:8000/favoritos/crear-favorito", {
+    const respuesta = await axios.post("http://localhost:8000/favoritos/crear-favorito", {
       producto: productoEspecifico,
       usuario: usuario.username,
+      accessToken: token
     })
 
-    setTimeout(() => {
-      navigate(0)
-    }, 1500);
+    if(respuesta.data.status === 200){
+      Swal.fire({
+        icon:'success',
+        title: "Articulo agregado a favoritos",
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      setTimeout(() => {
+        navigate(0)
+      }, 1500);
+    }
+    else if(respuesta.data.status === 500){
+      Swal.fire({
+        icon: 'error',
+        title: "No se puede agregar este producto a favoritos porque el token expiró o es inexistente",
+        showConfirmButton: true,
+      })
+    }
+
   }
 
   return (
@@ -158,7 +195,7 @@ export const DetalleProducto = () => {
               <p className="descripcion fs-5">{productoEspecifico.descripcion}</p>
               <div className="d-flex botonesAgregarProducto">
                 {
-                  productoEspecifico.stock === 0?
+                  productoEspecifico.stock === 0 || !usuarioLogueado || usuario.estado === "Pendiente"?
                   <button className="btn btn-success me-2" disabled>Agregar al carrito</button>
                   :
                   hayCarrito ?
@@ -167,6 +204,9 @@ export const DetalleProducto = () => {
                   <button className="btn btn-success me-2" onClick={() => agregarCarrito(productoEspecifico)}>Agregar al Carrito</button>
                 }
                 {
+                  !usuarioLogueado ?
+                  <button type="button" className="btn btn-warning" disabled>Agregar a Favoritos</button>
+                  :
                   hayFavoritos ? 
                   <button className="btn btn-outline-warning me-2" disabled>Producto agregado a Favoritos</button>
                   :

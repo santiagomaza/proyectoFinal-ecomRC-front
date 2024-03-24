@@ -7,3 +7,8 @@
 .cbComentario{
   margin-bottom: -20px;
 }
+
+.btnBorrarComentario{
+  position: relative;
+  left: 43px;
+}

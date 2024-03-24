@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 export const BotonDestacarProducto = ({idProducto, nombre}) => {
   const [productos, setProductos] = useState([])
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     axios.get("http://localhost:8000/productos/obtener-productos")
@@ -38,7 +39,8 @@ export const BotonDestacarProducto = ({idProducto, nombre}) => {
         if(result.isConfirmed){
           const respuesta = await axios.patch("http://localhost:8000/productos/destacar-producto", {
             id: idProducto,
-            destacado: true
+            destacado: true,
+            accessToken: token
           })
   
           if(respuesta.data.status === 200){
@@ -52,6 +54,13 @@ export const BotonDestacarProducto = ({idProducto, nombre}) => {
             setTimeout(() => {
               navigate(0)
             }, 1500);
+          }
+          else if(respuesta.data.status === 500){
+            Swal.fire({
+              icon: 'error',
+              title: "No se puede destacar la categoria porque el token no existe o expiró",
+              showConfirmButton: true
+            })
           }
         }
       })

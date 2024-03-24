@@ -39,7 +39,7 @@ export const BotonEliminarComentario = ({ id }) => {
   } 
 
   return (
-    <button className="btn btn-transparent bg-transparent" onClick={eliminarComentario}>
+    <button className="btn btn-transparent border border-0 bg-transparent" onClick={eliminarComentario}>
       <i className="bi bi-trash text-danger"></i>
     </button>
   )

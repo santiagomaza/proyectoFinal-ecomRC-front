@@ -9,7 +9,7 @@ export const BotonEditarComentario = ({ id, mensaje }) => {
 
   return (
     <>
-      <button className="btn btn-transparent bg-transparent" onClick={handleShow}>
+      <button className="btn btn-transparent border border-0 bg-transparent" onClick={handleShow}>
         <i className="bi bi-pen text-primary"></i>
       </button>
 

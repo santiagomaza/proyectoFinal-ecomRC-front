@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const BotonQuitarDestacado = ({idProducto, nombre}) => {
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
 
   const quitarDestacado = () => {
     Swal.fire({
@@ -18,7 +19,8 @@ export const BotonQuitarDestacado = ({idProducto, nombre}) => {
       if(result.isConfirmed){
         const respuesta = await axios.patch("http://localhost:8000/productos/destacar-producto", {
           id: idProducto,
-          destacado: false
+          destacado: false,
+          accessToken: token
         })
 
         if(respuesta.data.status === 200){
@@ -32,6 +34,14 @@ export const BotonQuitarDestacado = ({idProducto, nombre}) => {
           setTimeout(() => {
             navigate(0)
           }, 1500);
+        }
+        else if(respuesta.data.status === 500){
+          Swal.fire({
+            icon: 'error',
+            title: "No se puede realizar esta acción porque el token expiró o es inexistente",
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       }
     })

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const BotonEliminarCategoria = ({ idCategoria, nombre }) => {
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
 
   const eliminarCategoria = () => {
     Swal.fire({
@@ -18,7 +19,8 @@ export const BotonEliminarCategoria = ({ idCategoria, nombre }) => {
       if(result.isConfirmed){
         const respuesta = await axios.delete("http://localhost:8000/categorias/borrar-categoria", {
           data: {
-            id: idCategoria
+            id: idCategoria,
+            accessToken: token
           }
         })
 
@@ -33,6 +35,15 @@ export const BotonEliminarCategoria = ({ idCategoria, nombre }) => {
           setTimeout(() => {
             navigate(0)
           }, 1500);
+        }
+        else if(respuesta.data.status === 500){
+          
+          Swal.fire({
+            icon: 'error',
+            title: "No se puede eliminar la categoria porque el token expiró o no existe",
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       }
     })

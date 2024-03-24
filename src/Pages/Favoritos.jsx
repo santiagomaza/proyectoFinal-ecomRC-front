@@ -4,12 +4,14 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import '../styles/favoritos.css'
 import { Footer } from "../Components/Footer"
+import Swal from 'sweetalert2'
 
 export const Favoritos = () => {
   const [favoritos, setFavoritos] = useState([])
   const [usuario, setUsuario] = useState({})
   const [hayFavoritos, setHayFavoritos] = useState(false)
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
 
   const idUsuario = localStorage.getItem('idUsuario')
 
@@ -38,10 +40,6 @@ export const Favoritos = () => {
     if(!idUsuario){
       navigate("/")
     }
-    
-    if(idUsuario && usuario.estado === "Pendiente"){
-      navigate("/")
-    }
   }, [idUsuario, usuario.estado, navigate])
 
   const favoritosUsuario = favoritos.filter((favorito) => favorito.usuario === usuario.username)
@@ -53,15 +51,34 @@ export const Favoritos = () => {
   }, [favoritosUsuario.length])
 
   const quitarFavoritos = async (id) => {
-    await axios.delete(`http://localhost:8000/favoritos/borrar-favorito`, {
+    const respuesta = await axios.delete(`http://localhost:8000/favoritos/borrar-favorito`, {
       data: {
-        id: id
+        id: id,
+        accessToken: token
       }
     })
 
-    setTimeout(() => {
-      navigate(0)
-    }, 1500);
+    if(respuesta.data.status === 500){
+      Swal.fire({
+        icon: "error",
+        title: "No se puede eliminar de favoritos este articulo porque el token no existe o expiró",
+        showConfirmButton: true
+      })
+    }
+
+    if(respuesta.data.status === 200){
+      Swal.fire({
+        icon: "success",
+        title: "Articulo eliminado de favoritos",
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      setTimeout(() => {
+        navigate(0)
+      }, 1500);
+    }
+
   }
 
   return (

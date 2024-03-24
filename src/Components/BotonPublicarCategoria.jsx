@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const BotonPublicarCategoria = ({idCategoria, nombre}) => {
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
 
   const publicarCategoria = () => {
     Swal.fire({
@@ -18,7 +19,8 @@ export const BotonPublicarCategoria = ({idCategoria, nombre}) => {
       if(result.isConfirmed){
         const respuesta = await axios.patch("http://localhost:8000/categorias/publicar-categoria", {
           id: idCategoria,
-          publicada: true
+          publicada: true,
+          accessToken: token
         })
 
         if(respuesta.data.status === 200){
@@ -32,6 +34,14 @@ export const BotonPublicarCategoria = ({idCategoria, nombre}) => {
           setTimeout(() => {
             navigate(0)
           }, 1500);
+        }
+        else if(respuesta.data.status === 500){
+          Swal.fire({
+            icon: 'error',
+            title: "No se puede publicar la categoria porque el token expiró o es inexistente",
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       }
     })
