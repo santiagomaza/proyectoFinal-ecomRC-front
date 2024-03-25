@@ -16,7 +16,7 @@ const ModalInfoRegistro = () => {
       </Button>    
     
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton className='bg-danger'>
+        <Modal.Header closeButton style={{backgroundColor: "#f4ae2b"}}>
           <Modal.Title className=''>Información Importante</Modal.Title>
         </Modal.Header>
         <Modal.Body className='d-flex'>

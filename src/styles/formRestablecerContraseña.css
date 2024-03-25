@@ -58,3 +58,17 @@ input:disabled{
   left: 150px;
   top: 20px;
 }
+
+@media screen and (max-width: 575px){
+  .tituloRC{
+    position: relative;
+    top: -75px;
+    left: 45px;
+  }
+
+  .botonCambiarContraseña{
+    position: relative;
+    left: 30px;
+    margin-top: 14px;
+  }
+}

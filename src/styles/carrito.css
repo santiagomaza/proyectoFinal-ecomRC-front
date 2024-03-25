@@ -37,3 +37,15 @@
 .btnComprar:hover{
   background-color: #c88b1a;
 }
+
+.btnEliminarCarrito{
+  position: relative;
+  top: 65px;
+  right: 65px;
+}
+
+@media (min-width: 430px) and (max-width: 651px){
+  .cardCarrito{
+    height: 100%;
+  }
+}

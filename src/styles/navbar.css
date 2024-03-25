@@ -111,7 +111,6 @@
   }
 
   .badges{
-    position: relative;
     bottom: 43px;
     left: 56px;
     border-radius: 100%;
@@ -120,12 +119,161 @@
     font-size: 10px;
   }
 
-  .navegacion{
+  .navegacionAdminLogueado{
     display: flex;
     flex-direction: column;
     right: 20px;
     position: relative;
     bottom: 5px;
     font-size: 18px;
+  }
+
+  .usuarioNavbar{
+    position: relative;
+    right: 40px;
+  }
+}
+
+@media (min-width: 275px) and (max-width: 474.98px){
+  .navbar-nav-iconosCyF{
+    position: absolute;
+    left: 125px;
+    top: 15px;
+  }
+
+  .badges{
+    bottom: 55px;
+    left: 55px;
+  }
+}
+
+@media(min-width: 475px) and (max-width: 542px){
+  .badges{
+    bottom: 55px;
+    left: 55px;
+  }
+}
+
+@media (min-width: 475px) and (max-width: 574.98px){
+  .navbar-nav-botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .botonesNavbar{
+    width: 7rem;
+    margin: 4px;
+  }
+
+  .navegacionSinIS{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 300px;
+    margin-left: 105px;
+    font-size: 24px;
+    top: 115px;
+  }
+
+  .navbar-nav-iconosCyF{
+    position: absolute;
+    left: 165px;
+    top: 15px;
+  }
+
+  .navegacionUsuarioComun{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 500px;
+    margin-left: 55px;
+    font-size: 24px;
+  }
+
+  .navegacionAdminLogueado{
+    display: flex;
+    flex-direction: column;
+    right: 20px;
+    position: relative;
+    bottom: 5px;
+    font-size: 18px;
+  }
+
+  .usuarioNavbar{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    right: 170px;
+  }
+}
+
+
+@media(min-width: 576px) and (max-width: 767.98px){
+  .botonesNavbar{
+    width: 7rem;
+    margin: 4px;
+  }
+
+  .badges{
+    bottom: 23px;
+    left: -2px;
+  }
+
+  .navbar-nav-iconosCyF{
+    position: absolute;
+    left: 245px;
+    top: 15px;
+  }
+
+  .navbar-nav-botones{
+    display: flex;
+    justify-content: center;
+  }
+
+  .navegacionSinIS{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 550px;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 991.98px){
+  .badges{
+    bottom: 23px;
+    left: -2px;
+  }
+
+  .navbar-nav-iconosCyF{
+    position: absolute;
+    left: 275px;
+    top: 10px;
+  }
+
+  .usuarioNavbar{
+    right: 180px;
+  }
+
+  .navbar-nav-botones{
+    display: flex;
+    justify-content: center;
+  }
+
+  .navegacionSinIS{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 300px;
+    margin-left: 275px;
+    font-size: 24px;
+    top: 115px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98){
+  .navbar-nav-botones{
+    display: flex;
+    justify-content: center;
   }
 }

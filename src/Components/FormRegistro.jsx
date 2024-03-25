@@ -61,16 +61,16 @@ export const FormRegistro = () => {
   return (
     <div className="contenedor border border-dark">
       <Link to = "/">
-        <img src={logoeComRC} alt="logo eComRC" style={{height: "100px", width: "100px"}} className='m-3 rounded-circle'/>
+        <img src={logoeComRC} alt="logo eComRC" className='logoFormRegistro m-3 rounded-circle'/>
       </Link>
       <h2 className='texto text-center'>Crea tu cuenta en eComRC</h2>
       <small className='textoInfo fw-bold'>Apriete en el boton para leer la información antes de registrarse</small>     
       <ModalInfoRegistro/>
-      <form onSubmit={handleSubmit(registrarse)} className='formulario d-flex flex-wrap justify-content-between mt-1 mx-5'>
+      <form onSubmit={handleSubmit(registrarse)} className='formulario d-flex flex-wrap justify-content-evenly mt-1 mx-5'>
         <article className=''>
           <div className='mb-1'>
             <label className='form-label'>Nombre Completo</label>
-            <input type='text' className='form-control' autoComplete='off' placeholder='ej. Santiago Maza' {...register("nombre", {
+            <input type='text' className='form-control inputRegistro' autoComplete='off' placeholder='ej. Santiago Maza' {...register("nombre", {
               required: {
                 value: true,
                 message: "El nombre es requerido"
@@ -90,7 +90,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Nombre de Usuario</label>
-            <input type='text' className='form-control' placeholder='ej. santimaza99' {...register("username", {
+            <input type='text' className='form-control inputRegistro' placeholder='ej. santimaza99' {...register("username", {
               required: {
                 value: true,
                 message: "El nombre de usuario es requerido"
@@ -110,7 +110,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Domicilio</label>
-            <input type='text' className='form-control' placeholder='ej. Av Belgrano 1550' {...register("domicilio", {
+            <input type='text' className='form-control inputRegistro' placeholder='ej. Av Belgrano 1550' {...register("domicilio", {
               required: {
                 value: true,
                 message: "El domicilio es requerido"
@@ -130,7 +130,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Email</label>
-            <input type='email' className='form-control' placeholder='ej. pepito45@gmail.com' {...register("email", {
+            <input type='email' className='form-control inputRegistro' placeholder='ej. pepito45@gmail.com' {...register("email", {
               required: {
                 value: true,
                 message: "El email es requerido"
@@ -150,7 +150,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>País de Nacimiento</label>
-            <select className='form-select' defaultValue="" {...register("pais", {
+            <select className='form-select inputRegistro' defaultValue="" {...register("pais", {
               required: {
                 value: true,
                 message: "El país de nacimiento es requerido"
@@ -172,7 +172,7 @@ export const FormRegistro = () => {
         <article className='d-block'>
           <div className='mb-1'>
             <label className='form-label'>Provincia / Estado</label>
-            <input type='text' className='form-control' placeholder='ej. Tucumán' {...register("provincia", {
+            <input type='text' className='form-control inputRegistro' placeholder='ej. Tucumán' {...register("provincia", {
               required: {
                 value: true,
                 message: "La provincia es requerida"
@@ -192,7 +192,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Código Postal</label>
-            <input type='number' className='form-control' placeholder='ej. 4000' {...register("codigoPostal", {
+            <input type='number' className='form-control inputRegistro' placeholder='ej. 4000' {...register("codigoPostal", {
               required: {
                 value: true,
                 message: "El código postal es requerido"
@@ -212,7 +212,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>N°Telefono</label>
-            <input type='number' className='form-control' placeholder='ej. 3814345653' {...register("telefono", {
+            <input type='number' className='form-control inputRegistro' placeholder='ej. 3814345653' {...register("telefono", {
               required: {
                 value: true,
                 message: "El número de teléfono es requerido"
@@ -232,7 +232,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Contraseña</label>
-            <input type='password' className='form-control' placeholder='ej. Pepito123*' {...register("contraseña", {
+            <input type='password' className='form-control inputRegistro' placeholder='ej. Pepito123*' {...register("contraseña", {
               required: {
                 value: true,
                 message: "La contraseña es requerida"
@@ -256,7 +256,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Repetir Contraseña</label>
-            <input type='password' className='form-control' placeholder='ej. Pepito123*' {...register("repContraseña", {
+            <input type='password' className='form-control inputRegistro' placeholder='ej. Pepito123*' {...register("repContraseña", {
               required: {
                 value: true,
                 message: "Repetir contraseña es requerida"

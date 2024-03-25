@@ -101,7 +101,7 @@ export const Carrito = () => {
           hayCarrito ?
           carritoUsuario.map((carrito) => (
             <div className="card mb-4 mx-3" key={carrito._id}>
-              <div className="card-body">
+              <div className="card-body cardCarrito">
                 <img src={carrito.producto.imagen1} alt="" style={{height: "200px", width: "200px"}}/>
                 <article className='d-inline-block detallesProdCarrito'>
                   <h5 className="card-title nombreProdCarrito">{carrito.producto.nombre}</h5>
@@ -113,10 +113,10 @@ export const Carrito = () => {
                   }
                   <span className="stockCarrito">Stock: {carrito.producto.stock}</span>
                 </article>
-                <div className='d-flex justify-content-center'>
-                  <button className='btn btn-danger' onClick={() => eliminarProdCarrito(carrito._id)}>Eliminar del Carrito</button>
-                </div>
               </div>
+                  <div className="d-flex justify-content-center">
+                    <button className='btn btn-transparent text-primary' onClick={() => eliminarProdCarrito(carrito._id)}>Eliminar del Carrito</button>
+                  </div>
             </div>
           ))
           :

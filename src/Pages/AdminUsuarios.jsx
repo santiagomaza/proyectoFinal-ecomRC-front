@@ -6,11 +6,13 @@ import '../styles/adminUsuarios.css'
 import { useState, useEffect } from 'react'
 import { Footer } from "../Components/Footer";
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 export const AdminUsuarios = () => {
   const [show, setShow] = useState(false);
   const [usuario, setUsuario] = useState({})
   const idUsuario = localStorage.getItem("idUsuario");
+  const navigate = useNavigate()
 
   useEffect(() => {
     if(idUsuario){
@@ -21,7 +23,13 @@ export const AdminUsuarios = () => {
 
       obtenerUsuario()
     }
-  }, [])
+  }, [idUsuario])
+
+  useEffect(() => {
+    if(!idUsuario || (idUsuario && usuario.rol === "usuario")){
+      navigate("/", {replace: true})
+    }
+  }, [idUsuario, usuario.rol, navigate])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

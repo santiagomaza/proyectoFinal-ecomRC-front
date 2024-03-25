@@ -37,3 +37,31 @@
   font-size: 15px;
   max-width: 260px;
 }
+
+@media (min-width: 320px) and (max-width: 575px){
+  .textoIS{
+    position: relative;
+    top: -85px;
+    left: 35px;
+  }
+
+  .inputLogin{
+    position: relative;
+    top: -1px;
+  }
+
+  .iconos{
+    float: left;
+    position: relative;
+    right: 45px;
+    top: 38px;
+  }
+
+  .erroresIS{
+    display: flex;
+    position: relative;
+    top: -2px;
+    font-size: 15px;
+    max-width: 260px;
+  }
+}

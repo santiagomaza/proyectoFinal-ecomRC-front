@@ -91,7 +91,7 @@ export const Favoritos = () => {
           <div className="row mx-2">
             { 
               favoritosUsuario.map((favorito) => (
-                <div key={favorito._id} className="d-flex justify-content-center col-md-3 mb-3">
+                <div key={favorito._id} className="d-flex justify-content-center col-lg-3 col-md-4 mb-3">
                   <div className="card" style={{width: "18rem"}}>
                     <img src={favorito.producto.imagen1} className="card-img-top" alt="Imagen producto" style={{height: "280px"}}/>
                     <div className="card-body" style={{backgroundColor: "#f4ae2b"}}>

@@ -5,6 +5,11 @@
   overflow: hidden;
 }
 
+.logoFormRegistro{
+  width: 100px;
+  height: 100px;
+}
+
 .texto{
   position: relative;
   top: -122px;
@@ -47,7 +52,7 @@ select{
 
 .botonRegistro{
   position: relative;
-  right: 200px;
+  right: 140px;
   top: 6px;
 }
 
@@ -63,7 +68,7 @@ select{
 
 .link{
   position: relative;
-  left: 140px;
+  left: 110px;
 }
 
 .fuenteAlert{
@@ -71,4 +76,122 @@ select{
   font-size: 14px;
   letter-spacing: 1px;
   width: 820px;
+}
+
+@media (min-width: 475px) and (max-width: 575.98px){
+  .contenedor{
+    height: 580px;
+    width: 98%;
+  }
+
+  .logoFormRegistro{
+    width: 50px;
+    height: 50px;
+  }
+
+  .texto{
+    position: relative;
+    top: -75px;
+    left: 15px;
+  }
+
+  .textoInfo{
+    position: relative;
+    top: -100px;
+    left: 105px;
+    font-size: 10px;
+  }
+
+  .botonDesplegarInfo{
+    position: relative;
+    left: 140px;
+    top: -110px;
+  }
+
+  .formulario{
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    top: -115px;
+    left: 15px;
+    width: 100%;
+    font-size: 11px;
+  }
+
+  .inputRegistro{
+    width: 70%;
+  }
+
+  .botonRegistro{
+    position: relative;
+    right: 220px;
+    top: 6px;
+  }
+
+  .link{
+    position: relative;
+    left: 110px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px){
+  .contenedor{
+    height: 580px;
+    width: 98%;
+  }
+
+  .logoFormRegistro{
+    width: 100px;
+    height: 100px;
+  }
+
+  .texto{
+    position: relative;
+    top: -95px;
+  }
+
+  .textoInfo{
+    position: relative;
+    top: -110px;
+    left: 205px;
+    font-size: 10px;
+  }
+
+  .botonDesplegarInfo{
+    position: relative;
+    left: 300px;
+    top: -140px;
+  }
+
+  .formulario{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -115px;
+    left: 105px;
+  }
+
+  .inputRegistro{
+    width: 70%;
+  }
+
+  .botonRegistro{
+    position: relative;
+    right: 170px;
+    top: 6px;
+  }
+
+  .link{
+    position: relative;
+    left: 80px;
+  }
+}
+
+
+@media (max-width: 456px){
+  .botonDesplegarInfo{
+    position: relative;
+    left: 95px;
+    top: -120px;
+  }
 }

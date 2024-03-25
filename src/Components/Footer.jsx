@@ -7,7 +7,9 @@ export const Footer = () => {
     <footer className='footer'>
       <div className='footer_pagina'>
         <div className='footer_enlaces'>
-          <img src={logoecomrc} alt="" style={{height: "150px", width:"150px"}} className='logoEmpresaFooter rounded rounded-circle'/>
+          <div className='footer_enlaces_div'>
+            <img src={logoecomrc} alt="" style={{height: "150px", width:"150px"}} className='logoEmpresaFooter rounded rounded-circle'/>
+          </div>
           <div className="footer_enlaces_div">
             <h4>SOBRE NOSOTROS</h4>
             <NavLink to={"/quienesSomos"}><p>Quienes somos</p></NavLink>

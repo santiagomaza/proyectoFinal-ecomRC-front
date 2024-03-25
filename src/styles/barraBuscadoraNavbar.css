@@ -27,3 +27,21 @@
     width: 85vw;
   }
 }
+
+@media (min-width: 475px) and (max-width: 575px){
+  .inputBarra{
+    width: 100%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+  .inputBarra{
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+  .inputBarra{
+    width: 100%;
+  }
+}

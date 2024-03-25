@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import '../styles/navbar.css'
 import { BarraBuscadoraNavbar } from './BarraBuscadoraNavbar';
-import { NavLink, Link, useNavigate } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import logoecomrc from '../assets/ecom.jpg'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -18,16 +18,6 @@ export const NavbarPagina = () => {
   const [usuario, setUsuario] = useState({})
   const [carrito, setCarrito] = useState([])
   const [favoritos, setFavoritos] = useState([])
-  const navigate = useNavigate()
-
-  const cerrarSesion = () => {    
-    navigate("/", { replace: true })
-
-    setTimeout(() => {
-      navigate(0)
-      localStorage.clear()
-    }, 1000);
-  }
 
   useEffect(() => {
     if(idUsuario){
@@ -145,18 +135,18 @@ export const NavbarPagina = () => {
         {
           token ? 
           <>
-            <NavLink onClick={cerrarSesion} className={"text-decoration-none text-dark"}>Cerrar Sesión</NavLink>
+            <NavLink to={"/"} onClick={() => localStorage.clear()} reloadDocument className={"text-decoration-none text-dark"}>Cerrar Sesión</NavLink>
             {
               usuario.rol === "admin" ?
               <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>
                 <NavDropdown.Item>
-                  <NavLink to={"/administracion/usuarios"} className="text-decoration-none text-dark">Usuarios</NavLink>
+                  <NavLink to={"/administracion/usuarios"} onClick={() => localStorage.setItem("path", "/administracion/usuarios")} className="text-decoration-none text-dark">Usuarios</NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <NavLink to={"/administracion/productos"} className="text-decoration-none text-dark">Productos</NavLink>
+                  <NavLink to={"/administracion/productos"} onClick={() => localStorage.setItem("path", "/administracion/productos")} className="text-decoration-none text-dark">Productos</NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <NavLink to={"/administracion/categorias"} className="text-decoration-none text-dark">Categorias</NavLink>
+                  <NavLink to={"/administracion/categorias"} onClick={() => localStorage.setItem("path", "/administracion/categorias")} className="text-decoration-none text-dark">Categorias</NavLink>
                 </NavDropdown.Item>
               </NavDropdown>
               :
@@ -169,7 +159,7 @@ export const NavbarPagina = () => {
       </Navbar.Collapse>
       {
         idUsuario ? 
-        <div className='ms-auto mx-3'>
+        <div className='ms-auto mx-3 usuarioNavbar'>
           <span className='fs-5'>Usuario: {usuario.username}</span>
         </div>
         :

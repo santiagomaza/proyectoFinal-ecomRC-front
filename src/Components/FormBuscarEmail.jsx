@@ -46,7 +46,7 @@ export const FormBuscarEmail = () => {
           })}/>
         </div>
         {
-          errors.email && <span className='text-danger errores'>{errors.email.message}</span>
+          errors.email && <span className='text-danger erroresFormBuscar'>{errors.email.message}</span>
         }
         <div className='mt-3 d-flex justify-content-center'>
           <button type="submit" className="btn btn-dark">Buscar</button>

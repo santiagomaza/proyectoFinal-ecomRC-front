@@ -17,7 +17,7 @@
   width: 520px;
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 474.98px){
   .titulosCategorias{
     width: 90vw;
   }
@@ -26,3 +26,60 @@
     width: 90vw;
   }
 }
+
+@media (min-width: 475px) and (max-width: 575.98px){
+  .contenedorCategorias{
+    width: 100%;
+  }
+
+  .titulosCategorias{
+    width: 100%;
+  }
+
+  .imagenesCat{
+    width: 100%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px){
+  .contenedorCategorias{
+    width: 100%;
+  }
+
+  .titulosCategorias{
+    width: 100%;
+  }
+
+  .imagenesCat{
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px){
+  .contenedorCategorias{
+    width: 100%;
+  }
+
+  .titulosCategorias{
+    width: 100%;
+  }
+
+  .imagenesCat{
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px){
+  .contenedorCategorias{
+    width: 100%;
+  }
+
+  .titulosCategorias{
+    width: 100%;
+  }
+
+  .imagenesCat{
+    width: 100%;
+  }
+}
+

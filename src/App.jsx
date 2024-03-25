@@ -22,12 +22,9 @@ import { Favoritos } from './Pages/Favoritos'
 import { SpinnerCarga } from './Components/SpinnerCarga'
 import { QuienesSomos } from './Pages/QuienesSomos'
 import { Tecnologia } from './Pages/Tecnologia'
-import { ValidarUsuario } from './Components/ValidarUsuario'
-import axios from 'axios'
 
 function App() {
   const [cargando, setCargando] = useState(false)
-  const [usuario, setUsuario] = useState()
 
   useEffect(() => {
     setCargando(true)
@@ -36,19 +33,6 @@ function App() {
       setCargando(false)
     }, 1500);
   }, [])
-
-  const idUsuario = localStorage.getItem('idUsuario')
-
-  useEffect(() => {
-    if(idUsuario){
-      const obtenerUsuario = async () => {
-        const respuesta = await axios.get(`http://localhost:8000/usuarios/${idUsuario}`);
-        setUsuario(respuesta.data.usuario);
-      }
-
-      obtenerUsuario()
-    }
-  }, [idUsuario])
 
   return (
     <>
@@ -61,12 +45,10 @@ function App() {
           <Route path = 'registrarse' element = {<Registro />}/>
           <Route path = "login" element = {<Login/>}/>
           <Route path = "*" element = {<Error404 />}/>
-          <Route element = {<ValidarUsuario isAllowed={!!usuario && usuario.rol.includes("admin")}/>}>
-            <Route path='administracion'>
-              <Route path='usuarios' element = {<AdminUsuarios/>}/>
-              <Route path='productos' element = {<AdminProductos />}/>
-              <Route path='categorias' element = {<AdminCategorias />}/>
-            </Route>
+          <Route path='administracion'>
+            <Route path='usuarios' element = {<AdminUsuarios/>}/>
+            <Route path='productos' element = {<AdminProductos />}/>
+            <Route path='categorias' element = {<AdminCategorias />}/>
           </Route>
           <Route path = 'restablecerContraseña' element = {<RecuperarContraseñaPrev />}/>
           <Route exact path = 'restablecerContraseña/:token' element = {<RecuperarContraseña />}/>
