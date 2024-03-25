@@ -9,6 +9,7 @@ export const CajaComentario = ({ usuario, producto }) => {
   const idUsuario = localStorage.getItem("idUsuario")
   const token = localStorage.getItem("token")
   const [usuarioLogueado, setUsuarioLogueado] = useState(null)
+  const BD_CREAR_COMENTARIO = import.meta.env.VITE_BD_URL_CREAR_COMENTARIO
 
   const fecha = Date.now()
   const fechaActual = new Date(fecha)
@@ -27,7 +28,7 @@ export const CajaComentario = ({ usuario, producto }) => {
 
 
   const publicarComentario = async (data) => {
-    const respuesta = await axios.post("http://localhost:8000/comentarios/crear-comentario", {
+    const respuesta = await axios.post(BD_CREAR_COMENTARIO, {
       usuario: usuario,
       producto: producto,
       fecha: date,

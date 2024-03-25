@@ -7,12 +7,13 @@ import Swal from 'sweetalert2'
 export const FormCrearCategoría = () => {
   const [creandoCategoria, setCreandoCategoria] = useState(false)
   const navigate = useNavigate()
+  const BD_CREAR_CATEGORIA = import.meta.env.VITE_BD_URL_CREAR_CATEGORIA
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const crearCategoria = async (data) => {
     setCreandoCategoria(true)
-    const respuesta = await axios.post("http://localhost:8000/categorias/crear-categoria", data)
+    const respuesta = await axios.post(BD_CREAR_CATEGORIA, data)
 
     if(respuesta.data.status === 201){
       setCreandoCategoria(false)

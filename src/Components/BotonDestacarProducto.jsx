@@ -7,9 +7,11 @@ export const BotonDestacarProducto = ({idProducto, nombre}) => {
   const [productos, setProductos] = useState([])
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
+  const BD_OBTENER_PRODUCTOS = import.meta.env.VITE_BD_URL_OBTENER_PRODUCTOS
+  const BD_DESTACAR_PRODUCTO = import.meta.env.VITE_BD_URL_DESTACAR_PRODUCTO
 
   useEffect(() => {
-    axios.get("http://localhost:8000/productos/obtener-productos")
+    axios.get(`${BD_OBTENER_PRODUCTOS}`)
     .then(response => {
       setProductos(response.data)
     })
@@ -37,7 +39,7 @@ export const BotonDestacarProducto = ({idProducto, nombre}) => {
         cancelButtonText: "Cancelar"
       }).then(async (result) => {
         if(result.isConfirmed){
-          const respuesta = await axios.patch("http://localhost:8000/productos/destacar-producto", {
+          const respuesta = await axios.patch(`${BD_DESTACAR_PRODUCTO}`, {
             id: idProducto,
             destacado: true,
             accessToken: token

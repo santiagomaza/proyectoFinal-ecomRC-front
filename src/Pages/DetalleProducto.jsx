@@ -23,10 +23,17 @@ export const DetalleProducto = () => {
   const idUsuario = localStorage.getItem("idUsuario")
   const { id } = useParams()
   const token = localStorage.getItem("token")
+  const BD_URL_PRODUCTOS = import.meta.env.VITE_BD_URL_PRODUCTOS
+  const BD_USUARIOS = import.meta.env.VITE_BD_URL_USUARIOS
+  const BD_OBTENER_COMENTARIOS = import.meta.env.VITE_BD_URL_OBTENER_COMENTARIOS
+  const BD_OBTENER_CARRITO = import.meta.env.VITE_BD_URL_OBTENER_CARRITO
+  const BD_CREAR_CARRITO = import.meta.env.VITE_BD_URL_CREAR_CARRITO
+  const BD_OBTENER_FAVORITOS = import.meta.env.VITE_BD_URL_OBTENER_FAVORITO
+  const BD_CREAR_FAVORITOS = import.meta.env.VITE_BD_URL_CREAR_FAVORITO
 
   useEffect(() => {
     const obtenerProductoEspecifico = async () => {
-      const respuesta = await axios.get(`http://localhost:8000/productos/${id}`)
+      const respuesta = await axios.get(`${BD_URL_PRODUCTOS}/${id}`)
       setProductoEspecifico(respuesta.data.producto)
     }
 
@@ -36,7 +43,7 @@ export const DetalleProducto = () => {
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuarioEspecifico = async () => {
-        const respuesta = await axios.get(`http://localhost:8000/usuarios/${idUsuario}`)
+        const respuesta = await axios.get(`${BD_USUARIOS}/${idUsuario}`)
         setUsuario(respuesta.data.usuario)
       }
   
@@ -46,7 +53,7 @@ export const DetalleProducto = () => {
 
   useEffect(() => {
     const obtenerComentarios = async () => {
-      const respuesta = await axios.get("http://localhost:8000/comentarios/obtener-comentarios")
+      const respuesta = await axios.get(BD_OBTENER_COMENTARIOS)
 
       setComentarios(respuesta.data)
     }
@@ -70,7 +77,7 @@ export const DetalleProducto = () => {
 
   useEffect(() => {
     const obtenerCarrito = async () => {
-      const respuesta = await axios.get("http://localhost:8000/carritos/obtener-carrito")
+      const respuesta = await axios.get(BD_OBTENER_CARRITO)
 
       setCarrito(respuesta.data)
     }
@@ -80,7 +87,7 @@ export const DetalleProducto = () => {
 
   
   const agregarCarrito = async (productoEspecifico) => {
-    const respuesta = await axios.post("http://localhost:8000/carritos/crear-carrito", {
+    const respuesta = await axios.post(BD_CREAR_CARRITO, {
       producto: productoEspecifico,
       usuario: usuario.username,
       accessToken: token
@@ -120,7 +127,7 @@ export const DetalleProducto = () => {
 
   useEffect(() => {
     const obtenerFavoritos = async () => {
-      const respuesta = await axios.get("http://localhost:8000/favoritos/obtener-favoritos")
+      const respuesta = await axios.get(BD_OBTENER_FAVORITOS)
 
       setFavoritos(respuesta.data)
     }
@@ -139,7 +146,7 @@ export const DetalleProducto = () => {
   }, [favoritos.length, favoritoUsuario, productoEspecifico])
 
   const agregarFavoritos = async (productoEspecifico) => {
-    const respuesta = await axios.post("http://localhost:8000/favoritos/crear-favorito", {
+    const respuesta = await axios.post(BD_CREAR_FAVORITOS, {
       producto: productoEspecifico,
       usuario: usuario.username,
       accessToken: token

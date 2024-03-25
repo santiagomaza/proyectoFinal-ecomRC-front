@@ -5,10 +5,11 @@ import { BotonEliminarUsuario } from './BotonEliminarUsuario'
 
 export const TablaUsuarios = () => {
   const [usuarios, setUsuarios] = useState([])
+  const BD_OBTENER_USUARIOS = import.meta.env.VITE_BD_URL_OBTENER_USUARIOS
 
   useEffect(() => {
     const obtenerUsuarios = async () => {
-      const respuesta = await axios.get('http://localhost:8000/usuarios/obtener-usuarios')
+      const respuesta = await axios.get(BD_OBTENER_USUARIOS)
       setUsuarios(respuesta.data.usuario)
       console.log(respuesta.data.usuario)
     }

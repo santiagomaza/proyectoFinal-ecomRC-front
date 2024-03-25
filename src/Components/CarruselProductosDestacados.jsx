@@ -7,6 +7,7 @@ export const CarruselProductosDestacados = () => {
   const [index, setIndex] = useState(0);
   const [productoDestacado, setProductoDestacado] = useState([])
   const [hayProdDestacado, setHayProdDestacado] = useState(false)
+  const BD_OBTENER_PRODUCTOS = import.meta.env.VITE_BD_URL_OBTENER_PRODUCTOS
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -14,7 +15,7 @@ export const CarruselProductosDestacados = () => {
 
   useEffect(() => {
     const obtenerProductosDestacados = async () => {
-      const respuesta = await axios.get('http://localhost:8000/productos/obtener-productos')
+      const respuesta = await axios.get(`${BD_OBTENER_PRODUCTOS}`)
       setProductoDestacado(respuesta.data.filter((producto) => producto.destacado === true).shift())
 
       setHayProdDestacado(true)
@@ -25,12 +26,12 @@ export const CarruselProductosDestacados = () => {
 
   return (
     <div className="d-flex justify-content-center">
-      <Carousel activeIndex={index} className={hayProdDestacado ? "mx-4 w-75 border border-dark carrusel" : "d-none"} onSelect={handleSelect}>
+      <Carousel activeIndex={index} className={hayProdDestacado ? "mx-4 w-50 border border-dark carrusel" : "d-none"} onSelect={handleSelect}>
         <Carousel.Item>
           <div className="d-flex justify-content-center">
             {
               hayProdDestacado ?
-              <img src={productoDestacado.imagen1} alt="Imagen Destacado" className="w-100" style={{height: "500px"}}/>
+              <img src={productoDestacado.imagen1} alt="Imagen Destacado" className="w-100 imgCarrusel"/>
               :
               null
             }
@@ -40,7 +41,7 @@ export const CarruselProductosDestacados = () => {
           <div className="d-flex justify-content-center">
             {
               hayProdDestacado ?
-              <img src={productoDestacado.imagen2} alt="Imagen Destacado" className="w-100" style={{height: "500px"}}/>
+              <img src={productoDestacado.imagen2} alt="Imagen Destacado" className="w-100 imgCarrusel"/>
               :
               <></>
             }
@@ -50,7 +51,7 @@ export const CarruselProductosDestacados = () => {
           <div className="d-flex justify-content-center">
             {
               hayProdDestacado ?
-              <img src={productoDestacado.imagen3} alt="Imagen Destacado" className="w-100" style={{height: "500px"}}/>
+              <img src={productoDestacado.imagen3} alt="Imagen Destacado" className="w-100 imgCarrusel"/>
               :
               <></>
             }

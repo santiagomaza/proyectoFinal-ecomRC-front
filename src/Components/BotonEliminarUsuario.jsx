@@ -8,11 +8,13 @@ export const BotonEliminarUsuario = ({idUsuario, nombre, usuario}) => {
   const token = localStorage.getItem('token')
   const [usuarioEsp, setUsuarioEsp] = useState({})
   const idUsuarioLogueado = localStorage.getItem("idUsuario");
+  const BD_USUARIOS = import.meta.env.VITE_BD_URL_USUARIOS
+  const BD_ELIMINAR_USUARIO = import.meta.env.VITE_BD_URL_BORRAR_USUARIO
 
   useEffect(() => {
     if(idUsuarioLogueado){
       const obtenerUsuario = async () => {
-        const respuesta = await axios.get(`http://localhost:8000/usuarios/${idUsuarioLogueado}`);
+        const respuesta = await axios.get(`${BD_USUARIOS}/${idUsuarioLogueado}`);
         setUsuarioEsp(respuesta.data.usuario);
       }
 
@@ -39,7 +41,7 @@ export const BotonEliminarUsuario = ({idUsuario, nombre, usuario}) => {
           })
         }
         else{
-          const respuesta = await axios.delete("http://localhost:8000/usuarios/eliminar-usuario", {
+          const respuesta = await axios.delete(BD_ELIMINAR_USUARIO, {
             data: {
               id: idUsuario,
               accessToken: token

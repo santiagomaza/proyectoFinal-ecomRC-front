@@ -9,12 +9,14 @@ export const FormEditarProducto = (props) => {
   const [edicionProducto, setEdicionProducto] = useState(false)
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
+  const BD_EDITAR_PRODUCTO = import.meta.env.VITE_BD_URL_EDITAR_PRODUCTO
+  const BD_OBTENER_CATEGORIAS = import.meta.env.VITE_BD_URL_OBTENER_CATEGORIAS
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   useEffect(() => {
     const obtenerCategorias = async () => {
-      const respuesta = await axios.get('http://localhost:8000/categorias/obtener-categorias')
+      const respuesta = await axios.get(BD_OBTENER_CATEGORIAS)
       setCategorias(respuesta.data)
     }
 
@@ -34,7 +36,7 @@ export const FormEditarProducto = (props) => {
       if(result.isConfirmed){
         setEdicionProducto(true)
 
-        const respuesta = await axios.patch("http://localhost:8000/productos/modificar-producto", {
+        const respuesta = await axios.patch(BD_EDITAR_PRODUCTO, {
           id: props.idProducto,
           nombre: data.nombre,
           precio: data.precio,

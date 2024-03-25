@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const CardsProductos = ({ id, nombre, imagen, precio }) => {
   return (
-    <div className="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3 mb-3">
+    <div className="d-flex justify-content-center col-sm-6 col-xs-6 col-md-4 col-lg-3 mb-3">
       <div className="card" style={{width: "18rem"}}>
         <img src={imagen} className="card-img-top" alt="Imagen producto" style={{height: "280px"}}/>
         <div className="card-body" style={{backgroundColor: "#f4ae2b"}}>

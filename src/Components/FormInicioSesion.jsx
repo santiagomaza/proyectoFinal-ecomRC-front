@@ -10,10 +10,11 @@ export const FormInicioSesion = () => {
   const navigate = useNavigate()
   const [iniciandoSesion, setIniciandoSesion] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const BD_INICIO_SESION = import.meta.env.VITE_BD_URL_INICIO_SESION
 
   const iniciarSesion = async (data) => {
     setIniciandoSesion(true)
-    const respuesta = await axios.post("http://localhost:8000/usuarios/inicio-sesion", data)
+    const respuesta = await axios.post(BD_INICIO_SESION, data)
     console.log(respuesta.data)
 
     if(respuesta.data.status === 200){

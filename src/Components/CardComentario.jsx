@@ -7,11 +7,12 @@ import axios from 'axios'
 export const CardComentario = ({ id, usuario, msj, fecha }) => {
   const [usuarioEsp, setUsuario] = useState({})
   const idUsuario = localStorage.getItem('idUsuario')
+  const BD_USUARIOS = import.meta.env.VITE_BD_URL_USUARIOS
 
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuario = async () => {
-        const respuesta = await axios.get(`http://localhost:8000/usuarios/${idUsuario}`);
+        const respuesta = await axios.get(`${BD_USUARIOS}/${idUsuario}`);
         setUsuario(respuesta.data.usuario)
       }
 

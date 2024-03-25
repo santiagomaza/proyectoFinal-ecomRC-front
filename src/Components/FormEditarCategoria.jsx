@@ -8,6 +8,7 @@ export const FormEditarCategoria = ({ idCategoria, nombre, descripcion }) => {
   const [editandoCategoria, setEditandoCategoria] = useState(false)
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
+  const BD_EDITAR_CATEGORIA = import.meta.env.VITE_BD_URL_EDITAR_CATEGORIA
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -24,7 +25,7 @@ export const FormEditarCategoria = ({ idCategoria, nombre, descripcion }) => {
       if(result.isConfirmed){
         setEditandoCategoria(true)
 
-        const respuesta = await axios.patch("http://localhost:8000/categorias/modificar-categoria", {
+        const respuesta = await axios.patch(BD_EDITAR_CATEGORIA, {
           id: idCategoria,
           categoria: data.categoria,
           descripcion: data.descripcion,

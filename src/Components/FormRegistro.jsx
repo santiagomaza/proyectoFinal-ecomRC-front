@@ -11,10 +11,11 @@ export const FormRegistro = () => {
   const navigate = useNavigate()
   const [registro, setRegistro] = useState(false)
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const BD_REGISTRO = import.meta.env.VITE_BD_URL_REGISTRAR_USUARIO
 
   const registrarse = async (data) => {
     setRegistro(true)
-    const respuesta = await axios.post("http://localhost:8000/usuarios/registrar-usuario", data)
+    const respuesta = await axios.post(BD_REGISTRO, data)
     console.log(respuesta)
 
     if(respuesta.data.status === 201){

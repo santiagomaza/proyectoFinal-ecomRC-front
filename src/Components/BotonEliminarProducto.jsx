@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 export const BotonEliminarProducto = ({idProducto, nombre}) => {
   const navigate = useNavigate()
   const token = localStorage.getItem("token")
+  const BD_ELIMINAR_PRODUCTO = import.meta.env.VITE_BD_URL_ELIMINAR_PRODUCTO
 
   const borrarProducto = () => {
     Swal.fire({
@@ -17,7 +18,7 @@ export const BotonEliminarProducto = ({idProducto, nombre}) => {
       confirmButtonText: "Si, borrar!"
     }).then(async (result) => {
       if(result.isConfirmed){
-        const respuesta = await axios.delete("http://localhost:8000/productos/eliminar-producto", {
+        const respuesta = await axios.delete(BD_ELIMINAR_PRODUCTO, {
           data: {
             id: idProducto,
             accessToken: token
