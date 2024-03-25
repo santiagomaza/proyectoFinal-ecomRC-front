@@ -1,0 +1,85 @@
+.contenedorCategorias{
+  width: 100%;
+}
+
+.titulosCategorias{
+  border: 1px solid black;
+  position: relative;
+  top: 16px;
+  background-color: #f4ae2b;
+  border-bottom: hidden;
+  width: 520px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.imagenesCat{
+  height: 420px; 
+  width: 520px;
+}
+
+@media screen and (max-width: 474.98px){
+  .titulosCategorias{
+    width: 90vw;
+  }
+
+  .imagenesCat{
+    width: 90vw;
+  }
+}
+
+@media (min-width: 475px) and (max-width: 575.98px){
+  .contenedorCategorias{
+    width: 100%;
+  }
+
+  .titulosCategorias{
+    width: 100%;
+  }
+
+  .imagenesCat{
+    width: 100%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px){
+  .contenedorCategorias{
+    width: 100%;
+  }
+
+  .titulosCategorias{
+    width: 100%;
+  }
+
+  .imagenesCat{
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px){
+  .contenedorCategorias{
+    width: 100%;
+  }
+
+  .titulosCategorias{
+    width: 100%;
+  }
+
+  .imagenesCat{
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px){
+  .contenedorCategorias{
+    width: 100%;
+  }
+
+  .titulosCategorias{
+    width: 100%;
+  }
+
+  .imagenesCat{
+    width: 100%;
+  }
+}
+

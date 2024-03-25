@@ -1,0 +1,47 @@
+.inputBarra{
+  width: 580px;
+  border-radius: 8px;
+  border: none;
+}
+
+.sinResultados{
+  display: none;
+  visibility: hidden;
+}
+
+.sinResultadosBusqueda{
+  padding: 5px;
+  margin: 0;
+}
+
+.inputBarra[placeholder]{
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 500;
+  color: #1a1a1a;
+  padding-left: 13px;
+}
+
+@media screen and (max-width: 320px){
+  .inputBarra{
+    width: 85vw;
+  }
+}
+
+@media (min-width: 475px) and (max-width: 575px){
+  .inputBarra{
+    width: 100%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+  .inputBarra{
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+  .inputBarra{
+    width: 100%;
+  }
+}

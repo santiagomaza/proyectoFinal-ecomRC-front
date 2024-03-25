@@ -1,0 +1,279 @@
+.navbar{
+  background-color: #f4ae2b;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+}
+
+.container{
+  max-width: 100%;
+  margin-inline: 1px;
+}
+
+.logoEmpresa{
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+}
+
+.navbar-nav{
+  justify-content: center;
+  flex-direction: row;
+}
+
+.botonesNavbar{
+  margin-inline-start: 35px;
+}
+
+.navbar-nav-iconosCyF{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  right: 210px;
+}
+
+.iconosCyF{
+  margin-inline-start: 30px;
+  font-size: 30px;
+}
+
+#favoritoNav{
+  position: relative;
+  top: 3px;
+}
+
+.badges{
+  position: relative;
+  bottom: 23px;
+  right: 3px;
+  border-radius: 100%;
+  background-color: #ba8117 !important;
+  color: #000;
+}
+
+.navegacionAdminLogueado{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-width: 700px;
+  margin-left: 60px;
+  font-size: 24px;
+}
+
+.navegacionUsuarioComun{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-width: 500px;
+  margin-left: 55px;
+  font-size: 24px;
+}
+
+.navegacionSinIS{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-width: 300px;
+  margin-left: 58px;
+  font-size: 24px;
+}
+
+.dropdown-menu{
+  background-color: #f4ae2b;
+}
+
+@media screen and (max-width: 320px){
+  .navbar-nav-botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .botonesNavbar{
+    width: 7rem;
+    margin: 4px;
+  }
+
+  .navbar-nav-iconosCyF{
+    position: absolute;
+    left: 80px;
+    top: 15px;
+  }
+
+  .navbar-collapse{
+    margin-top: 5px;
+  }
+
+  .iconosCyF{
+    margin-inline-start: 34px;
+    font-size: 25px;
+  }
+
+  .badges{
+    bottom: 43px;
+    left: 56px;
+    border-radius: 100%;
+    background-color: #ba8117 !important;
+    color: #000;
+    font-size: 10px;
+  }
+
+  .navegacionAdminLogueado{
+    display: flex;
+    flex-direction: column;
+    right: 20px;
+    position: relative;
+    bottom: 5px;
+    font-size: 18px;
+  }
+
+  .usuarioNavbar{
+    position: relative;
+    right: 40px;
+  }
+}
+
+@media (min-width: 275px) and (max-width: 474.98px){
+  .navbar-nav-iconosCyF{
+    position: absolute;
+    left: 125px;
+    top: 15px;
+  }
+
+  .badges{
+    bottom: 55px;
+    left: 55px;
+  }
+}
+
+@media(min-width: 475px) and (max-width: 542px){
+  .badges{
+    bottom: 55px;
+    left: 55px;
+  }
+}
+
+@media (min-width: 475px) and (max-width: 574.98px){
+  .navbar-nav-botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .botonesNavbar{
+    width: 7rem;
+    margin: 4px;
+  }
+
+  .navegacionSinIS{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 300px;
+    margin-left: 105px;
+    font-size: 24px;
+    top: 115px;
+  }
+
+  .navbar-nav-iconosCyF{
+    position: absolute;
+    left: 165px;
+    top: 15px;
+  }
+
+  .navegacionUsuarioComun{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 500px;
+    margin-left: 55px;
+    font-size: 24px;
+  }
+
+  .navegacionAdminLogueado{
+    display: flex;
+    flex-direction: column;
+    right: 20px;
+    position: relative;
+    bottom: 5px;
+    font-size: 18px;
+  }
+
+  .usuarioNavbar{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    right: 170px;
+  }
+}
+
+
+@media(min-width: 576px) and (max-width: 767.98px){
+  .botonesNavbar{
+    width: 7rem;
+    margin: 4px;
+  }
+
+  .badges{
+    bottom: 23px;
+    left: -2px;
+  }
+
+  .navbar-nav-iconosCyF{
+    position: absolute;
+    left: 245px;
+    top: 15px;
+  }
+
+  .navbar-nav-botones{
+    display: flex;
+    justify-content: center;
+  }
+
+  .navegacionSinIS{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 550px;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 991.98px){
+  .badges{
+    bottom: 23px;
+    left: -2px;
+  }
+
+  .navbar-nav-iconosCyF{
+    position: absolute;
+    left: 275px;
+    top: 10px;
+  }
+
+  .usuarioNavbar{
+    right: 180px;
+  }
+
+  .navbar-nav-botones{
+    display: flex;
+    justify-content: center;
+  }
+
+  .navegacionSinIS{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 300px;
+    margin-left: 275px;
+    font-size: 24px;
+    top: 115px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98){
+  .navbar-nav-botones{
+    display: flex;
+    justify-content: center;
+  }
+}

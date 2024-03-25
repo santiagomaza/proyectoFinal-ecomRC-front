@@ -1,0 +1,51 @@
+.detallesProdCarrito{
+  position: relative;
+  left: 10px;
+}
+
+.nombreProdCarrito{
+  position: relative;
+  top: 40px;
+}
+
+.precioCarrito{
+  position: relative;
+  top: 40px;
+}
+
+.stockCarrito{
+  position: relative;
+  top: 35px;
+}
+
+.botonesCantidades{
+  position: relative;
+  top: 45px;
+}
+
+.carritoVacio{
+  position: relative;
+  top: -45px;
+  font-size: 210px;
+  margin-bottom: -45px;
+}
+
+.btnComprar{
+  background-color: #f4ae2b;
+}
+
+.btnComprar:hover{
+  background-color: #c88b1a;
+}
+
+.btnEliminarCarrito{
+  position: relative;
+  top: 65px;
+  right: 65px;
+}
+
+@media (min-width: 430px) and (max-width: 651px){
+  .cardCarrito{
+    height: 100%;
+  }
+}

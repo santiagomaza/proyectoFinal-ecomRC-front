@@ -1,0 +1,27 @@
+.contenedorFormContacto{
+  width: 450px;
+  height: 600px;
+  border: 0.3px solid black;
+  box-shadow: inset -3px -3px;
+}
+
+.botonContacto{
+  background-color: #f4ae2b;
+}
+
+.botonContacto:hover{
+  background-color: #c7860d;
+}
+
+.formContacto > div > input{
+  border-radius: 12px;
+  padding: 10px;
+  border: 1px solid;
+}
+
+.formContacto > div > textarea{
+  border-radius: 12px;
+  border: 1px solid;
+  padding: 10px;
+  resize: none;
+}

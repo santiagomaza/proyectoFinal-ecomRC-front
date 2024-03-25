@@ -1,0 +1,114 @@
+.contenedorFormBuscarEmail{
+  background-color: #f4ae2b;
+  height: 420px;
+  width: 650px;
+  overflow: hidden;
+}
+
+.tituloBuscarEmail{
+  position: relative;
+  top: -85px;
+}
+
+.infoBE{
+  position: relative;
+  top: -60px;
+}
+
+.formularioBE{
+  position: relative;
+  top: -65px;
+  left: 150px;
+}
+
+.inputBE{
+  width: 100%;
+  position: relative;
+  top: -8px;
+  right: 1px;
+}
+
+.botonContinuar{
+  position: relative;
+  top: -25px;
+}
+
+.ocultar{
+  display: none;
+  visibility: hidden;
+}
+
+.alertaPrueba{
+  position: relative;
+  top: -45px;
+}
+
+.emailNoEncontrado{
+  position: relative;
+  top: -45px;
+  font-size: 14px;
+}
+
+@media (min-width: 275px) and (max-width: 474.98px){
+  .formularioBE{
+    position: relative;
+    top: -65px;
+    left: 100px;
+  }
+
+  .tituloBuscarEmail{
+    position: relative;
+    left: 25px;
+  }
+  
+
+  .contenedorFormBuscarEmail{
+    background-color: #f4ae2b;
+    height: 450px;
+    width: 650px;
+    overflow: hidden;
+  }
+
+  .inputBE{
+    width: 100%;
+    position: relative;
+    top: 1px;
+    right: 1px;
+  }
+}
+
+@media (min-width: 475px) and (max-width: 575.98px){
+  .inputBE{
+    width: 100%;
+    position: relative;
+    top: 1px;
+    right: 1px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px){
+  .inputBE{
+    width: 100%;
+    position: relative;
+    top: 1px;
+    right: 1px;
+  }  
+}
+
+@media (min-width: 768px) and (max-width: 991.98px){
+  .inputBE{
+    width: 100%;
+    position: relative;
+    top: 1px;
+    right: 1px;
+  }  
+}
+
+@media (min-width: 992px) and (max-width: 1){
+  .inputBE{
+    width: 100%;
+    position: relative;
+    top: 1px;
+    right: 1px;
+  }  
+}

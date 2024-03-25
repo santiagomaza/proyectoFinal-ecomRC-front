@@ -1,0 +1,44 @@
+.botonesCardComentario{
+  position: absolute;
+  top: 10px;
+  left: 1200px;
+}
+
+.cbComentario{
+  margin-bottom: -20px;
+}
+
+.btnBorrarComentario{
+  position: relative;
+  left: 43px;
+}
+
+@media (min-width: 475px) and (max-width: 575px){
+  .botonesCardComentario{
+    left: 380px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+  .botonesCardComentario{
+    left: 440px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+  .botonesCardComentario{
+    left: 440px;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1199.98px){
+  .botonesCardComentario{
+    left: 850px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399.98px){
+  .botonesCardComentario{
+    left: 1200px;
+  }
+}

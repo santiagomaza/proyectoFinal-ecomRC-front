@@ -1,0 +1,135 @@
+.footer{
+  background-color: #f4ae2b;
+}
+
+.logoEmpresaFooter{
+  position: relative;
+  top: 100px;
+  left: 50px;
+}
+
+.footer_pagina{
+  display: flex;
+  flex-direction: column;
+}
+
+.footer_enlaces{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.footer_enlaces_div{
+  width: 250px;
+  margin: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  color: #000;
+}
+
+.ubicacion{
+  position: relative;
+  right: 10px;
+}
+
+.footer_parrafo{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footer_enlaces_div > a{
+  text-decoration: none;
+  color: #000;
+}
+
+@media screen and (max-width: 474.98px){
+  .footer_enlaces{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logoEmpresaFooter{
+    position: relative;
+    top: 10px;
+    left: 50px;
+  }
+}
+
+@media (min-width: 475px) and (max-width: 575.68px){
+  .logoEmpresaFooter{
+    position: relative;
+    top: 10px;
+    left: 50px;
+  }
+
+  .footer_enlaces{
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer_copyright > p{
+    text-align: center;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px){
+  .logoEmpresaFooter{
+    position: relative;
+    top: 10px;
+    left: 50px;
+  }
+
+  .footer_enlaces{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer_copyright > p{
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px){
+  .logoEmpresaFooter{
+    position: relative;
+    top: 10px;
+    left: 50px;
+  }
+
+  .footer_enlaces{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer_copyright > p{
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1127.98px){
+  .logoEmpresaFooter{
+    position: relative;
+    top: 10px;
+    left: 50px;
+  }
+
+  .footer_enlaces{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer_copyright > p{
+    text-align: center;
+  }
+}
