@@ -1,26 +1,11 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
 
 export const BotonEliminarUsuario = ({idUsuario, nombre, usuario}) => {
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
-  const [usuarioEsp, setUsuarioEsp] = useState({})
-  const idUsuarioLogueado = localStorage.getItem("idUsuario");
-  const BD_USUARIOS = import.meta.env.VITE_BD_URL_USUARIOS
   const BD_ELIMINAR_USUARIO = import.meta.env.VITE_BD_URL_BORRAR_USUARIO
-
-  useEffect(() => {
-    if(idUsuarioLogueado){
-      const obtenerUsuario = async () => {
-        const respuesta = await axios.get(`${BD_USUARIOS}/${idUsuarioLogueado}`);
-        setUsuarioEsp(respuesta.data.usuario);
-      }
-
-      obtenerUsuario()
-    }
-  }, [])
 
   const borrarUsuario = (nombre) => {
     Swal.fire({
@@ -76,19 +61,9 @@ export const BotonEliminarUsuario = ({idUsuario, nombre, usuario}) => {
 
   return (
     <>
-      {
-        usuarioEsp.estado === "Pendiente" ?
-        <button className="btn btn-danger btn-sm" onClick={() => borrarUsuario(nombre)} disabled> 
-          <i className="bi bi-trash2-fill"></i>
-        </button>
-        :
-        usuarioEsp.estado === "Activo" ?
-        <button className="btn btn-danger btn-sm" onClick={() => borrarUsuario(nombre)}> 
-          <i className="bi bi-trash2-fill"></i>
-        </button>
-        :
-        null
-      }
+      <button className="btn btn-danger btn-sm" onClick={() => borrarUsuario(nombre)}> 
+        <i className="bi bi-trash2-fill"></i>
+      </button>
     </>
   )
 }
