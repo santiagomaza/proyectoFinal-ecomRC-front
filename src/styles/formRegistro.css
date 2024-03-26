@@ -124,13 +124,13 @@ select{
 
   .botonRegistro{
     position: relative;
-    right: 220px;
+    right: 190px;
     top: 6px;
   }
 
   .link{
     position: relative;
-    left: 110px;
+    left: 60px;
   }
 }
 
