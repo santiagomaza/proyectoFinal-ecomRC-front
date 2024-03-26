@@ -52,7 +52,7 @@ function App() {
           </Route>
           <Route path = 'restablecerContraseña' element = {<RecuperarContraseñaPrev />}/>
           <Route exact path = 'restablecerContraseña/:token' element = {<RecuperarContraseña />}/>
-          <Route path='contacto' element = {<Contacto />}/>
+          <Route exact path='contacto' element = {<Contacto />}/>
           <Route path = 'verificar-email/:id' element = {<VerificarEmail />}/>
           <Route path = 'Bebidas' element = {<Bebidas />}/>
           <Route path = 'Indumentaria' element = {<Indumentaria />}/>
