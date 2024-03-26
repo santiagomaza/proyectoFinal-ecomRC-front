@@ -55,7 +55,7 @@ export const FormEditarUsuario = (props) => {
           })
     
           setTimeout(() => {
-            navigate(0)
+            window.location.reload()
           }, 1500);
         }
         if(respuesta.data.status === 500){

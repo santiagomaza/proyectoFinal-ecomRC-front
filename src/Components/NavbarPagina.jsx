@@ -133,7 +133,7 @@ export const NavbarPagina = () => {
       }
       </Container>
       <Navbar.Collapse className={token && usuario.rol === "admin" ? "navegacionAdminLogueado" : token && usuario.rol === "usuario" ? "navegacionUsuarioComun" : "navegacionSinIS"}>
-        <NavLink to={"/contacto"} reloadDocument className={"text-decoration-none text-dark"}>Contacto</NavLink>
+        <NavLink to={"/pagContacto"} reloadDocument className={"text-decoration-none text-dark"}>Contacto</NavLink>
         <NavLink to={"/"} reloadDocument className={"text-decoration-none text-dark"}>Inicio</NavLink>
         {
           token ? 

@@ -60,8 +60,7 @@ export const FormEditarProducto = (props) => {
           })
 
           setTimeout(() => {
-            navigate(0)
-            navigate("/administracion/productos")
+            window.location.reload()
           }, 1500);
         }
       }
