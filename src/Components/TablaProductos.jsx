@@ -9,11 +9,10 @@ import { BotonQuitarDestacado } from './BotonQuitarDestacado'
 export const TablaProductos = () => {
   const [productos, setProductos] = useState([])
   const [busqueda, setBusqueda] = useState('')
-  const BD_OBTENER_PRODUCTOS = import.meta.env.VITE_BD_URL_OBTENER_PRODUCTOS
 
   useEffect(() => {
     const obtenerProductos = async () => {
-      const respuesta = await axios.get(BD_OBTENER_PRODUCTOS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
       setProductos(respuesta.data)
       console.log(respuesta.data)
     }

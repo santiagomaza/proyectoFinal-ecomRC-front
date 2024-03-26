@@ -7,13 +7,12 @@ import Swal from 'sweetalert2'
 export const FormCrearCategoría = () => {
   const [creandoCategoria, setCreandoCategoria] = useState(false)
   const navigate = useNavigate()
-  const BD_CREAR_CATEGORIA = import.meta.env.VITE_BD_URL_CREAR_CATEGORIA
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const crearCategoria = async (data) => {
     setCreandoCategoria(true)
-    const respuesta = await axios.post(BD_CREAR_CATEGORIA, data)
+    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/categorias/crear-categoria", data)
 
     if(respuesta.data.status === 201){
       setCreandoCategoria(false)

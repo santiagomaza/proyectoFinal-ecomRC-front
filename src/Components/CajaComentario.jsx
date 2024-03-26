@@ -9,7 +9,6 @@ export const CajaComentario = ({ usuario, producto }) => {
   const idUsuario = localStorage.getItem("idUsuario")
   const token = localStorage.getItem("token")
   const [usuarioLogueado, setUsuarioLogueado] = useState(null)
-  const BD_CREAR_COMENTARIO = import.meta.env.VITE_BD_URL_CREAR_COMENTARIO
 
   const fecha = Date.now()
   const fechaActual = new Date(fecha)
@@ -28,7 +27,7 @@ export const CajaComentario = ({ usuario, producto }) => {
 
 
   const publicarComentario = async (data) => {
-    const respuesta = await axios.post(BD_CREAR_COMENTARIO, {
+    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/comentarios/crear-comentario", {
       usuario: usuario,
       producto: producto,
       fecha: date,

@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 export const BotonPublicarCategoria = ({idCategoria, nombre}) => {
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
-  const BD_PUBLICAR_CATEGORIA = import.meta.env.VITE_BD_URL_PUBLICAR_CATEGORIA
 
   const publicarCategoria = () => {
     Swal.fire({
@@ -18,7 +17,7 @@ export const BotonPublicarCategoria = ({idCategoria, nombre}) => {
       cancelButtonText: "Cancelar"
     }).then(async (result) => {
       if(result.isConfirmed){
-        const respuesta = await axios.patch(BD_PUBLICAR_CATEGORIA, {
+        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/categorias/publicar-categoria", {
           id: idCategoria,
           publicada: true,
           accessToken: token

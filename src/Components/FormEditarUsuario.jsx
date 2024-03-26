@@ -8,7 +8,6 @@ export const FormEditarUsuario = (props) => {
   const navigate = useNavigate()
   const [edicion, setEdicion] = useState(false)
   const token = localStorage.getItem("token")
-  const BD_MODIFICAR_USUARIO = import.meta.env.VITE_BD_URL_EDITAR_USUARIO
 
   const {
     register,
@@ -29,7 +28,7 @@ export const FormEditarUsuario = (props) => {
       if(result.isConfirmed){
         setEdicion(true)
 
-        const respuesta = await axios.patch(BD_MODIFICAR_USUARIO, {
+        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/usuarios/modificar-usuario", {
           id: props.idUsuario,
           nombre: data.nombre,
           username: data.username,
@@ -55,7 +54,7 @@ export const FormEditarUsuario = (props) => {
           })
     
           setTimeout(() => {
-            window.location.reload()
+            navigate(0)
           }, 1500);
         }
         if(respuesta.data.status === 500){

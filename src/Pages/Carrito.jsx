@@ -12,16 +12,13 @@ export const Carrito = () => {
   const [hayCarrito, setHayCarrito] = useState(null)
   const navigate = useNavigate()
   const [total, setTotal] = useState(0)
-  const BD_USUARIOS = import.meta.env.VITE_BD_URL_USUARIOS
-  const BD_OBTENER_CARRITO = import.meta.env.VITE_BD_URL_OBTENER_CARRITO
-  const BD_ELIMINAR_CARRITO = import.meta.env.VITE_BD_URL_BORRAR_CARRITO
 
   const idUsuario = localStorage.getItem('idUsuario')
   const token = localStorage.getItem('token')
 
   useEffect(() => {
     const obtenercarrito = async () => {
-      const respuesta = await axios.get(BD_OBTENER_CARRITO)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/carritos/obtener-carrito")
       setCarrito(respuesta.data)
     }
 
@@ -31,7 +28,7 @@ export const Carrito = () => {
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuarioEspecifico = async () => {
-        const respuesta = await axios.get(`${BD_USUARIOS}/${idUsuario}`)
+        const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuario}`)
         setUsuarioEspecifico(respuesta.data.usuario)
       }
   
@@ -67,7 +64,7 @@ export const Carrito = () => {
   }, [carritoUsuario, carrito])
 
   const eliminarProdCarrito = async (id) => {
-    const respuesta = await axios.delete(BD_ELIMINAR_CARRITO, {
+    const respuesta = await axios.delete("https://proyectofinal-ecomrc-back.onrender.com/carritos/borrar-carrito", {
       data: {
         id: id,
         accessToken: token

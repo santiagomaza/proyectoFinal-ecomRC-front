@@ -9,8 +9,6 @@ export const FormAgregarProducto = () => {
   const [categorias, setCategorias] = useState([])
   const [registroProducto, setRegistroProducto] = useState(false)
   const navigate = useNavigate()
-  const BD_AGREGAR_PRODUCTO = import.meta.env.VITE_BD_URL_AGREGAR_PRODUCTO
-  const BD_OBTENER_CATEGORIAS = import.meta.env.VITE_BD_URL_OBTENER_CATEGORIAS
 
   const {
     register,
@@ -20,7 +18,7 @@ export const FormAgregarProducto = () => {
 
   useEffect(() => {
     const obtenerCategorias = async () => {
-      const respuesta = await axios.get(BD_OBTENER_CATEGORIAS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
       setCategorias(respuesta.data)
     }
 
@@ -31,7 +29,7 @@ export const FormAgregarProducto = () => {
 
   const agregarProducto = async (data) => {
     setRegistroProducto(true)
-    const respuesta = await axios.post(BD_AGREGAR_PRODUCTO, data)
+    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/productos/crear-producto", data)
 
     if(respuesta.data.status === 201){
       setRegistroProducto(false)

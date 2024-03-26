@@ -7,12 +7,10 @@ import { Footer } from '../Components/Footer'
 export const Bebidas = () => {
   const [bebidas, setBebidas] = useState([])
   const [categoriaBebidas, setCategoriaBebidas] = useState([])
-  const BD_OBTENER_PRODUCTOS = import.meta.env.VITE_BD_URL_OBTENER_PRODUCTOS
-  const BD_OBTENER_CATEGORIAS = import.meta.env.VITE_BD_URL_OBTENER_CATEGORIAS
 
   useEffect(() => {
     const obtenerProductos = async () => {
-      const respuesta = await axios.get(BD_OBTENER_PRODUCTOS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
 
       setBebidas(respuesta.data.filter((producto) => producto.categoria === "Bebidas"))
     }
@@ -22,7 +20,7 @@ export const Bebidas = () => {
 
   useEffect(() => {
     const obtenerCategoriasBebidas = async () => {
-      const respuesta = await axios.get(BD_OBTENER_CATEGORIAS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
 
       setCategoriaBebidas(respuesta.data.filter((categoria) => categoria.categoria === "Bebidas").shift())
     }

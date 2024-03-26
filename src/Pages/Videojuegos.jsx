@@ -7,12 +7,10 @@ import { Footer } from "../Components/Footer"
 export const Videojuegos = () => {
   const [videojuegos, setVideojuegos] = useState([])
   const [categoriaVideojuegos, setCategoriaVideojuegos] = useState([])
-  const BD_OBTENER_PRODUCTOS = import.meta.env.VITE_BD_URL_OBTENER_PRODUCTOS
-  const BD_OBTENER_CATEGORIAS = import.meta.env.VITE_BD_URL_OBTENER_CATEGORIAS
 
   useEffect(() => {
     const obtenerProductos = async () => {
-      const respuesta = await axios.get(BD_OBTENER_PRODUCTOS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
 
       setVideojuegos(respuesta.data.filter((producto) => producto.categoria === "Videojuegos"))
     }
@@ -22,7 +20,7 @@ export const Videojuegos = () => {
 
   useEffect(() => {
     const obtenerCategoriasVideojuegos = async () => {
-      const respuesta = await axios.get(BD_OBTENER_CATEGORIAS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
 
       setCategoriaVideojuegos(respuesta.data.filter((categoria) => categoria.categoria === "Videojuegos").shift())
     }

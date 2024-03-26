@@ -11,11 +11,10 @@ export const FormRegistro = () => {
   const navigate = useNavigate()
   const [registro, setRegistro] = useState(false)
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
-  const BD_REGISTRO = import.meta.env.VITE_BD_URL_REGISTRAR_USUARIO
 
   const registrarse = async (data) => {
     setRegistro(true)
-    const respuesta = await axios.post(BD_REGISTRO, data)
+    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/usuarios/registrar-usuario", data)
     console.log(respuesta)
 
     if(respuesta.data.status === 201){

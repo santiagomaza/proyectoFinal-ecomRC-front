@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 export const BotonEliminarUsuario = ({idUsuario, nombre, usuario}) => {
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
-  const BD_ELIMINAR_USUARIO = import.meta.env.VITE_BD_URL_BORRAR_USUARIO
 
   const borrarUsuario = (nombre) => {
     Swal.fire({
@@ -26,7 +25,7 @@ export const BotonEliminarUsuario = ({idUsuario, nombre, usuario}) => {
           })
         }
         else{
-          const respuesta = await axios.delete(BD_ELIMINAR_USUARIO, {
+          const respuesta = await axios.delete("https://proyectofinal-ecomrc-back.onrender.com/usuarios/eliminar-usuario", {
             data: {
               id: idUsuario,
               accessToken: token

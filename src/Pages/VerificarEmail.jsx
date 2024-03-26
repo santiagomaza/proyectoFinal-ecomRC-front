@@ -10,22 +10,20 @@ export const VerificarEmail = () => {
   const navigate = useNavigate()
   const [usuario, setUsuario] = useState({})
   let idUsuarioNuevo = localStorage.getItem("idUsuarioNuevo")
-  const BD_USUARIOS = import.meta.env.VITE_BD_URL_USUARIOS
-  const BD_CAMBIAR_ESTADO = import.meta.env.VITE_BD_URL_CAMBIAR_ESTADO_USUARIO
 
   useEffect(() => {
     const obtenerInfoUsuario = async () => {
-      const respuesta = await axios.get(`${BD_USUARIOS}/${idUsuarioNuevo}`)
+      const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuarioNuevo}`)
       setUsuario(respuesta.data.usuario)
     }
 
     obtenerInfoUsuario()
-  }, [idUsuarioNuevo, BD_USUARIOS])
+  }, [idUsuarioNuevo])
 
   useEffect(() => {
     const cambiarEstadoCuenta = async () => {
       if(usuario._id === id && usuario.estado === "Pendiente"){
-        await axios.patch(BD_CAMBIAR_ESTADO, {
+        await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/usuarios/cambiar-estado", {
           id: idUsuarioNuevo,
           estado: "Activo"
         })

@@ -11,7 +11,7 @@ export const BotonDestacarProducto = ({idProducto, nombre}) => {
   const BD_DESTACAR_PRODUCTO = import.meta.env.VITE_BD_URL_DESTACAR_PRODUCTO
 
   useEffect(() => {
-    axios.get(`${BD_OBTENER_PRODUCTOS}`)
+    axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
     .then(response => {
       setProductos(response.data)
     })
@@ -39,7 +39,7 @@ export const BotonDestacarProducto = ({idProducto, nombre}) => {
         cancelButtonText: "Cancelar"
       }).then(async (result) => {
         if(result.isConfirmed){
-          const respuesta = await axios.patch(`${BD_DESTACAR_PRODUCTO}`, {
+          const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/productos/destacar-producto", {
             id: idProducto,
             destacado: true,
             accessToken: token

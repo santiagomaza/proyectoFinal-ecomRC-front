@@ -7,12 +7,10 @@ import { Footer } from "../Components/Footer"
 export const Indumentaria = () => {
   const [indumentaria, setIndumentaria] = useState([])
   const [categoriaIndumentaria, setCategoriaIndumentaria] = useState([])
-  const BD_OBTENER_PRODUCTOS = import.meta.env.VITE_BD_URL_OBTENER_PRODUCTOS
-  const BD_OBTENER_CATEGORIAS = import.meta.env.VITE_BD_URL_OBTENER_CATEGORIAS
 
   useEffect(() => {
     const obtenerIndumentaria = async () => {
-      const respuesta = await axios.get(BD_OBTENER_PRODUCTOS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
       setIndumentaria(respuesta.data.filter((producto) => producto.categoria === "Indumentaria"))
     }
 
@@ -21,7 +19,7 @@ export const Indumentaria = () => {
 
   useEffect(() => {
     const obtenerCategoriaIndumentaria = async () => {
-      const respuesta = await axios.get(BD_OBTENER_CATEGORIAS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
       setCategoriaIndumentaria(respuesta.data.filter((categoria) => categoria.categoria === "Indumentaria").shift())
     }
 

@@ -13,12 +13,11 @@ export const AdminUsuarios = () => {
   const [usuario, setUsuario] = useState({})
   const idUsuario = localStorage.getItem("idUsuario");
   const navigate = useNavigate()
-  const BD_USUARIOS = import.meta.env.VITE_BD_URL_USUARIOS
 
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuario = async () => {
-        const respuesta = await axios.get(`${BD_USUARIOS}/${idUsuario}`);
+        const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuario}`);
         setUsuario(respuesta.data.usuario);
       }
 

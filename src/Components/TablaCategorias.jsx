@@ -7,11 +7,10 @@ import { BotonEliminarCategoria } from './BotonEliminarCategoria';
 
 export const TablaCategorias = () => {
   const [categorias, setCategorias] = useState([])
-  const BD_OBTENER_CATEGORIAS = import.meta.env.VITE_BD_URL_OBTENER_CATEGORIAS
 
   useEffect(() => {
     const obtenerCategorias = async () => {
-      const respuesta = await axios.get(BD_OBTENER_CATEGORIAS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
       setCategorias(respuesta.data)
       console.log(respuesta.data)
     }

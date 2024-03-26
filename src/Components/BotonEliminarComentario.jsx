@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 export const BotonEliminarComentario = ({ id }) => {
   const navigate = useNavigate()
   const token = localStorage.getItem("token")
-  const BD_ELIMINAR_COMENTARIO = import.meta.env.VITE_BD_URL_BORRAR_COMENTARIO
 
   const eliminarComentario = () => {
     Swal.fire({
@@ -18,7 +17,7 @@ export const BotonEliminarComentario = ({ id }) => {
       confirmButtonText: "Si, borrar!"
     }).then(async(result) => {
       if(result.isConfirmed) {
-        await axios.delete(BD_ELIMINAR_COMENTARIO, {
+        await axios.delete("https://proyectofinal-ecomrc-back.onrender.com/comentarios/borrar-comentario", {
           data: {
             id: id,
             accessToken: token

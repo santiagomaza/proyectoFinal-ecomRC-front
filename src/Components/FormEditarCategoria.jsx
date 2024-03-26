@@ -8,7 +8,6 @@ export const FormEditarCategoria = ({ idCategoria, nombre, descripcion }) => {
   const [editandoCategoria, setEditandoCategoria] = useState(false)
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
-  const BD_EDITAR_CATEGORIA = import.meta.env.VITE_BD_URL_EDITAR_CATEGORIA
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -25,7 +24,7 @@ export const FormEditarCategoria = ({ idCategoria, nombre, descripcion }) => {
       if(result.isConfirmed){
         setEditandoCategoria(true)
 
-        const respuesta = await axios.patch(BD_EDITAR_CATEGORIA, {
+        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/categorias/modificar-categoria", {
           id: idCategoria,
           categoria: data.categoria,
           descripcion: data.descripcion,

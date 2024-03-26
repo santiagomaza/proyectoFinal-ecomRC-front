@@ -7,7 +7,6 @@ export const CarruselProductosDestacados = () => {
   const [index, setIndex] = useState(0);
   const [productoDestacado, setProductoDestacado] = useState([])
   const [hayProdDestacado, setHayProdDestacado] = useState(false)
-  const BD_OBTENER_PRODUCTOS = import.meta.env.VITE_BD_URL_OBTENER_PRODUCTOS
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -15,7 +14,7 @@ export const CarruselProductosDestacados = () => {
 
   useEffect(() => {
     const obtenerProductosDestacados = async () => {
-      const respuesta = await axios.get(`${BD_OBTENER_PRODUCTOS}`)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
       setProductoDestacado(respuesta.data.filter((producto) => producto.destacado === true).shift())
 
       setHayProdDestacado(true)

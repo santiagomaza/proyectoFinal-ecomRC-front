@@ -18,14 +18,11 @@ export const NavbarPagina = () => {
   const [usuario, setUsuario] = useState({})
   const [carrito, setCarrito] = useState([])
   const [favoritos, setFavoritos] = useState([])
-  const BD_USUARIOS = import.meta.env.VITE_BD_URL_USUARIOS
-  const BD_OBTENER_CARRITO = import.meta.env.VITE_BD_URL_OBTENER_CARRITO
-  const BD_OBTENER_FAVORITOS = import.meta.env.VITE_BD_URL_OBTENER_FAVORITO
 
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuarioEspecifico = async () => {
-        const respuesta = await axios.get(`${BD_USUARIOS}/${idUsuario}`)
+        const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuario}`)
   
         setUsuario(respuesta.data.usuario)
       }
@@ -36,7 +33,7 @@ export const NavbarPagina = () => {
 
   useEffect(() => {
     const obtenerCarrito = async () => {
-      const respuesta = await axios.get(BD_OBTENER_CARRITO)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/carritos/obtener-carrito")
       setCarrito(respuesta.data)
     }
 
@@ -47,7 +44,7 @@ export const NavbarPagina = () => {
 
   useEffect(() => {
     const obtenerFavoritos = async () => {
-      const respuesta = await axios.get(BD_OBTENER_FAVORITOS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/favoritos/obtener-favoritos")
       setFavoritos(respuesta.data)
     }
 
@@ -133,7 +130,7 @@ export const NavbarPagina = () => {
       }
       </Container>
       <Navbar.Collapse className={token && usuario.rol === "admin" ? "navegacionAdminLogueado" : token && usuario.rol === "usuario" ? "navegacionUsuarioComun" : "navegacionSinIS"}>
-        <NavLink to={"/pagContacto"} reloadDocument className={"text-decoration-none text-dark"}>Contacto</NavLink>
+        <NavLink to={"/contacto"} reloadDocument className={"text-decoration-none text-dark"}>Contacto</NavLink>
         <NavLink to={"/"} reloadDocument className={"text-decoration-none text-dark"}>Inicio</NavLink>
         {
           token ? 

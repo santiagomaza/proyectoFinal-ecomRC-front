@@ -14,13 +14,11 @@ export const Favoritos = () => {
   const token = localStorage.getItem('token')
 
   const idUsuario = localStorage.getItem('idUsuario')
-  const BD_OBTENER_FAVORITOS = import.meta.env.VITE_BD_URL_OBTENER_FAVORITO
-  const BD_USUARIOS = import.meta.env.VITE_BD_URL_USUARIOS
-  const BD_BORRAR_FAVORITOS = import.meta.env.VITE_BD_URL_BORRAR_FAVORITO
+  
 
   useEffect(() => {
     const obtenerFavoritos = async () => {
-      const respuesta = await axios.get(BD_OBTENER_FAVORITOS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/favoritos/obtener-favoritos")
       setFavoritos(respuesta.data)
       console.log(respuesta.data)
     }
@@ -31,7 +29,7 @@ export const Favoritos = () => {
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuarioEspecifico = async () => {
-        const respuesta = await axios.get(`${BD_USUARIOS}/${idUsuario}`)
+        const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuario}`)
         setUsuario(respuesta.data.usuario)
       }
   
@@ -54,7 +52,7 @@ export const Favoritos = () => {
   }, [favoritosUsuario.length])
 
   const quitarFavoritos = async (id) => {
-    const respuesta = await axios.delete(BD_BORRAR_FAVORITOS, {
+    const respuesta = await axios.delete("https://proyectofinal-ecomrc-back.onrender.com/favoritos/borrar-favorito", {
       data: {
         id: id,
         accessToken: token

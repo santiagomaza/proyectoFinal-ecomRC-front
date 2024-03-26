@@ -7,7 +7,6 @@ import { useState } from 'react'
 export const FormCrearUsuario = () => {
   const navigate = useNavigate()
   const [registro, setRegistro] = useState(false)
-  const BD_CREAR_USUARIO = import.meta.env.VITE_BD_URL_CREAR_USUARIO
 
   const {
     register,
@@ -19,7 +18,7 @@ export const FormCrearUsuario = () => {
   const crearUsuario = async (data) => {
     setRegistro(true)
 
-    const respuesta = await axios.post(BD_CREAR_USUARIO, data)
+    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/usuarios/crear-usuario", data)
     console.log(respuesta.data)
 
     if(respuesta.data.status === 201){

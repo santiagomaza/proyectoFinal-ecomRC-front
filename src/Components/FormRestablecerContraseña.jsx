@@ -13,7 +13,6 @@ export const FormRestablecerContraseña = ({token}) => {
   let idUsuario = localStorage.getItem('idUsuarioRC')
   const { register, watch, handleSubmit, formState: { errors } } = useForm()
   const [cambiandoContraseña, setCambiandoContraseña] = useState(false)
-  const BD_RESTABLECER_CONTRASEÑA = import.meta.env.VITE_BD_URL_RESTORE_PASSWORD
 
   useEffect(() => {
     if(!emailUsuario){
@@ -30,7 +29,7 @@ export const FormRestablecerContraseña = ({token}) => {
   const cambiarContraseña = async (data) => {
     setCambiandoContraseña(true)
 
-    const respuesta = await axios.patch(BD_RESTABLECER_CONTRASEÑA, {
+    const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/usuarios/restablecer-contrasenia", {
       id: idUsuario,
       contraseña: data.contraseña,
       forgotPasswordToken: tokenUsuario

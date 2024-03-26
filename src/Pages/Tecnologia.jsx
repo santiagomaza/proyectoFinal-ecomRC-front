@@ -7,12 +7,10 @@ import { useState, useEffect } from 'react'
 export const Tecnologia = () => {
   const [tecnologia, setTecnologia] = useState([])
   const [categoriaTecnologia, setCategoriaTecnologia] = useState([])
-  const BD_OBTENER_PRODUCTOS = import.meta.env.VITE_BD_URL_OBTENER_PRODUCTOS
-  const BD_OBTENER_CATEGORIAS = import.meta.env.VITE_BD_URL_OBTENER_CATEGORIAS
 
   useEffect(() => {
     const obtenerTecnologia = async () => {
-      const respuesta = await axios.get(BD_OBTENER_PRODUCTOS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
       setTecnologia(respuesta.data.filter((producto) => producto.categoria === "Tecnología"))
     }
 
@@ -21,7 +19,7 @@ export const Tecnologia = () => {
 
   useEffect(() => {
     const obtenerCategoriaTecnologia = async () => {
-      const respuesta = await axios.get(BD_OBTENER_CATEGORIAS)
+      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
       setCategoriaTecnologia(respuesta.data.filter((categoria) => categoria.categoria === "Tecnología").shift())
     }
 

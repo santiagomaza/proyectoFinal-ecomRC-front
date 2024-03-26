@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 export const BotonQuitarDestacado = ({idProducto, nombre}) => {
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
-  const BD_QUITAR_DESTACADO = import.meta.env.VITE_BD_URL_DESTACAR_PRODUCTO
 
   const quitarDestacado = () => {
     Swal.fire({
@@ -18,7 +17,7 @@ export const BotonQuitarDestacado = ({idProducto, nombre}) => {
       cancelButtonText: "Cancelar"
     }).then(async (result) => {
       if(result.isConfirmed){
-        const respuesta = await axios.patch(BD_QUITAR_DESTACADO, {
+        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/productos/destacar-producto", {
           id: idProducto,
           destacado: false,
           accessToken: token

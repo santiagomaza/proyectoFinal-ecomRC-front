@@ -6,10 +6,9 @@ import { ResultadosBusqueda } from './ResultadosBusqueda'
 export const BarraBuscadoraNavbar = () => {
   const [busqueda, setBusqueda] = useState('')
   const [productos, setProductos] = useState([])
-  const BD_OBTENER_PRODUCTOS = import.meta.env.VITE_BD_URL_OBTENER_PRODUCTOS
 
   useEffect(() => {
-    axios.get(`${BD_OBTENER_PRODUCTOS}`)
+    axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
     .then((response) => {
       setProductos(response.data)
     })

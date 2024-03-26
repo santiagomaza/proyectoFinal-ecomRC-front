@@ -7,7 +7,6 @@ export const FormEditarComentario = ({id, mensaje}) => {
   const { register, handleSubmit, formState: {errors} } = useForm()
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
-  const BD_EDITAR_COMENTARIO = import.meta.env.VITE_BD_URL_EDITAR_COMENTARIO
 
   const fecha = Date.now()
   const fechaActual = new Date(fecha)
@@ -24,7 +23,7 @@ export const FormEditarComentario = ({id, mensaje}) => {
       cancelButtonText: "Cancelar"
     }).then(async (result) => {
       if(result.isConfirmed){
-        const respuesta = await axios.patch(BD_EDITAR_COMENTARIO, {
+        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/comentarios/modificar-comentario", {
           id: id,
           mensaje: data.mensaje,
           fecha: date,

@@ -9,10 +9,9 @@ import Alert from 'react-bootstrap/Alert';
 export const FormBuscarEmail = () => {
   const [emailEncontrado, setEmailEncontrado] = useState(null)
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const BD_BUSCAR_EMAIL = import.meta.env.VITE_BD_URL_BUSCAR_EMAIL
 
   const buscarEmail = async (data) => {
-    const respuesta = await axios.post(BD_BUSCAR_EMAIL, data)
+    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/usuarios/buscar-email", data)
 
     if(respuesta.data.status === 200){
       setEmailEncontrado(true)
