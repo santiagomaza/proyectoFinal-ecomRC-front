@@ -42,28 +42,28 @@ function App() {
         :
         <Routes>
           <Route path = '/' element={<Home />}/>
-          <Route path = 'registrarse' element = {<Registro />}/>
-          <Route path = "login" element = {<Login/>}/>
-          <Route path = "*" element = {<Error404 />}/>
-          <Route path='administracion'>
+          <Route path = '/registrarse' element = {<Registro />}/>
+          <Route path = "/login" element = {<Login/>}/>
+          <Route path = "/*" element = {<Error404 />}/>
+          <Route path='/administracion'>
             <Route path='usuarios' element = {<AdminUsuarios/>}/>
             <Route path='productos' element = {<AdminProductos />}/>
             <Route path='categorias' element = {<AdminCategorias />}/>
           </Route>
-          <Route path = 'restablecerContraseña' element = {<RecuperarContraseñaPrev />}/>
-          <Route exact path = 'restablecerContraseña/:token' element = {<RecuperarContraseña />}/>
-          <Route path = 'contacto' element = {<Contacto />}/>
-          <Route path = 'verificar-email/:id' element = {<VerificarEmail />}/>
-          <Route path = 'Bebidas' element = {<Bebidas />}/>
-          <Route path = 'Indumentaria' element = {<Indumentaria />}/>
-          <Route path='Videojuegos' element = {<Videojuegos />}/>
-          <Route path='Tecnología' element = {<Tecnologia />}/>
-          <Route path = "producto">
-            <Route exact path = ':id' element = {<DetalleProducto />}/>
+          <Route path = '/restablecerContraseña' element = {<RecuperarContraseñaPrev />}/>
+          <Route path = '/restablecerContraseña/:token' element = {<RecuperarContraseña />}/>
+          <Route path = '/contacto' element = {<Contacto />}/>
+          <Route path = '/verificar-email/:id' element = {<VerificarEmail />}/>
+          <Route path = '/Bebidas' element = {<Bebidas />}/>
+          <Route path = '/Indumentaria' element = {<Indumentaria />}/>
+          <Route path='/Videojuegos' element = {<Videojuegos />}/>
+          <Route path='/Tecnología' element = {<Tecnologia />}/>
+          <Route path = "/producto">
+            <Route path = ':id' element = {<DetalleProducto />}/>
           </Route>
-          <Route path = 'carrito' element = {<Carrito/>}/>
-          <Route path ='favoritos' element = {<Favoritos />} />
-          <Route path ='quienesSomos' element = {<QuienesSomos />}/>
+          <Route path = '/carrito' element = {<Carrito/>}/>
+          <Route path ='/favoritos' element = {<Favoritos />} />
+          <Route path ='/quienesSomos' element = {<QuienesSomos />}/>
         </Routes>
       }
     </>
