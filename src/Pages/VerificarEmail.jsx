@@ -20,7 +20,7 @@ export const VerificarEmail = () => {
     }
 
     obtenerInfoUsuario()
-  }, [idUsuarioNuevo])
+  }, [idUsuarioNuevo, BD_USUARIOS])
 
   useEffect(() => {
     const cambiarEstadoCuenta = async () => {
@@ -30,16 +30,20 @@ export const VerificarEmail = () => {
           estado: "Activo"
         })
       }
-      else if(usuario._id !== id && (usuario.estado === "Activo" || usuario.estado === "Inactivo")){
-        navigate("/", { replace: true })
-      }
-      else if(usuario._id === id && (usuario.estado === "Activo" || usuario.estado === "Inactivo")){
-        navigate("/", { replace: true })
-      }
     }
 
     cambiarEstadoCuenta()
   }, [id, usuario._id])
+
+  useEffect(() => {
+    if(id !== idUsuarioNuevo){
+      navigate("/", { replace: true })
+    }
+
+    if(id === idUsuarioNuevo && (usuario.estado === "Activo" || usuario.estado === "Inactivo")){
+      navigate("/", { replace: true })
+    }
+  }, [id, idUsuarioNuevo])
 
   return (
     <div className='caja'>
