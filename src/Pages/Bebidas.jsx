@@ -12,7 +12,7 @@ export const Bebidas = () => {
     const obtenerProductos = async () => {
       const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
 
-      setBebidas(respuesta.data.filter((producto) => producto.categoria === "Bebidas"))
+      setBebidas(respuesta.data.producto.filter((producto) => producto.categoria === "Bebidas"))
     }
 
     obtenerProductos()

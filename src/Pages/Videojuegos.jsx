@@ -12,7 +12,7 @@ export const Videojuegos = () => {
     const obtenerProductos = async () => {
       const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
 
-      setVideojuegos(respuesta.data.filter((producto) => producto.categoria === "Videojuegos"))
+      setVideojuegos(respuesta.data.producto.filter((producto) => producto.categoria === "Videojuegos"))
     }
 
     obtenerProductos()

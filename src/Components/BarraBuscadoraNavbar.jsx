@@ -10,7 +10,7 @@ export const BarraBuscadoraNavbar = () => {
   useEffect(() => {
     axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
     .then((response) => {
-      setProductos(response.data)
+      setProductos(response.data.producto)
     })
   }, [])
   

@@ -15,7 +15,7 @@ export const CarruselProductosDestacados = () => {
   useEffect(() => {
     const obtenerProductosDestacados = async () => {
       const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
-      setProductoDestacado(respuesta.data.filter((producto) => producto.destacado === true).shift())
+      setProductoDestacado(respuesta.data.producto.filter((producto) => producto.destacado === true).shift())
 
       console.log(respuesta)
       

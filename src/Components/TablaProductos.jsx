@@ -13,7 +13,7 @@ export const TablaProductos = () => {
   useEffect(() => {
     const obtenerProductos = async () => {
       const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
-      setProductos(respuesta.data)
+      setProductos(respuesta.data.producto)
       console.log(respuesta.data)
     }
 

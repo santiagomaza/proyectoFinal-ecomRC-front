@@ -11,7 +11,7 @@ export const Tecnologia = () => {
   useEffect(() => {
     const obtenerTecnologia = async () => {
       const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
-      setTecnologia(respuesta.data.filter((producto) => producto.categoria === "Tecnología"))
+      setTecnologia(respuesta.data.producto.filter((producto) => producto.categoria === "Tecnología"))
     }
 
     obtenerTecnologia()

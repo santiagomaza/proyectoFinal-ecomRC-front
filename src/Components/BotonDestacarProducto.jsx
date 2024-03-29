@@ -7,13 +7,11 @@ export const BotonDestacarProducto = ({idProducto, nombre}) => {
   const [productos, setProductos] = useState([])
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
-  const BD_OBTENER_PRODUCTOS = import.meta.env.VITE_BD_URL_OBTENER_PRODUCTOS
-  const BD_DESTACAR_PRODUCTO = import.meta.env.VITE_BD_URL_DESTACAR_PRODUCTO
 
   useEffect(() => {
     axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
     .then(response => {
-      setProductos(response.data)
+      setProductos(response.data.producto)
     })
   }, [])
 

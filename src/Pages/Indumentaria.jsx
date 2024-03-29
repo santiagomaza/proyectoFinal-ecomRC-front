@@ -11,7 +11,7 @@ export const Indumentaria = () => {
   useEffect(() => {
     const obtenerIndumentaria = async () => {
       const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
-      setIndumentaria(respuesta.data.filter((producto) => producto.categoria === "Indumentaria"))
+      setIndumentaria(respuesta.data.producto.filter((producto) => producto.categoria === "Indumentaria"))
     }
 
     obtenerIndumentaria()
