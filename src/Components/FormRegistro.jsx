@@ -15,7 +15,6 @@ export const FormRegistro = () => {
   const registrarse = async (data) => {
     setRegistro(true)
     const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/usuarios/registrar-usuario", data)
-    console.log(respuesta)
 
     if(respuesta.data.status === 201){
       setRegistro(false)
@@ -40,15 +39,7 @@ export const FormRegistro = () => {
         showConfirmButton: true,
       })
     }
-    else if(respuesta.data.status === 401){
-      setRegistro(false)
-      Swal.fire({
-        icon: 'info',
-        title: respuesta.data.message,
-        showConfirmButton: true,
-      })
-    }
-    else if(respuesta.data.status === 402){
+    else if(respuesta.status === 401){
       setRegistro(false)
       Swal.fire({
         icon: 'info',
@@ -90,7 +81,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Nombre de Usuario</label>
-            <input type='text' className='form-control inputRegistro' placeholder='ej. santimaza99' {...register("username", {
+            <input type='text' autoComplete='off' className='form-control inputRegistro' placeholder='ej. pePito123*' {...register("username", {
               required: {
                 value: true,
                 message: "El nombre de usuario es requerido"
@@ -110,7 +101,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Domicilio</label>
-            <input type='text' className='form-control inputRegistro' placeholder='ej. Av Belgrano 1550' {...register("domicilio", {
+            <input type='text' autoComplete='off' className='form-control inputRegistro' placeholder='ej. Av Belgrano 1550' {...register("domicilio", {
               required: {
                 value: true,
                 message: "El domicilio es requerido"
@@ -130,7 +121,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Email</label>
-            <input type='email' className='form-control inputRegistro' placeholder='ej. pepito45@gmail.com' {...register("email", {
+            <input type='email' autoComplete='off' className='form-control inputRegistro' placeholder='ej. pepito45@gmail.com' {...register("email", {
               required: {
                 value: true,
                 message: "El email es requerido"
@@ -172,7 +163,7 @@ export const FormRegistro = () => {
         <article className='d-block'>
           <div className='mb-1'>
             <label className='form-label'>Provincia / Estado</label>
-            <input type='text' className='form-control inputRegistro' placeholder='ej. Tucumán' {...register("provincia", {
+            <input type='text' autoComplete='off' className='form-control inputRegistro' placeholder='ej. Tucumán' {...register("provincia", {
               required: {
                 value: true,
                 message: "La provincia es requerida"
@@ -192,7 +183,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Código Postal</label>
-            <input type='number' className='form-control inputRegistro' placeholder='ej. 4000' {...register("codigoPostal", {
+            <input type='number' autoComplete='off' className='form-control inputRegistro' placeholder='ej. 4000' {...register("codigoPostal", {
               required: {
                 value: true,
                 message: "El código postal es requerido"
@@ -212,7 +203,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>N°Telefono</label>
-            <input type='number' className='form-control inputRegistro' placeholder='ej. 3814345653' {...register("telefono", {
+            <input type='number' autoComplete='off' className='form-control inputRegistro' placeholder='ej. 3814345653' {...register("telefono", {
               required: {
                 value: true,
                 message: "El número de teléfono es requerido"
@@ -232,7 +223,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Contraseña</label>
-            <input type='password' className='form-control inputRegistro' placeholder='ej. Pepito123*' {...register("contraseña", {
+            <input type='password' autoComplete='off' className='form-control inputRegistro' placeholder='ej. Pepito123*' {...register("contraseña", {
               required: {
                 value: true,
                 message: "La contraseña es requerida"
@@ -256,7 +247,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Repetir Contraseña</label>
-            <input type='password' className='form-control inputRegistro' placeholder='ej. Pepito123*' {...register("repContraseña", {
+            <input type='password' autoComplete='off' className='form-control inputRegistro' placeholder='ej. Pepito123*' {...register("repContraseña", {
               required: {
                 value: true,
                 message: "Repetir contraseña es requerida"
