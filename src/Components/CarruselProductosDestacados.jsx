@@ -26,7 +26,7 @@ export const CarruselProductosDestacados = () => {
     }
 
     obtenerProductosDestacados()
-  }, [productoDestacado])
+  }, [])
 
   return (
     <div className="d-flex justify-content-center">

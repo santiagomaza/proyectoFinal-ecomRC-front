@@ -26,7 +26,7 @@ export const Videojuegos = () => {
     }
 
     obtenerCategoriasVideojuegos()
-  }, [categoriaVideojuegos])
+  }, [])
 
   return (
     <>

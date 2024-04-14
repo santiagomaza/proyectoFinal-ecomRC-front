@@ -140,13 +140,13 @@ export const NavbarPagina = () => {
               usuario.rol === "admin" ?
               <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>
                 <NavDropdown.Item>
-                  <NavLink to={"/administracion/usuarios"} onClick={() => localStorage.setItem("path", "/administracion/usuarios")} className="text-decoration-none text-dark">Usuarios</NavLink>
+                  <NavLink to={"/administracion/usuarios"} className="text-decoration-none text-dark">Usuarios</NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <NavLink to={"/administracion/productos"} onClick={() => localStorage.setItem("path", "/administracion/productos")} className="text-decoration-none text-dark">Productos</NavLink>
+                  <NavLink to={"/administracion/productos"} className="text-decoration-none text-dark">Productos</NavLink>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <NavLink to={"/administracion/categorias"} onClick={() => localStorage.setItem("path", "/administracion/categorias")} className="text-decoration-none text-dark">Categorias</NavLink>
+                  <NavLink to={"/administracion/categorias"} className="text-decoration-none text-dark">Categorias</NavLink>
                 </NavDropdown.Item>
               </NavDropdown>
               :
