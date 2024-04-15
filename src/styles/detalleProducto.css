@@ -61,6 +61,34 @@
   background-color: #d79821;
 }
 
+@media (320px <= width <= 474.98px){
+  .artDetProducto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contenedorDetProd{
+    width: 98%;
+    height: 1150px;
+  }
+
+  .detallesProducto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    top: 15px;
+    left: 0px;
+    overflow: visible;
+  }
+
+  .descripcion{
+    text-align: center;
+  }
+
+}
+
 @media (min-width: 475px) and (max-width: 575px){
   *{
     margin: 0;
@@ -112,7 +140,7 @@
 
   .contenedorDetProd{
     width: 98%;
-    height: 1000px;
+    height: 1400px;
   }
 
   .artDetProducto{

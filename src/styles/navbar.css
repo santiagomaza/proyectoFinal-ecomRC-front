@@ -134,7 +134,15 @@
   }
 }
 
-@media (min-width: 275px) and (max-width: 474.98px){
+@media (min-width: 320px) and (max-width: 474.98px){
+  .navbar{
+    background-color: #f4ae2b;
+    position: fixed;
+    width: 100vw;
+    z-index: 1;
+    top: 0;
+  }
+
   .navbar-nav-iconosCyF{
     position: absolute;
     left: 125px;
@@ -144,6 +152,24 @@
   .badges{
     bottom: 55px;
     left: 55px;
+  }
+
+  .navegacionUsuarioComun{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 500px;
+    margin-left: 55px;
+    font-size: 24px;
+  }
+
+  .navegacionAdminLogueado{
+    display: flex;
+    flex-direction: column;
+    right: 20px;
+    position: relative;
+    bottom: 5px;
+    font-size: 18px;
   }
 }
 

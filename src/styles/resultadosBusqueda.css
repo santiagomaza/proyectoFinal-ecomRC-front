@@ -34,6 +34,19 @@
   }
 }
 
+@media(320px <= width <= 474.98px){
+  .resultados{
+    left: 30px;
+    top: 160px;
+    width: 85vw;
+    max-height: 180px;
+    overflow-y: scroll;
+    flex-direction: column;
+    z-index: 1;
+    box-shadow: 1px 2px 10px #000;
+  }
+}
+
 @media (min-width: 475px) and (max-width: 574px){
   .resultados{
     left: 30px;

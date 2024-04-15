@@ -13,6 +13,12 @@
   left: 43px;
 }
 
+@media(320px <= width <= 474.98px){
+  .botonesCardComentario{
+    left: 330px;
+  }
+}
+
 @media (min-width: 475px) and (max-width: 575px){
   .botonesCardComentario{
     left: 380px;

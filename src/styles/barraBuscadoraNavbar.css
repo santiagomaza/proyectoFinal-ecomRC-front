@@ -28,6 +28,12 @@
   }
 }
 
+@media (320px <= width <= 474.98px){
+  .inputBarra{
+     width: 85vw;
+   }
+}
+
 @media (min-width: 475px) and (max-width: 575px){
   .inputBarra{
     width: 100%;
