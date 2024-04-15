@@ -139,14 +139,14 @@ export const NavbarPagina = () => {
             {
               usuario.rol === "admin" ?
               <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>
-                <NavDropdown.Item>
-                  <NavLink to={"/administracion/usuarios"} className="text-decoration-none text-dark">Usuarios</NavLink>
+                <NavDropdown.Item reloadDocument onClick={() => window.location.href = "/administracion/usuarios"}>
+                  Usuarios
                 </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <NavLink to={"/administracion/productos"} className="text-decoration-none text-dark">Productos</NavLink>
+                <NavDropdown.Item reloadDocument onClick={() => window.location.href = "/administracion/productos"}>
+                  Productos
                 </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <NavLink to={"/administracion/categorias"} className="text-decoration-none text-dark">Categorias</NavLink>
+                <NavDropdown.Item reloadDocument onClick={() => window.location.href = "/administracion/categorias"}>
+                  Categorias
                 </NavDropdown.Item>
               </NavDropdown>
               :
