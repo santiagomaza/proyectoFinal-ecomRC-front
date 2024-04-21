@@ -8,9 +8,9 @@ import axios from 'axios'
 
 export const FormRestablecerContraseña = ({token}) => {
   const navigate = useNavigate()
-  let emailUsuario = localStorage.getItem('email')
-  let tokenUsuario = localStorage.getItem('tokenRecContraseña')
-  let idUsuario = localStorage.getItem('idUsuarioRC')
+  let emailUsuario = sessionStorage.getItem('email')
+  let tokenUsuario = sessionStorage.getItem('tokenRecContraseña')
+  let idUsuario = sessionStorage.getItem('idUsuarioRC')
   const { register, watch, handleSubmit, formState: { errors } } = useForm()
   const [cambiandoContraseña, setCambiandoContraseña] = useState(false)
 
@@ -47,9 +47,9 @@ export const FormRestablecerContraseña = ({token}) => {
       setTimeout(() => {
         navigate("/", {replace: true})
 
-        localStorage.removeItem('email')
-        localStorage.removeItem('tokenRecContraseña')
-        localStorage.removeItem('idUsuario')
+        sessionStorage.removeItem('email')
+        sessionStorage.removeItem('tokenRecContraseña')
+        sessionStorage.removeItem('idUsuario')
       }, 1500);
     }
     else if(respuesta.data.status === 500){

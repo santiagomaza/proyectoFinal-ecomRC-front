@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 export const AdminUsuarios = () => {
   const [show, setShow] = useState(false);
   const [usuario, setUsuario] = useState({})
-  const idUsuario = localStorage.getItem("idUsuario");
+  const idUsuario = sessionStorage.getItem("idUsuario");
   const navigate = useNavigate()
 
   useEffect(() => {

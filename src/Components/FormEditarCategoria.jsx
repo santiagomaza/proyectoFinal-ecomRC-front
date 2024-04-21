@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 export const FormEditarCategoria = ({ idCategoria, nombre, descripcion }) => {
   const [editandoCategoria, setEditandoCategoria] = useState(false)
   const navigate = useNavigate()
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 

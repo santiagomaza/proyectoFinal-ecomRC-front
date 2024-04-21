@@ -8,7 +8,7 @@ export const FormEditarProducto = (props) => {
   const [categorias, setCategorias] = useState([])
   const [edicionProducto, setEdicionProducto] = useState(false)
   const navigate = useNavigate()
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 

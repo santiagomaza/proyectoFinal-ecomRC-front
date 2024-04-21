@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 export const BotonDestacarProducto = ({idProducto, nombre}) => {
   const [productos, setProductos] = useState([])
   const navigate = useNavigate()
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   useEffect(() => {
     axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")

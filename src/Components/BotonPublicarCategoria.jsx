@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const BotonPublicarCategoria = ({idCategoria, nombre}) => {
   const navigate = useNavigate()
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   const publicarCategoria = () => {
     Swal.fire({

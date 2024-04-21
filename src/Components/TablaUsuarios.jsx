@@ -10,7 +10,6 @@ export const TablaUsuarios = () => {
     const obtenerUsuarios = async () => {
       const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/usuarios/obtener-usuarios")
       setUsuarios(respuesta.data.usuario)
-      console.log(respuesta.data.usuario)
     }
 
     obtenerUsuarios()

@@ -11,9 +11,9 @@ export const Favoritos = () => {
   const [usuario, setUsuario] = useState({})
   const [hayFavoritos, setHayFavoritos] = useState(false)
   const navigate = useNavigate()
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
-  const idUsuario = localStorage.getItem('idUsuario')
+  const idUsuario = sessionStorage.getItem('idUsuario')
   
 
   useEffect(() => {

@@ -19,7 +19,6 @@ export const FormCrearUsuario = () => {
     setRegistro(true)
 
     const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/usuarios/crear-usuario", data)
-    console.log(respuesta.data)
 
     if(respuesta.data.status === 201){
       setRegistro(false)

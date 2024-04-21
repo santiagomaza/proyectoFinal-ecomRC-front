@@ -20,9 +20,9 @@ export const DetalleProducto = () => {
   const [hayFavoritos, setHayFavoritos] = useState(false)
   
   const navigate = useNavigate()
-  const idUsuario = localStorage.getItem("idUsuario")
+  const idUsuario = sessionStorage.getItem("idUsuario")
   const { id } = useParams()
-  const token = localStorage.getItem("token")
+  const token = sessionStorage.getItem("token")
 
   useEffect(() => {
     const obtenerProductoEspecifico = async () => {

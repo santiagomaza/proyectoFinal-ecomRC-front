@@ -13,8 +13,8 @@ export const Carrito = () => {
   const navigate = useNavigate()
   const [total, setTotal] = useState(0)
 
-  const idUsuario = localStorage.getItem('idUsuario')
-  const token = localStorage.getItem('token')
+  const idUsuario = sessionStorage.getItem('idUsuario')
+  const token = sessionStorage.getItem('token')
 
   useEffect(() => {
     const obtenercarrito = async () => {

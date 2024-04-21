@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const BotonEliminarUsuario = ({idUsuario, nombre, usuario}) => {
   const navigate = useNavigate()
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   const borrarUsuario = (nombre) => {
     Swal.fire({
@@ -31,7 +31,6 @@ export const BotonEliminarUsuario = ({idUsuario, nombre, usuario}) => {
               accessToken: token
             }
           })
-          console.log(respuesta)
   
           if(respuesta.data.status === 200){
             Swal.fire({

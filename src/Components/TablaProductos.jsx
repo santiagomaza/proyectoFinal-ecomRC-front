@@ -14,7 +14,6 @@ export const TablaProductos = () => {
     const obtenerProductos = async () => {
       const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
       setProductos(respuesta.data.producto)
-      console.log(respuesta.data)
     }
 
     obtenerProductos()

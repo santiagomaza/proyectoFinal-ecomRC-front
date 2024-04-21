@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export const CardComentario = ({ id, usuario, msj, fecha }) => {
   const [usuarioEsp, setUsuario] = useState({})
-  const idUsuario = localStorage.getItem('idUsuario')
+  const idUsuario = sessionStorage.getItem('idUsuario')
 
   useEffect(() => {
     if(idUsuario){

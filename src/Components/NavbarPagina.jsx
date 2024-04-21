@@ -13,8 +13,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export const NavbarPagina = () => {
-  const token = localStorage.getItem('token')
-  const idUsuario = localStorage.getItem('idUsuario')
+  const token = sessionStorage.getItem('token')
+  const idUsuario = sessionStorage.getItem('idUsuario')
   const [usuario, setUsuario] = useState({})
   const [carrito, setCarrito] = useState([])
   const [favoritos, setFavoritos] = useState([])
@@ -135,7 +135,7 @@ export const NavbarPagina = () => {
         {
           token ? 
           <>
-            <NavLink to={"/"} onClick={() => localStorage.clear()} reloadDocument className={"text-decoration-none text-dark"}>Cerrar Sesión</NavLink>
+            <NavLink to={"/"} onClick={() => sessionStorage.clear()} reloadDocument className={"text-decoration-none text-dark"}>Cerrar Sesión</NavLink>
             {
               usuario.rol === "admin" ?
               <NavDropdown title="Administración" id="collapsible-nav-dropdown" className='admin text-dark'>

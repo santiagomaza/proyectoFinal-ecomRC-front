@@ -26,8 +26,8 @@ export const FormInicioSesion = () => {
         timer: 1500
       })
 
-      localStorage.setItem("token", respuesta.data.token)
-      localStorage.setItem("idUsuario", respuesta.data.usuario._id)
+      sessionStorage.setItem("token", respuesta.data.token)
+      sessionStorage.setItem("idUsuario", respuesta.data.usuario._id)
 
       setTimeout(() => {
         navigate("/", { replace: true })

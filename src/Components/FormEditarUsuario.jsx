@@ -7,7 +7,7 @@ import { useState } from 'react'
 export const FormEditarUsuario = (props) => {
   const navigate = useNavigate()
   const [edicion, setEdicion] = useState(false)
-  const token = localStorage.getItem("token")
+  const token = sessionStorage.getItem("token")
 
   const {
     register,

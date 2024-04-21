@@ -6,8 +6,8 @@ import axios from 'axios'
 
 export const CajaComentario = ({ usuario, producto }) => {
   const navigate = useNavigate()
-  const idUsuario = localStorage.getItem("idUsuario")
-  const token = localStorage.getItem("token")
+  const idUsuario = sessionStorage.getItem("idUsuario")
+  const token = sessionStorage.getItem("token")
   const [usuarioLogueado, setUsuarioLogueado] = useState(null)
 
   const fecha = Date.now()

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const AdminCategorias = () => {
   const [show, setShow] = useState(false);
-  const idUsuario = localStorage.getItem("idUsuario");
+  const idUsuario = sessionStorage.getItem("idUsuario");
   const navigate = useNavigate()
   const [usuario, setUsuario] = useState({})
 

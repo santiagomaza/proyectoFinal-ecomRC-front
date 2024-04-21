@@ -9,7 +9,7 @@ export const VerificarEmail = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [usuario, setUsuario] = useState({})
-  let idUsuarioNuevo = localStorage.getItem("idUsuarioNuevo")
+  let idUsuarioNuevo = sessionStorage.getItem("idUsuarioNuevo")
 
   useEffect(() => {
     const obtenerInfoUsuario = async () => {

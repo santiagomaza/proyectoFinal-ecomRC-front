@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 export const FormEditarComentario = ({id, mensaje}) => {
   const { register, handleSubmit, formState: {errors} } = useForm()
   const navigate = useNavigate()
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   const fecha = Date.now()
   const fechaActual = new Date(fecha)
