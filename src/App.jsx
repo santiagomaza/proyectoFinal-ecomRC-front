@@ -25,6 +25,17 @@ import { Tecnologia } from './Pages/Tecnologia'
 
 function App() {
   const [cargando, setCargando] = useState(false)
+  let tokenUsuario = localStorage.getItem('token')
+
+  useEffect(() => {
+    if(tokenUsuario){
+      setTimeout(() => {
+        localStorage.clear()
+        window.location.reload()
+      }, 600000);
+    }
+  }, [])
+
 
   useEffect(() => {
     setCargando(true)
