@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import axios from 'axios'
 import '../styles/tablaProductos.css'
 import BotonEditarProducto from './BotonEditarProducto'
 import { BotonEliminarProducto } from './BotonEliminarProducto'
 import { BotonDestacarProducto } from './BotonDestacarProducto'
 import { BotonQuitarDestacado } from './BotonQuitarDestacado'
+
+export const DatoProductoContext = createContext()
 
 export const TablaProductos = () => {
   const [productos, setProductos] = useState([])
@@ -78,16 +80,9 @@ export const TablaProductos = () => {
                     <td></td>  
                   }
                   <td>
-                    <BotonEditarProducto 
-                    idProducto = {producto._id} 
-                    nombre = {producto.nombre} 
-                    precio = {producto.precio} 
-                    stock = {producto.stock}
-                    categoriaProd = {producto.categoria}
-                    descripcion = {producto.descripcion}
-                    imagen1 = {producto.imagen1}
-                    imagen2 = {producto.imagen2}
-                    imagen3 = {producto.imagen3}/>
+                    <DatoProductoContext.Provider value={{producto}}>
+                      <BotonEditarProducto/>
+                    </DatoProductoContext.Provider>
                     
                     <BotonEliminarProducto idProducto = {producto._id} nombre = {producto.nombre}/>
                   </td>

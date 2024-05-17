@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ModalEditarProducto } from './ModalEditarProducto';
 
-const BotonEditarProducto = ({ idProducto, nombre, precio, stock, categoriaProd, descripcion, imagen1, imagen2, imagen3 }) => {
+const BotonEditarProducto = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -13,19 +13,7 @@ const BotonEditarProducto = ({ idProducto, nombre, precio, stock, categoriaProd,
         <i className="bi bi-pen-fill"></i>
       </button>
 
-      <ModalEditarProducto 
-      show = {show} 
-      handleClose = {handleClose}
-      idProducto = {idProducto}
-      nombre = {nombre}
-      precio = {precio}
-      stock = {stock}
-      categoriaProd = {categoriaProd}
-      descripcion = {descripcion}
-      imagen1 = {imagen1}
-      imagen2 = {imagen2}
-      imagen3 = {imagen3} 
-      />
+      <ModalEditarProducto show = {show} handleClose = {handleClose}/>
     </>
   )
 }

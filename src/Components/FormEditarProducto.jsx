@@ -1,16 +1,19 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
+import { DatoProductoContext } from './TablaProductos';
 
-export const FormEditarProducto = (props) => {
+export const FormEditarProducto = () => {
   const [categorias, setCategorias] = useState([])
   const [edicionProducto, setEdicionProducto] = useState(false)
   const navigate = useNavigate()
   const token = sessionStorage.getItem('token')
 
   const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const { producto } = useContext(DatoProductoContext)
 
   useEffect(() => {
     const obtenerCategorias = async () => {
@@ -23,7 +26,7 @@ export const FormEditarProducto = (props) => {
 
   const editarProducto = (data) => {
     Swal.fire({
-      title: `¿Estás seguro de que quieres editar a ${props.nombre}?`,
+      title: `¿Estás seguro de que quieres editar a ${producto.nombre}?`,
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -35,7 +38,7 @@ export const FormEditarProducto = (props) => {
         setEdicionProducto(true)
 
         const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/productos/modificar-producto", {
-          id: props.idProducto,
+          id: producto._id,
           nombre: data.nombre,
           precio: data.precio,
           stock: data.stock,
@@ -78,7 +81,7 @@ export const FormEditarProducto = (props) => {
               className="form-control"
               autoComplete="off"
               placeholder="Nombre del producto"
-              defaultValue={props.nombre}
+              defaultValue={producto.nombre}
               {...register("nombre", {
                 required: {
                   value: true,
@@ -105,7 +108,7 @@ export const FormEditarProducto = (props) => {
               className="form-control"
               autoComplete="off"
               placeholder="Precio"
-              defaultValue={props.precio}
+              defaultValue={producto.precio}
               {...register("precio", {
                 required: {
                   value: true,
@@ -124,7 +127,7 @@ export const FormEditarProducto = (props) => {
               className="form-control"
               autoComplete="off"
               placeholder="Stock"
-              defaultValue={props.stock}
+              defaultValue={producto.stock}
               {...register("stock", {
                 required: {
                   value: true,
@@ -138,7 +141,7 @@ export const FormEditarProducto = (props) => {
           }
           <div className="mb-1">
             <label className="form-label">Categoria</label>
-            <select defaultValue={props.categoriaProd} className='form-select' {...register("categoria" , {
+            <select defaultValue={producto.categoria} className='form-select' {...register("categoria" , {
               required: {
                 value: true,
                 message: "La categoria es requerida",
@@ -148,7 +151,7 @@ export const FormEditarProducto = (props) => {
               {
                 filtrarCategorias.map((categoria) => (
                   
-                  <option key={categoria._id} defaultValue={props.categoria} value={categoria.categoria}>{categoria.categoria}</option>
+                  <option key={categoria._id} value={categoria.categoria}>{categoria.categoria}</option>
                 ))
               }
             </select>
@@ -165,7 +168,7 @@ export const FormEditarProducto = (props) => {
               autoComplete="off"
               placeholder="Descripción"
               maxLength={560}
-              defaultValue={props.descripcion}
+              defaultValue={producto.descripcion}
               {...register("descripcion", {
                 required: {
                   value: true,
@@ -188,7 +191,7 @@ export const FormEditarProducto = (props) => {
               className="form-control"
               autoComplete="off"
               placeholder="Imagen"
-              defaultValue={props.imagen1}
+              defaultValue={producto.imagen1}
               {...register("imagen1", {
                 required: {
                   value: true,
@@ -207,7 +210,7 @@ export const FormEditarProducto = (props) => {
               className="form-control"
               autoComplete="off"
               placeholder="Imagen"
-              defaultValue={props.imagen2}
+              defaultValue={producto.imagen2}
               {...register("imagen2", {
                 required: {
                   value: true,
@@ -226,7 +229,7 @@ export const FormEditarProducto = (props) => {
               className="form-control"
               autoComplete="off"
               placeholder="Imagen"
-              defaultValue={props.imagen3}
+              defaultValue={producto.imagen3}
               {...register("imagen3", {
                 required: {
                   value: true,

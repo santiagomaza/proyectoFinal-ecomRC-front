@@ -2,12 +2,15 @@ import { useForm } from "react-hook-form";
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { DatoUsuarioContext } from "../Components/TablaUsuarios";
 
-export const FormEditarUsuario = (props) => {
+export const FormEditarUsuario = () => {
   const navigate = useNavigate()
   const [edicion, setEdicion] = useState(false)
   const token = sessionStorage.getItem("token")
+
+  const { usuario } = useContext(DatoUsuarioContext)
 
   const {
     register,
@@ -17,7 +20,7 @@ export const FormEditarUsuario = (props) => {
 
   const editarUsuario = (data) => {
     Swal.fire({
-      title: `¿Estás seguro de que quieres editar a ${props.nombre}?`,
+      title: `¿Estás seguro de que quieres editar a ${usuario.nombre}?`,
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -29,7 +32,7 @@ export const FormEditarUsuario = (props) => {
         setEdicion(true)
 
         const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/usuarios/modificar-usuario", {
-          id: props.idUsuario,
+          id: usuario._id,
           nombre: data.nombre,
           username: data.username,
           domicilio: data.domicilio,
@@ -83,7 +86,7 @@ export const FormEditarUsuario = (props) => {
               className="form-control"
               autoComplete="off"
               placeholder="ej. Santiago Maza"
-              defaultValue={props.nombre}
+              defaultValue={usuario.nombre}
               {...register("nombre", {
                 required: {
                   value: true,
@@ -109,7 +112,7 @@ export const FormEditarUsuario = (props) => {
               type="text"
               className="form-control"
               placeholder="ej. santimaza99"
-              defaultValue={props.username}
+              defaultValue={usuario.username}
               {...register("username", {
                 required: {
                   value: true,
@@ -139,7 +142,7 @@ export const FormEditarUsuario = (props) => {
               type="text"
               className="form-control"
               placeholder="ej. Av Belgrano 1550"
-              defaultValue={props.domicilio}
+              defaultValue={usuario.domicilio}
               {...register("domicilio", {
                 required: {
                   value: true,
@@ -167,7 +170,7 @@ export const FormEditarUsuario = (props) => {
               type="email"
               className="form-control"
               placeholder="ej. pepito45@gmail.com"
-              defaultValue={props.email}
+              defaultValue={usuario.email}
               {...register("email", {
                 required: {
                   value: true,
@@ -195,7 +198,7 @@ export const FormEditarUsuario = (props) => {
             <label className="form-label">País de Nacimiento</label>
             <select
               className="form-select"
-              defaultValue={props.pais}
+              defaultValue={usuario.pais}
               {...register("pais", {
                 required: {
                   value: true,
@@ -225,7 +228,7 @@ export const FormEditarUsuario = (props) => {
               type="text"
               className="form-control"
               placeholder="ej. Tucumán"
-              defaultValue={props.provincia}
+              defaultValue={usuario.provincia}
               {...register("provincia", {
                 required: {
                   value: true,
@@ -254,7 +257,7 @@ export const FormEditarUsuario = (props) => {
               type="number"
               className="form-control"
               placeholder="ej. 4000"
-              defaultValue={props.codigoPostal}
+              defaultValue={usuario.codigoPostal}
               {...register("codigoPostal", {
                 required: {
                   value: true,
@@ -283,7 +286,7 @@ export const FormEditarUsuario = (props) => {
               type="number"
               className="form-control"
               placeholder="ej. 3814345653"
-              defaultValue={props.telefono}
+              defaultValue={usuario.telefono}
               {...register("telefono", {
                 required: {
                   value: true,
@@ -312,7 +315,7 @@ export const FormEditarUsuario = (props) => {
             <label className="form-label">Rol</label>
             <select
               className="form-select"
-              defaultValue={props.rol}
+              defaultValue={usuario.rol}
               {...register("rol", {
                 required: {
                   value: true,
@@ -334,7 +337,7 @@ export const FormEditarUsuario = (props) => {
             <label className="form-label">Estado</label>
             <select
               className="form-select"
-              defaultValue={props.estado}
+              defaultValue={usuario.estado}
               {...register("estado", {
                 required: {
                   value: true,

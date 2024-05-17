@@ -81,7 +81,7 @@ export const FormRegistro = () => {
           }
           <div className='mb-1'>
             <label className='form-label'>Nombre de Usuario</label>
-            <input type='text' autoComplete='off' className='form-control inputRegistro' placeholder='ej. pePito123*' {...register("username", {
+            <input type='text' autoComplete='off' className='form-control inputRegistro' placeholder='ej. pepito123' {...register("username", {
               required: {
                 value: true,
                 message: "El nombre de usuario es requerido"

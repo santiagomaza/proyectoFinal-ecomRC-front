@@ -2,8 +2,12 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BotonEditarUsuario } from './BotonEditarUsuario'
 import { BotonEliminarUsuario } from './BotonEliminarUsuario'
+import { createContext } from 'react' 
+
+export const DatoUsuarioContext = createContext()
 
 export const TablaUsuarios = () => {
+
   const [usuarios, setUsuarios] = useState([])
 
   useEffect(() => {
@@ -61,19 +65,9 @@ export const TablaUsuarios = () => {
                   <td className='text-info fw-bold fst-italic'>{usuario.rol}</td>
                 }
                 <td className='d-flex justify-content-evenly'>
-                  <BotonEditarUsuario 
-                  id = {usuario._id} 
-                  nombre = {usuario.nombre} 
-                  username = {usuario.username} 
-                  email = {usuario.email} 
-                  pais = {usuario.pais}
-                  estado = {usuario.estado}
-                  rol = {usuario.rol}
-                  provincia = {usuario.provincia}
-                  codigoPostal = {usuario.codigoPostal}
-                  domicilio = {usuario.domicilio}
-                  telefono = {usuario.telefono}/>
-
+                  <DatoUsuarioContext.Provider value={{usuario}}>
+                    <BotonEditarUsuario />
+                  </DatoUsuarioContext.Provider>
                   <BotonEliminarUsuario idUsuario = {usuario._id} nombre = {usuario.nombre} usuario = {usuario.username}/>
                 </td>
               </tr>

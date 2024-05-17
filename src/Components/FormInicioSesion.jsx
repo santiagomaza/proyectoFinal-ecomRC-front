@@ -63,7 +63,7 @@ export const FormInicioSesion = () => {
         <div className=''>
           <label className='form-label etiquetas'>Nombre de Usuario</label>
           <i className="bi bi-person-fill iconos fs-2"></i>
-          <input type='text' autoComplete='off' className='form-control inputLogin' placeholder='ej. santimaza99' {...register("username", {
+          <input type='text' autoComplete='off' className='form-control inputLogin' placeholder='ej. pepito123' {...register("username", {
             required: {
               value: true,
               message: "El nombre de usuario es requerido"
