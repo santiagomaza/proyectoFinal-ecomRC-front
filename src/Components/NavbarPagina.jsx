@@ -1,16 +1,16 @@
+import { useEffect, useState } from 'react'
+import { NavLink, Link } from 'react-router-dom'
+import { BarraBuscadoraNavbar } from './BarraBuscadoraNavbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import '../styles/navbar.css'
-import { BarraBuscadoraNavbar } from './BarraBuscadoraNavbar';
-import { NavLink, Link } from 'react-router-dom'
-import logoecomrc from '../assets/ecom.jpg'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Badge from 'react-bootstrap/Badge';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useEffect, useState } from 'react'
 import axios from 'axios'
+import logoecomrc from '../assets/ecom.jpg'
+import '../styles/navbar.css'
 
 export const NavbarPagina = () => {
   const token = sessionStorage.getItem('token')
@@ -18,11 +18,12 @@ export const NavbarPagina = () => {
   const [usuario, setUsuario] = useState({})
   const [carrito, setCarrito] = useState([])
   const [favoritos, setFavoritos] = useState([])
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuarioEspecifico = async () => {
-        const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuario}`)
+        const respuesta = await axios.get(`${URL_BACK}/usuarios/${idUsuario}`)
   
         setUsuario(respuesta.data.usuario)
       }
@@ -33,7 +34,7 @@ export const NavbarPagina = () => {
 
   useEffect(() => {
     const obtenerCarrito = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/carritos/obtener-carrito")
+      const respuesta = await axios.get(`${URL_BACK}/carritos/obtener-carrito`)
       setCarrito(respuesta.data)
     }
 
@@ -44,7 +45,7 @@ export const NavbarPagina = () => {
 
   useEffect(() => {
     const obtenerFavoritos = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/favoritos/obtener-favoritos")
+      const respuesta = await axios.get(`${URL_BACK}/favoritos/obtener-favoritos`)
       setFavoritos(respuesta.data)
     }
 
@@ -67,7 +68,7 @@ export const NavbarPagina = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-4 me-5">
             <NavLink to={"https://www.instagram.com/"} className={"text-decoration-none text-dark"}><i className="bi bi-instagram mx-2 fs-3"></i></NavLink>
-            <NavLink to={"https://twitter.com/santimmaza"} className={"text-decoration-none text-dark"}><i className="bi bi-twitter mx-2 fs-3"></i></NavLink>
+            <NavLink to={"/*"} className={"text-decoration-none text-dark"}><i className="bi bi-twitter mx-2 fs-3"></i></NavLink>
             <NavLink to={"https://www.linkedin.com/in/santiago-maza-5b4561258"} className={"text-decoration-none text-dark"}><i className="bi bi-linkedin mx-2 fs-3"></i></NavLink>
             <NavLink to={"https://github.com/santiagomaza"} className={"text-decoration-none text-dark"}><i className="bi bi-github mx-2 fs-3"></i></NavLink>
           </Nav>

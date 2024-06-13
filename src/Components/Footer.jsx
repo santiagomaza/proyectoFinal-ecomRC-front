@@ -1,6 +1,6 @@
-import '../styles/footer.css'
 import logoecomrc from  '../assets/ecom.jpg'
 import { NavLink, Link } from 'react-router-dom'
+import '../styles/footer.css'
 
 export const Footer = () => {
   return (

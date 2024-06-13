@@ -1,22 +1,23 @@
-import { NavbarPagina } from "../Components/NavbarPagina"
-import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Button from 'react-bootstrap/Button';
+import { NavbarPagina } from "../Components/NavbarPagina"
 import { ModalAgregarCategoria } from "../Components/ModalAgregarCategoria";
 import { TablaCategorias } from "../Components/TablaCategorias";
 import { Footer } from "../Components/Footer";
 import axios from "axios"
-import { useNavigate } from 'react-router-dom'
 
 export const AdminCategorias = () => {
   const [show, setShow] = useState(false);
   const idUsuario = sessionStorage.getItem("idUsuario");
   const navigate = useNavigate()
   const [usuario, setUsuario] = useState({})
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuario = async () => {
-        const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuario}`);
+        const respuesta = await axios.get(`${URL_BACK}/usuarios/${idUsuario}`);
         setUsuario(respuesta.data.usuario);
       }
 

@@ -1,14 +1,16 @@
-import '../styles/barraBuscadoraNavbar.css'
 import { useState, useEffect } from "react"
-import axios from "axios"
 import { ResultadosBusqueda } from './ResultadosBusqueda'
+import axios from "axios"
+import '../styles/barraBuscadoraNavbar.css'
 
 export const BarraBuscadoraNavbar = () => {
   const [busqueda, setBusqueda] = useState('')
   const [productos, setProductos] = useState([])
 
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND;
+
   useEffect(() => {
-    axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
+    axios.get(`${URL_BACK}/productos/obtener-productos`)
     .then((response) => {
       setProductos(response.data.producto)
     })

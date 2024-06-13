@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect, createContext } from 'react'
 import { BotonEditarUsuario } from './BotonEditarUsuario'
 import { BotonEliminarUsuario } from './BotonEliminarUsuario'
-import { createContext } from 'react' 
+import axios from 'axios'
 
 export const DatoUsuarioContext = createContext()
 
 export const TablaUsuarios = () => {
 
   const [usuarios, setUsuarios] = useState([])
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     const obtenerUsuarios = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/usuarios/obtener-usuarios")
+      const respuesta = await axios.get(`${URL_BACK}/usuarios/obtener-usuarios`)
       setUsuarios(respuesta.data.usuario)
     }
 

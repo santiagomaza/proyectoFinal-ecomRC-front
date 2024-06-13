@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export const CajaComentario = ({ usuario, producto }) => {
   const navigate = useNavigate()
   const idUsuario = sessionStorage.getItem("idUsuario")
   const token = sessionStorage.getItem("token")
   const [usuarioLogueado, setUsuarioLogueado] = useState(null)
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const fecha = Date.now()
   const fechaActual = new Date(fecha)
@@ -27,7 +28,7 @@ export const CajaComentario = ({ usuario, producto }) => {
 
 
   const publicarComentario = async (data) => {
-    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/comentarios/crear-comentario", {
+    const respuesta = await axios.post(`${URL_BACK}/comentarios/crear-comentario`, {
       usuario: usuario,
       producto: producto,
       fecha: date,

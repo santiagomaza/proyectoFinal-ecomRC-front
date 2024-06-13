@@ -1,14 +1,15 @@
+import { useContext, useState } from 'react'
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom'
+import { DatoUsuarioContext } from "../Components/TablaUsuarios";
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
-import { useContext, useState } from 'react'
-import { DatoUsuarioContext } from "../Components/TablaUsuarios";
 
 export const FormEditarUsuario = () => {
   const navigate = useNavigate()
   const [edicion, setEdicion] = useState(false)
   const token = sessionStorage.getItem("token")
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const { usuario } = useContext(DatoUsuarioContext)
 
@@ -31,7 +32,7 @@ export const FormEditarUsuario = () => {
       if(result.isConfirmed){
         setEdicion(true)
 
-        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/usuarios/modificar-usuario", {
+        const respuesta = await axios.patch(`${URL_BACK}/usuarios/modificar-usuario`, {
           id: usuario._id,
           nombre: data.nombre,
           username: data.username,

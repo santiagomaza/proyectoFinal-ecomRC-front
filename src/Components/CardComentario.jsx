@@ -1,17 +1,18 @@
+import { useState, useEffect } from 'react'
 import { BotonEditarComentario } from './BotonEditarComentario'
 import { BotonEliminarComentario } from './BotonEliminarComentario'
-import '../styles/cardComentario.css'
-import { useState, useEffect } from 'react'
 import axios from 'axios'
+import '../styles/cardComentario.css'
 
 export const CardComentario = ({ id, usuario, msj, fecha }) => {
   const [usuarioEsp, setUsuario] = useState({})
   const idUsuario = sessionStorage.getItem('idUsuario')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuario = async () => {
-        const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuario}`);
+        const respuesta = await axios.get(`${URL_BACK}/usuarios/${idUsuario}`);
         setUsuario(respuesta.data.usuario)
       }
 

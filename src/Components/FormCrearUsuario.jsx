@@ -1,12 +1,13 @@
+import { useState } from 'react'
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
 
 export const FormCrearUsuario = () => {
   const navigate = useNavigate()
   const [registro, setRegistro] = useState(false)
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const {
     register,
@@ -18,7 +19,7 @@ export const FormCrearUsuario = () => {
   const crearUsuario = async (data) => {
     setRegistro(true)
 
-    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/usuarios/crear-usuario", data)
+    const respuesta = await axios.post(`${URL_BACK}/usuarios/crear-usuario`, data)
 
     if(respuesta.data.status === 201){
       setRegistro(false)

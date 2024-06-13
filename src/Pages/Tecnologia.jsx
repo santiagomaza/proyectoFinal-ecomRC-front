@@ -1,16 +1,17 @@
+import { useState, useEffect } from 'react'
 import { NavbarPagina } from "../Components/NavbarPagina"
 import { CardsProductos } from "../Components/CardsProductos"
 import { Footer } from "../Components/Footer"
 import axios from 'axios'
-import { useState, useEffect } from 'react'
 
 export const Tecnologia = () => {
   const [tecnologia, setTecnologia] = useState([])
   const [categoriaTecnologia, setCategoriaTecnologia] = useState([])
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     const obtenerTecnologia = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
+      const respuesta = await axios.get(`${URL_BACK}/productos/obtener-productos`)
       setTecnologia(respuesta.data.producto.filter((producto) => producto.categoria === "Tecnología"))
     }
 
@@ -19,7 +20,7 @@ export const Tecnologia = () => {
 
   useEffect(() => {
     const obtenerCategoriaTecnologia = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
+      const respuesta = await axios.get(`${URL_BACK}/categorias/obtener-categorias`)
       setCategoriaTecnologia(respuesta.data.filter((categoria) => categoria.categoria === "Tecnología").shift())
     }
 

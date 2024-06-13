@@ -7,6 +7,7 @@ export const CarruselProductosDestacados = () => {
   const [index, setIndex] = useState(0);
   const [productoDestacado, setProductoDestacado] = useState([])
   const [hayProdDestacado, setHayProdDestacado] = useState(false)
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND;
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -14,7 +15,7 @@ export const CarruselProductosDestacados = () => {
 
   useEffect(() => {
     const obtenerProductosDestacados = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
+      const respuesta = await axios.get(`${URL_BACK}/productos/obtener-productos`)
       setProductoDestacado(respuesta.data.producto.filter((producto) => producto.destacado === true).shift())
       
       if(respuesta.status === 200){

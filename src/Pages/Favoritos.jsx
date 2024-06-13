@@ -1,10 +1,10 @@
-import { NavbarPagina } from "../Components/NavbarPagina"
-import axios from 'axios'
 import { useEffect, useState } from "react"
+import { NavbarPagina } from "../Components/NavbarPagina"
 import { Link, useNavigate } from 'react-router-dom'
-import '../styles/favoritos.css'
 import { Footer } from "../Components/Footer"
+import axios from 'axios'
 import Swal from 'sweetalert2'
+import '../styles/favoritos.css'
 
 export const Favoritos = () => {
   const [favoritos, setFavoritos] = useState([])
@@ -12,13 +12,13 @@ export const Favoritos = () => {
   const [hayFavoritos, setHayFavoritos] = useState(false)
   const navigate = useNavigate()
   const token = sessionStorage.getItem('token')
-
   const idUsuario = sessionStorage.getItem('idUsuario')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
   
 
   useEffect(() => {
     const obtenerFavoritos = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/favoritos/obtener-favoritos")
+      const respuesta = await axios.get(`${URL_BACK}/favoritos/obtener-favoritos`)
       setFavoritos(respuesta.data)
       console.log(respuesta.data)
     }
@@ -29,7 +29,7 @@ export const Favoritos = () => {
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuarioEspecifico = async () => {
-        const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuario}`)
+        const respuesta = await axios.get(`${URL_BACK}/usuarios/${idUsuario}`)
         setUsuario(respuesta.data.usuario)
       }
   
@@ -52,7 +52,7 @@ export const Favoritos = () => {
   }, [favoritosUsuario.length])
 
   const quitarFavoritos = async (id) => {
-    const respuesta = await axios.delete("https://proyectofinal-ecomrc-back.onrender.com/favoritos/borrar-favorito", {
+    const respuesta = await axios.delete(`${URL_BACK}/favoritos/borrar-favorito`, {
       data: {
         id: id,
         accessToken: token

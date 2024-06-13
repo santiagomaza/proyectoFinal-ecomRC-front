@@ -1,12 +1,12 @@
-import { NavbarPagina } from "../Components/NavbarPagina"
-import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate, NavLink } from 'react-router-dom'
-import '../styles/detalleProducto.css'
+import { NavbarPagina } from "../Components/NavbarPagina"
 import { CajaComentario } from "../Components/CajaComentario"
 import { CardComentario } from "../Components/CardComentario"
 import { Footer } from "../Components/Footer"
+import axios from 'axios'
 import Swal from 'sweetalert2'
+import '../styles/detalleProducto.css'
 
 export const DetalleProducto = () => {
   const [productoEspecifico, setProductoEspecifico] = useState({})
@@ -18,6 +18,7 @@ export const DetalleProducto = () => {
   const [hayCarrito, setHayCarrito] = useState(false)
   const [favoritos, setFavoritos] = useState([])
   const [hayFavoritos, setHayFavoritos] = useState(false)
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
   
   const navigate = useNavigate()
   const idUsuario = sessionStorage.getItem("idUsuario")
@@ -26,7 +27,7 @@ export const DetalleProducto = () => {
 
   useEffect(() => {
     const obtenerProductoEspecifico = async () => {
-      const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/productos/${id}`)
+      const respuesta = await axios.get(`${URL_BACK}/productos/${id}`)
       setProductoEspecifico(respuesta.data.producto)
     }
 
@@ -36,7 +37,7 @@ export const DetalleProducto = () => {
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuarioEspecifico = async () => {
-        const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuario}`)
+        const respuesta = await axios.get(`${URL_BACK}/usuarios/${idUsuario}`)
         setUsuario(respuesta.data.usuario)
       }
   
@@ -46,7 +47,7 @@ export const DetalleProducto = () => {
 
   useEffect(() => {
     const obtenerComentarios = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/comentarios/obtener-comentarios")
+      const respuesta = await axios.get(`${URL_BACK}/comentarios/obtener-comentarios`)
 
       setComentarios(respuesta.data)
     }
@@ -70,7 +71,7 @@ export const DetalleProducto = () => {
 
   useEffect(() => {
     const obtenerCarrito = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/carritos/obtener-carrito")
+      const respuesta = await axios.get(`${URL_BACK}/carritos/obtener-carrito`)
 
       setCarrito(respuesta.data)
     }
@@ -80,7 +81,7 @@ export const DetalleProducto = () => {
 
   
   const agregarCarrito = async (productoEspecifico) => {
-    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/carritos/crear-carrito", {
+    const respuesta = await axios.post(`${URL_BACK}/carritos/crear-carrito`, {
       producto: productoEspecifico,
       usuario: usuario.username,
       accessToken: token
@@ -120,7 +121,7 @@ export const DetalleProducto = () => {
 
   useEffect(() => {
     const obtenerFavoritos = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/favoritos/obtener-favoritos")
+      const respuesta = await axios.get(`${URL_BACK}/favoritos/obtener-favoritos`)
 
       setFavoritos(respuesta.data)
     }
@@ -139,7 +140,7 @@ export const DetalleProducto = () => {
   }, [favoritos.length, favoritoUsuario, productoEspecifico])
 
   const agregarFavoritos = async (productoEspecifico) => {
-    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/favoritos/crear-favorito", {
+    const respuesta = await axios.post(`${URL_BACK}/favoritos/crear-favorito`, {
       producto: productoEspecifico,
       usuario: usuario.username,
       accessToken: token

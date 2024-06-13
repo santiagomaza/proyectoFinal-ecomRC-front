@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { BotonPublicarCategoria } from './BotonPublicarCategoria';
 import { BotonQuitarCatPublicada } from './BotonQuitarCatPublicada';
 import { BotonEditarCategoria } from './BotonEditarCategoria';
 import { BotonEliminarCategoria } from './BotonEliminarCategoria';
+import axios from 'axios'
 
 export const TablaCategorias = () => {
   const [categorias, setCategorias] = useState([])
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     const obtenerCategorias = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
+      const respuesta = await axios.get(`${URL_BACK}/categorias/obtener-categorias`)
       setCategorias(respuesta.data)
       console.log(respuesta.data)
     }

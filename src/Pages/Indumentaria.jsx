@@ -1,16 +1,17 @@
-import { NavbarPagina } from "../Components/NavbarPagina"
-import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { NavbarPagina } from "../Components/NavbarPagina"
 import { CardsProductos } from "../Components/CardsProductos"
 import { Footer } from "../Components/Footer"
+import axios from 'axios'
 
 export const Indumentaria = () => {
   const [indumentaria, setIndumentaria] = useState([])
   const [categoriaIndumentaria, setCategoriaIndumentaria] = useState([])
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     const obtenerIndumentaria = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
+      const respuesta = await axios.get(`${URL_BACK}/productos/obtener-productos`)
       setIndumentaria(respuesta.data.producto.filter((producto) => producto.categoria === "Indumentaria"))
     }
 
@@ -19,7 +20,7 @@ export const Indumentaria = () => {
 
   useEffect(() => {
     const obtenerCategoriaIndumentaria = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
+      const respuesta = await axios.get(`${URL_BACK}/categorias/obtener-categorias`)
       setCategoriaIndumentaria(respuesta.data.filter((categoria) => categoria.categoria === "Indumentaria").shift())
     }
 

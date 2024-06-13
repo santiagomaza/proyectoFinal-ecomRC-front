@@ -1,15 +1,16 @@
-import axios from 'axios'
 import { useState, useEffect, useContext } from 'react'
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
 import { DatoProductoContext } from './TablaProductos';
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export const FormEditarProducto = () => {
   const [categorias, setCategorias] = useState([])
   const [edicionProducto, setEdicionProducto] = useState(false)
   const navigate = useNavigate()
   const token = sessionStorage.getItem('token')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -17,7 +18,7 @@ export const FormEditarProducto = () => {
 
   useEffect(() => {
     const obtenerCategorias = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
+      const respuesta = await axios.get(`${URL_BACK}/categorias/obtener-categorias`)
       setCategorias(respuesta.data)
     }
 
@@ -37,7 +38,7 @@ export const FormEditarProducto = () => {
       if(result.isConfirmed){
         setEdicionProducto(true)
 
-        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/productos/modificar-producto", {
+        const respuesta = await axios.patch(`${URL_BACK}/productos/modificar-producto`, {
           id: producto._id,
           nombre: data.nombre,
           precio: data.precio,

@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
 
 export const BotonEliminarCategoria = ({ idCategoria, nombre }) => {
   const navigate = useNavigate()
   const token = sessionStorage.getItem('token')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const eliminarCategoria = () => {
     Swal.fire({
@@ -17,7 +18,7 @@ export const BotonEliminarCategoria = ({ idCategoria, nombre }) => {
       confirmButtonText: "Si, borrar!"
     }).then(async (result) => {
       if(result.isConfirmed){
-        const respuesta = await axios.delete("https://proyectofinal-ecomrc-back.onrender.com/categorias/borrar-categoria", {
+        const respuesta = await axios.delete(`${URL_BACK}/categorias/borrar-categoria`, {
           data: {
             id: idCategoria,
             accessToken: token
@@ -37,7 +38,6 @@ export const BotonEliminarCategoria = ({ idCategoria, nombre }) => {
           }, 1500);
         }
         else if(respuesta.data.status === 500){
-          
           Swal.fire({
             icon: 'error',
             title: "No se puede eliminar la categoria porque el token expiró o no existe",

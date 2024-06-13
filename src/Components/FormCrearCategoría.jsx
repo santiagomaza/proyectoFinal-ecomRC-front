@@ -1,18 +1,19 @@
-import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
+import axios from 'axios'
 
 export const FormCrearCategoría = () => {
   const [creandoCategoria, setCreandoCategoria] = useState(false)
   const navigate = useNavigate()
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const crearCategoria = async (data) => {
     setCreandoCategoria(true)
-    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/categorias/crear-categoria", data)
+    const respuesta = await axios.post(`${URL_BACK}/categorias/crear-categoria`, data)
 
     if(respuesta.data.status === 201){
       setCreandoCategoria(false)

@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
 
 export const BotonQuitarDestacado = ({idProducto, nombre}) => {
   const navigate = useNavigate()
   const token = sessionStorage.getItem('token')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const quitarDestacado = () => {
     Swal.fire({
@@ -17,7 +18,7 @@ export const BotonQuitarDestacado = ({idProducto, nombre}) => {
       cancelButtonText: "Cancelar"
     }).then(async (result) => {
       if(result.isConfirmed){
-        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/productos/destacar-producto", {
+        const respuesta = await axios.patch(`${URL_BACK}/productos/destacar-producto`, {
           id: idProducto,
           destacado: false,
           accessToken: token

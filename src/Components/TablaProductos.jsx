@@ -1,20 +1,21 @@
 import { useState, useEffect, createContext } from 'react'
 import axios from 'axios'
-import '../styles/tablaProductos.css'
 import BotonEditarProducto from './BotonEditarProducto'
 import { BotonEliminarProducto } from './BotonEliminarProducto'
 import { BotonDestacarProducto } from './BotonDestacarProducto'
 import { BotonQuitarDestacado } from './BotonQuitarDestacado'
+import '../styles/tablaProductos.css'
 
 export const DatoProductoContext = createContext()
 
 export const TablaProductos = () => {
   const [productos, setProductos] = useState([])
   const [busqueda, setBusqueda] = useState('')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     const obtenerProductos = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
+      const respuesta = await axios.get(`${URL_BACK}/productos/obtener-productos`)
       setProductos(respuesta.data.producto)
     }
 

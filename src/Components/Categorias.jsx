@@ -1,8 +1,8 @@
-import '../styles/categorias.css'
 import { CategoriaBebidas } from './CategoriaBebidas'
 import { CategoriaIndumentaria } from './CategoriaIndumentaria'
 import { CategoriaVideojuegos } from './CategoriaVideojuegos'
 import { CategoriaTecnologia } from './CategoriaTecnologia'
+import '../styles/categorias.css'
 
 export const Categorias = () => {
   return (

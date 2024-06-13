@@ -1,17 +1,18 @@
-import logoeComRC from '../assets/ecom.jpg'
-import '../styles/formBuscarEmail.css'
-import axios from 'axios'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import Alert from 'react-bootstrap/Alert';
+import axios from 'axios'
+import logoeComRC from '../assets/ecom.jpg'
+import '../styles/formBuscarEmail.css'
 
 export const FormBuscarEmail = () => {
   const [emailEncontrado, setEmailEncontrado] = useState(null)
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const buscarEmail = async (data) => {
-    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/usuarios/buscar-email", data)
+    const respuesta = await axios.post(`${URL_BACK}/usuarios/buscar-email`, data)
 
     if(respuesta.data.status === 200){
       setEmailEncontrado(true)

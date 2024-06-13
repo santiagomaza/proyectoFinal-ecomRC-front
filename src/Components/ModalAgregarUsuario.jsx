@@ -1,7 +1,7 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import '../styles/modalAgregarUsuario.css'
 import { FormCrearUsuario } from './FormCrearUsuario';
+import '../styles/modalAgregarUsuario.css'
 
 export const ModalAgregarUsuario = ({show, handleClose}) => {
   return (

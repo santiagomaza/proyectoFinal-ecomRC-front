@@ -1,18 +1,19 @@
-import logoeComRC from '../assets/ecom.jpg'
-import '../styles/formRestablecerContraseña.css'
-import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import logoeComRC from '../assets/ecom.jpg'
+import '../styles/formRestablecerContraseña.css'
 
 export const FormRestablecerContraseña = ({token}) => {
-  const navigate = useNavigate()
   let emailUsuario = sessionStorage.getItem('email')
   let tokenUsuario = sessionStorage.getItem('tokenRecContraseña')
   let idUsuario = sessionStorage.getItem('idUsuarioRC')
   const { register, watch, handleSubmit, formState: { errors } } = useForm()
   const [cambiandoContraseña, setCambiandoContraseña] = useState(false)
+  const navigate = useNavigate()
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     if(!emailUsuario){
@@ -29,7 +30,7 @@ export const FormRestablecerContraseña = ({token}) => {
   const cambiarContraseña = async (data) => {
     setCambiandoContraseña(true)
 
-    const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/usuarios/restablecer-contrasenia", {
+    const respuesta = await axios.patch(`${URL_BACK}/usuarios/restablecer-contrasenia`, {
       id: idUsuario,
       contraseña: data.contraseña,
       forgotPasswordToken: tokenUsuario

@@ -1,13 +1,14 @@
-import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 import Swal from 'sweetalert2'
 
 export const FormEditarCategoria = ({ idCategoria, nombre, descripcion }) => {
   const [editandoCategoria, setEditandoCategoria] = useState(false)
   const navigate = useNavigate()
   const token = sessionStorage.getItem('token')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -24,7 +25,7 @@ export const FormEditarCategoria = ({ idCategoria, nombre, descripcion }) => {
       if(result.isConfirmed){
         setEditandoCategoria(true)
 
-        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/categorias/modificar-categoria", {
+        const respuesta = await axios.patch(`${URL_BACK}/categorias/modificar-categoria`, {
           id: idCategoria,
           categoria: data.categoria,
           descripcion: data.descripcion,

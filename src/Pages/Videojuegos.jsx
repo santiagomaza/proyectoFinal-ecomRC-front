@@ -1,16 +1,17 @@
-import { NavbarPagina } from "../Components/NavbarPagina"
-import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { NavbarPagina } from "../Components/NavbarPagina"
 import { CardsProductos } from "../Components/CardsProductos"
 import { Footer } from "../Components/Footer"
+import axios from 'axios'
 
 export const Videojuegos = () => {
   const [videojuegos, setVideojuegos] = useState([])
   const [categoriaVideojuegos, setCategoriaVideojuegos] = useState([])
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     const obtenerProductos = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
+      const respuesta = await axios.get(`${URL_BACK}/productos/obtener-productos`)
 
       setVideojuegos(respuesta.data.producto.filter((producto) => producto.categoria === "Videojuegos"))
     }
@@ -20,7 +21,7 @@ export const Videojuegos = () => {
 
   useEffect(() => {
     const obtenerCategoriasVideojuegos = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
+      const respuesta = await axios.get(`${URL_BACK}/categorias/obtener-categorias`)
 
       setCategoriaVideojuegos(respuesta.data.filter((categoria) => categoria.categoria === "Videojuegos").shift())
     }

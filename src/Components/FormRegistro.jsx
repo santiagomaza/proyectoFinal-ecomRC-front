@@ -1,20 +1,21 @@
-import '../styles/formRegistro.css'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate, Link } from 'react-router-dom'
 import ModalInfoRegistro from './ModalInfoRegistro'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
 import logoeComRC from  '../assets/ecom.jpg'
+import '../styles/formRegistro.css'
 
 export const FormRegistro = () => {
   const navigate = useNavigate()
   const [registro, setRegistro] = useState(false)
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const registrarse = async (data) => {
     setRegistro(true)
-    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/usuarios/registrar-usuario", data)
+    const respuesta = await axios.post(`${URL_BACK}/usuarios/registrar-usuario`, data)
 
     if(respuesta.data.status === 201){
       setRegistro(false)

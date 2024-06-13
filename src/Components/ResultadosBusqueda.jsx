@@ -1,5 +1,5 @@
-import '../styles/resultadosBusqueda.css'
 import { Link } from 'react-router-dom'
+import '../styles/resultadosBusqueda.css'
 
 export const ResultadosBusqueda = ({ id, nombre }) => {
   return (

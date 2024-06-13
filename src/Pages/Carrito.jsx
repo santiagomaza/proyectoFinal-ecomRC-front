@@ -1,10 +1,10 @@
-import { NavbarPagina } from "../Components/NavbarPagina"
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react"
-import '../styles/carrito.css'
+import { useNavigate } from 'react-router-dom'
+import { NavbarPagina } from "../Components/NavbarPagina"
 import { Footer } from '../Components/Footer'
+import axios from 'axios'
 import Swal from 'sweetalert2'
+import '../styles/carrito.css'
 
 export const Carrito = () => {
   const [carrito, setCarrito] = useState([])
@@ -12,13 +12,14 @@ export const Carrito = () => {
   const [hayCarrito, setHayCarrito] = useState(null)
   const navigate = useNavigate()
   const [total, setTotal] = useState(0)
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const idUsuario = sessionStorage.getItem('idUsuario')
   const token = sessionStorage.getItem('token')
 
   useEffect(() => {
     const obtenercarrito = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/carritos/obtener-carrito")
+      const respuesta = await axios.get(`${URL_BACK}/carritos/obtener-carrito`)
       setCarrito(respuesta.data)
     }
 
@@ -28,7 +29,7 @@ export const Carrito = () => {
   useEffect(() => {
     if(idUsuario){
       const obtenerUsuarioEspecifico = async () => {
-        const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuario}`)
+        const respuesta = await axios.get(`${URL_BACK}/usuarios/${idUsuario}`)
         setUsuarioEspecifico(respuesta.data.usuario)
       }
   
@@ -64,7 +65,7 @@ export const Carrito = () => {
   }, [carritoUsuario, carrito])
 
   const eliminarProdCarrito = async (id) => {
-    const respuesta = await axios.delete("https://proyectofinal-ecomrc-back.onrender.com/carritos/borrar-carrito", {
+    const respuesta = await axios.delete(`${URL_BACK}/carritos/borrar-carrito`, {
       data: {
         id: id,
         accessToken: token

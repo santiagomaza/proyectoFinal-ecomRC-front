@@ -1,24 +1,21 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import Swal from 'sweetalert2'
 import '../styles/formAgregarProducto.css'
 
 export const FormAgregarProducto = () => {
   const [categorias, setCategorias] = useState([])
   const [registroProducto, setRegistroProducto] = useState(false)
   const navigate = useNavigate()
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   useEffect(() => {
     const obtenerCategorias = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
+      const respuesta = await axios.get(`${URL_BACK}/categorias/obtener-categorias`)
       setCategorias(respuesta.data)
     }
 
@@ -29,7 +26,7 @@ export const FormAgregarProducto = () => {
 
   const agregarProducto = async (data) => {
     setRegistroProducto(true)
-    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/productos/crear-producto", data)
+    const respuesta = await axios.post(`${URL_BACK}/productos/crear-producto`, data)
 
     if(respuesta.data.status === 201){
       setRegistroProducto(false)

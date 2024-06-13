@@ -1,15 +1,16 @@
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export const BotonDestacarProducto = ({idProducto, nombre}) => {
   const [productos, setProductos] = useState([])
   const navigate = useNavigate()
   const token = sessionStorage.getItem('token')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
-    axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
+    axios.get(`${URL_BACK}/productos/obtener-productos`)
     .then(response => {
       setProductos(response.data.producto)
     })

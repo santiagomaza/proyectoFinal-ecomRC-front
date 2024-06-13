@@ -1,7 +1,7 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Alert from 'react-bootstrap/Alert';
+import axios from 'axios'
 import logoecomrc from '../assets/ecom.jpg'
 import '../styles/verificarEmail.css'
 
@@ -9,11 +9,12 @@ export const VerificarEmail = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [usuario, setUsuario] = useState({})
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
   let idUsuarioNuevo = sessionStorage.getItem("idUsuarioNuevo")
 
   useEffect(() => {
     const obtenerInfoUsuario = async () => {
-      const respuesta = await axios.get(`https://proyectofinal-ecomrc-back.onrender.com/usuarios/${idUsuarioNuevo}`)
+      const respuesta = await axios.get(`${URL_BACK}/usuarios/${idUsuarioNuevo}`)
       setUsuario(respuesta.data.usuario)
     }
 
@@ -23,7 +24,7 @@ export const VerificarEmail = () => {
   useEffect(() => {
     const cambiarEstadoCuenta = async () => {
       if(usuario._id === id && usuario.estado === "Pendiente"){
-        await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/usuarios/cambiar-estado", {
+        await axios.patch(`${URL_BACK}/usuarios/cambiar-estado`, {
           id: idUsuarioNuevo,
           estado: "Activo"
         })

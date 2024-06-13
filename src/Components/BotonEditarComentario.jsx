@@ -1,5 +1,5 @@
-import { ModalEditarComentario } from "./ModalEditarComentario"
 import { useState } from 'react';
+import { ModalEditarComentario } from "./ModalEditarComentario"
 
 export const BotonEditarComentario = ({ id, mensaje }) => {
   const [show, setShow] = useState(false);

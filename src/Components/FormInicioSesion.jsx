@@ -1,19 +1,20 @@
-import '../styles/formInicioSesion.css'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
 import logoeComRC from '../assets/ecom.jpg'
+import '../styles/formInicioSesion.css'
 
 export const FormInicioSesion = () => {
   const navigate = useNavigate()
   const [iniciandoSesion, setIniciandoSesion] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const iniciarSesion = async (data) => {
     setIniciandoSesion(true)
-    const respuesta = await axios.post("https://proyectofinal-ecomrc-back.onrender.com/usuarios/inicio-sesion", data)
+    const respuesta = await axios.post(`${URL_BACK}/usuarios/inicio-sesion`, data)
     console.log(respuesta.data)
 
     if(respuesta.data.status === 200){

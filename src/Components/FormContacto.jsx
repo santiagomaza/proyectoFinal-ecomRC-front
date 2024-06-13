@@ -1,8 +1,8 @@
-import '../styles/formContacto.css'
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom'
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
+import '../styles/formContacto.css'
 
 export const FormContacto = () => {
   const navigate = useNavigate()

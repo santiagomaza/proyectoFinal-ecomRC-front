@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
 
 export const BotonEliminarUsuario = ({idUsuario, nombre, usuario}) => {
   const navigate = useNavigate()
   const token = sessionStorage.getItem('token')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const borrarUsuario = (nombre) => {
     Swal.fire({
@@ -25,7 +26,7 @@ export const BotonEliminarUsuario = ({idUsuario, nombre, usuario}) => {
           })
         }
         else{
-          const respuesta = await axios.delete("https://proyectofinal-ecomrc-back.onrender.com/usuarios/eliminar-usuario", {
+          const respuesta = await axios.delete(`${URL_BACK}/usuarios/eliminar-usuario`, {
             data: {
               id: idUsuario,
               accessToken: token

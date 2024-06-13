@@ -1,16 +1,17 @@
+import { useState, useEffect } from 'react'
 import { CardsProductos } from "../Components/CardsProductos"
 import { NavbarPagina } from "../Components/NavbarPagina"
-import axios from 'axios'
-import { useState, useEffect } from 'react'
 import { Footer } from '../Components/Footer'
+import axios from 'axios'
 
 export const Bebidas = () => {
   const [bebidas, setBebidas] = useState([])
   const [categoriaBebidas, setCategoriaBebidas] = useState([])
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   useEffect(() => {
     const obtenerProductos = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/productos/obtener-productos")
+      const respuesta = await axios.get(`${URL_BACK}/productos/obtener-productos`)
 
       setBebidas(respuesta.data.producto.filter((producto) => producto.categoria === "Bebidas"))
     }
@@ -20,7 +21,7 @@ export const Bebidas = () => {
 
   useEffect(() => {
     const obtenerCategoriasBebidas = async () => {
-      const respuesta = await axios.get("https://proyectofinal-ecomrc-back.onrender.com/categorias/obtener-categorias")
+      const respuesta = await axios.get(`${URL_BACK}/categorias/obtener-categorias`)
 
       setCategoriaBebidas(respuesta.data.filter((categoria) => categoria.categoria === "Bebidas").shift())
     }

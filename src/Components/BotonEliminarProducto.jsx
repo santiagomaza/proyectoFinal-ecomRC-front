@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
 
 export const BotonEliminarProducto = ({idProducto, nombre}) => {
   const navigate = useNavigate()
   const token = sessionStorage.getItem("token")
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const borrarProducto = () => {
     Swal.fire({
@@ -17,7 +18,7 @@ export const BotonEliminarProducto = ({idProducto, nombre}) => {
       confirmButtonText: "Si, borrar!"
     }).then(async (result) => {
       if(result.isConfirmed){
-        const respuesta = await axios.delete("https://proyectofinal-ecomrc-back.onrender.com/productos/eliminar-producto", {
+        const respuesta = await axios.delete(`${URL_BACK}/productos/eliminar-producto`, {
           data: {
             id: idProducto,
             accessToken: token

@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
 
 export const BotonQuitarCatPublicada = ({idCategoria, nombre}) => {
   const navigate = useNavigate()
   const token = sessionStorage.getItem('token')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const quitarPublicada = () => {
     Swal.fire({
@@ -17,7 +18,7 @@ export const BotonQuitarCatPublicada = ({idCategoria, nombre}) => {
       cancelButtonText: "Cancelar"
     }).then(async (result) => {
       if(result.isConfirmed){
-        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/categorias/publicar-categoria", {
+        const respuesta = await axios.patch(`${URL_BACK}/categorias/publicar-categoria`, {
           id: idCategoria,
           publicada: false,
           accessToken: token

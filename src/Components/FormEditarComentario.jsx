@@ -1,12 +1,13 @@
-import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import Swal from 'sweetalert2'
 
 export const FormEditarComentario = ({id, mensaje}) => {
   const { register, handleSubmit, formState: {errors} } = useForm()
   const navigate = useNavigate()
   const token = sessionStorage.getItem('token')
+  const URL_BACK = import.meta.env.VITE_URL_BACKEND
 
   const fecha = Date.now()
   const fechaActual = new Date(fecha)
@@ -23,7 +24,7 @@ export const FormEditarComentario = ({id, mensaje}) => {
       cancelButtonText: "Cancelar"
     }).then(async (result) => {
       if(result.isConfirmed){
-        const respuesta = await axios.patch("https://proyectofinal-ecomrc-back.onrender.com/comentarios/modificar-comentario", {
+        const respuesta = await axios.patch(`${URL_BACK}/comentarios/modificar-comentario`, {
           id: id,
           mensaje: data.mensaje,
           fecha: date,
