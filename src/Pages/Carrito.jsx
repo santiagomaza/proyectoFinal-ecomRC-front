@@ -42,7 +42,7 @@ export const Carrito = () => {
 
   useEffect(() => {
     const obtenerProductos = async () => {
-      const respuesta = await axios.get("http://localhost:8000/productos/obtener-productos")
+      const respuesta = await axios.get(`${URL_BACK}/productos/obtener-productos`)
       setProductos(respuesta.data.producto)
     }
     obtenerProductos()
