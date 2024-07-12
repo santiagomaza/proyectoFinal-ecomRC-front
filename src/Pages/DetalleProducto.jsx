@@ -48,7 +48,6 @@ export const DetalleProducto = () => {
   useEffect(() => {
     const obtenerComentarios = async () => {
       const respuesta = await axios.get(`${URL_BACK}/comentarios/obtener-comentarios`)
-
       setComentarios(respuesta.data)
     }
 
@@ -72,8 +71,8 @@ export const DetalleProducto = () => {
   useEffect(() => {
     const obtenerCarrito = async () => {
       const respuesta = await axios.get(`${URL_BACK}/carritos/obtener-carrito`)
-
       setCarrito(respuesta.data)
+      
     }
 
     obtenerCarrito()
@@ -84,6 +83,9 @@ export const DetalleProducto = () => {
     const respuesta = await axios.post(`${URL_BACK}/carritos/crear-carrito`, {
       producto: productoEspecifico,
       usuario: usuario.username,
+      cantidad: 1,
+      idProducto: productoEspecifico._id,
+      idUsuario: usuario._id,
       accessToken: token
     })
 
@@ -122,7 +124,6 @@ export const DetalleProducto = () => {
   useEffect(() => {
     const obtenerFavoritos = async () => {
       const respuesta = await axios.get(`${URL_BACK}/favoritos/obtener-favoritos`)
-
       setFavoritos(respuesta.data)
     }
 

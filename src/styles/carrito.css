@@ -23,6 +23,17 @@
   top: 45px;
 }
 
+.titCantidad{
+  position: relative;
+  top: 45px;
+}
+
+#cantidades{
+  width: 5vw;
+  height: 35px;
+  text-align: center;
+}
+
 .carritoVacio{
   position: relative;
   top: -45px;
