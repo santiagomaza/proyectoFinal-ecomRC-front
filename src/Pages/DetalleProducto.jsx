@@ -71,8 +71,7 @@ export const DetalleProducto = () => {
   useEffect(() => {
     const obtenerCarrito = async () => {
       const respuesta = await axios.get(`${URL_BACK}/carritos/obtener-carrito`)
-      setCarrito(respuesta.data)
-      
+      setCarrito(respuesta.data.carrito)
     }
 
     obtenerCarrito()
